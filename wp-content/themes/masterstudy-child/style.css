@@ -1,0 +1,80 @@
+/*
+  Theme Name: Master Study Child
+  Theme URI: http://stylemix.net
+  Description: MasterStudy Child Theme
+  Author: StylemixThemes
+  Author URI: http://stylemix.net
+  Template: masterstudy
+  Version: 2.0.6
+  License: GNU General Public License v2 or later
+  License URI: http://www.gnu.org/licenses/gpl-2.0.html
+  Tags: classes, courses, education, education center, learning center, tutoring, teaching, study, studying, learning, lessons, instructor, teacher, mentor
+  Text Domain: masterstudy-child
+sas
+*/
+.transparent_header .right_buttons .search-toggler {
+    border-color: #196ec0;
+    color: #196ec0;
+}
+
+.stm_featured_product_footer .price {
+    display: none;
+}
+
+ul.stm-courses li
+.stm_featured_product_footer .star-rating {
+    display: block;
+}
+.woocommerce-variation-add-to-cart.variations_button.woocommerce-variation-add-to-cart-enabled  .quantity input,
+.woocommerce-variation-add-to-cart.variations_button.woocommerce-variation-add-to-cart-disabled
+.quantity input{
+display: none;
+}
+
+@media (min-width: 768px) {
+    .navbar-collapse.collapse {
+/*         display: inline-block !important; */
+        height: auto !important;
+        padding-bottom: 0;
+        overflow: visible !important;
+        float: left !important;
+        /* margin: 0px !important; */
+        /* height: 0px !important; */
+        /* min-height: 0px !important; */
+        /* line-height: 0px !important; */
+        margin-top: -30px !important;
+    }
+
+    .home   .navbar-collapse.collapse {
+
+
+        margin-top: unset !important;
+    }
+
+}
+
+/* Style WPBakery Post Masonry Grid Button */
+.vc_masonry_grid .vc_row .vc_grid-item .vc_gitem_row .vc_btn3-container {
+    text-align: center;
+}
+.vc_masonry_grid .vc_row .vc_grid-item .vc_gitem_row .vc_btn3-container a {
+    background: #196EC0;
+    color: #fff;
+}
+.vc_masonry_grid .vc_row .vc_grid-item .vc_gitem_row .vc_btn3-container a:hover {
+    background: #48a7d4;
+}
+
+/* Remove Yellow and Blue Mark text color from my account area */
+.woocommerce-MyAccount-content mark{
+    color: inherit;
+    background: inherit !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .woocommerce-orders-table__header.woocommerce-orders-table__header-order-status,
+    .woocommerce-orders-table__cell.woocommerce-orders-table__cell-order-status,
+    .my_account_bookings .booking-status {
+        display: none;
+    }
+}

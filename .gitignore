@@ -45,4 +45,12 @@ wp-config.php
 #
 # Note: If you wish to whitelist themes,
 # uncomment the next line
-#/wp-content/themes
+/wp-content/*
+!/wp-content/themes/
+/wp-content/themes/*
+!/wp-content/themes/masterstudy-child/
+
+# Plugins
+!/wp-content/plugins/
+/wp-content/plugins/*
+!/wp-content/plugins/wc-booking-confirmed-after-paid/
