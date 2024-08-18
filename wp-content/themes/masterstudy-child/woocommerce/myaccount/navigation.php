@@ -29,7 +29,7 @@ $arr['bookings'] = 'Bookings';
 $arr['members-area'] = 'Classrooms';
 $arr['downloads'] = 'Workshops';
 // $arr['wc-smart-coupons'] = 'Coupons';
-$arr['fs-affiliates-section'] = 'Partners';
+$arr['fs-affiliates-section'] = 'Partnership';
 $arr['edit-account'] = 'User Info';
 $arr['customer-logout'] = 'Logout';
 

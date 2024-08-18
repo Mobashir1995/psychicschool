@@ -71,6 +71,32 @@ display: none;
     background: inherit !important;
 }
 
+/* Affiliate WP Buttons Styles */
+#affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs {
+    overflow: hidden;
+}
+#affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs li {
+    padding: 0 !important;
+    float: left;
+}
+#affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs li.active a,
+#affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs li:hover a{
+    background-color: #09dc77;
+    font-weight: 400;
+}
+#affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs .affwp-affiliate-dashboard-tab a {
+    display: block;
+    padding: 12px 15px;
+    background-color: #196ec0;
+    border: 0;
+    border-left: 1px solid #fff;
+    border-radius: 0;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 14px;
+}
+
 @media only screen and (max-width: 768px) {
     .woocommerce-orders-table__header.woocommerce-orders-table__header-order-status,
     .woocommerce-orders-table__cell.woocommerce-orders-table__cell-order-status,
