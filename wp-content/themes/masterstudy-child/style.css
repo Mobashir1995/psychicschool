@@ -5,7 +5,7 @@
   Author: StylemixThemes
   Author URI: http://stylemix.net
   Template: masterstudy
-  Version: 2.0.6
+  Version: 2.0.8
   License: GNU General Public License v2 or later
   License URI: http://www.gnu.org/licenses/gpl-2.0.html
   Tags: classes, courses, education, education center, learning center, tutoring, teaching, study, studying, learning, lessons, instructor, teacher, mentor
@@ -72,8 +72,12 @@ display: none;
 }
 
 /* Affiliate WP Buttons Styles */
+#affwp-affiliate-dashboard {
+    text-align: center;
+}
 #affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs {
     overflow: hidden;
+    display: inline-block;
 }
 #affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs li {
     padding: 0 !important;
@@ -95,6 +99,26 @@ display: none;
     text-transform: uppercase;
     text-align: center;
     font-size: 14px;
+}
+
+@media only screen and (max-width: 1100px) and (min-width: 992px) {
+    #affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs .affwp-affiliate-dashboard-tab a {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    #affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs li {
+        padding: 0 !important;
+        float: left;
+        display: block;
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    #affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs .affwp-affiliate-dashboard-tab a {
+        padding: 12px 20px;
+    }
 }
 
 @media only screen and (max-width: 768px) {
