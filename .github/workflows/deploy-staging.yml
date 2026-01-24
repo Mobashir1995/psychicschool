@@ -1,35 +1,18 @@
-name: Auto Deploy to Cloudways Staging
-
+name: Cloudways Deploy to Staging
 on:
   push:
-    branches:
-      - kadence-theme-development
-
+    branches: [kadence-theme-development]
 jobs:
   deploy:
-    name: Deploy to Staging
     runs-on: ubuntu-latest
-
     steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
+      - name: Cloudways API Git Pull
+      - uses: actions/checkout@v4
+      - uses: roelmagdaleno/cloudways-api-git-pull-action@stable
         with:
-          host: ${{ secrets.STAGING_HOST }}
-          username: ${{ secrets.STAGING_USER }}
-          key: ${{ secrets.STAGING_SSH_KEY }}
-          script: |
-            set -e
-
-            cd ${{ secrets.STAGING_APP_PATH }}
-
-            echo "Fetching latest code..."
-            git fetch origin
-
-            echo "Resetting working tree..."
-            git reset --hard origin/kadence-theme-development
-            git clean -fd
-
-            echo "Flushing cache (if WP CLI exists)..."
-            wp cache flush || true
-
-            echo "Deployment completed"
+          email: ${{ secrets.CLOUDWAYS_EMAIL }}
+          api-key: ${{ secrets.CLOUDWAYS_API_KEY }}
+          server-id: ${{ secrets.CLOUDWAYS_SERVER_ID }}
+          app-id: ${{ secrets.CLOUDWAYS_APP_ID }}
+          branch-name: ${{ secrets.CLOUDWAYS_BRANCH_NAME }}
+          deploy-path: ${{ secrets.STAGING_APP_PATH }}
