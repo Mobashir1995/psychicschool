@@ -1,8 +1,9 @@
 <?php
-
+define('KADENCE_CHILD_VERSION', time());
 add_action( 'wp_enqueue_scripts', 'kadence_child_enqueue_scripts' );
 function kadence_child_enqueue_scripts() {
-    wp_enqueue_style( 'kadence-child-style', get_stylesheet_uri() );
+    
+    wp_enqueue_style( 'kadence-child-style', get_stylesheet_uri(), array(), KADENCE_CHILD_VERSION );
 }
 
 require_once get_stylesheet_directory() . '/inc/vc-addons/index.php';
