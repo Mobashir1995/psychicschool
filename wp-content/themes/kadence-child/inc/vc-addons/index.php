@@ -12,19 +12,21 @@ if (!is_plugin_active('js_composer/js_composer.php')) {
 }
 
 $vc_addons_dir = get_stylesheet_directory() . '/inc/vc-addons';
-if (!is_dir($vc_addons_dir)) {
-    return;
-}
+require_once $vc_addons_dir . '/vc-addon-stm-icon-box.php';
 
-$iterator = new RecursiveIteratorIterator(
-    new RecursiveDirectoryIterator($vc_addons_dir, RecursiveDirectoryIterator::SKIP_DOTS)
-);
+// if (!is_dir($vc_addons_dir)) {
+//     return;
+// }
 
-foreach ($iterator as $file) {
-    if ($file->isFile() && $file->getExtension() === 'php') {
-        $basename = $file->getFilename();
-        if (strpos($basename, 'vc-addon-') === 0) {
-            require_once $file->getPathname();
-        }
-    }
-}
+// $iterator = new RecursiveIteratorIterator(
+//     new RecursiveDirectoryIterator($vc_addons_dir, RecursiveDirectoryIterator::SKIP_DOTS)
+// );
+
+// foreach ($iterator as $file) {
+//     if ($file->isFile() && $file->getExtension() === 'php') {
+//         $basename = $file->getFilename();
+//         if (strpos($basename, 'vc-addon-') === 0) {
+//             require_once $file->getPathname();
+//         }
+//     }
+// }
