@@ -53,6 +53,7 @@ function kadence_child_stm_icon_box_render( $atts ) {
 	ob_start();
 	?>
 	<style type="text/css" id="stm-icon-box-<?php echo esc_attr( $unique ); ?>"><?php echo $inline_css; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- dynamic CSS from shortcode atts ?></style>
+	<div class="stm-icon-box-container">
 		<?php if ( ! empty( $link['url'] ) ) : ?>
 			<a href="<?php echo esc_url( $link['url'] ); ?>" title="<?php echo esc_attr( ! empty( $link['title'] ) ? $link['title'] : '' ); ?>"
 				<?php echo ! empty( $link['target'] ) ? ' target="_blank"' : ''; ?>>
@@ -75,6 +76,7 @@ function kadence_child_stm_icon_box_render( $atts ) {
 		<?php if ( ! empty( $link['url'] ) ) : ?>
 			</a>
 		<?php endif; ?>
+	</div>
 	<?php
 	return ob_get_clean();
 }
