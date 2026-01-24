@@ -6,9 +6,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Cloudways API Git Pull
-      - uses: actions/checkout@v4
-      - uses: roelmagdaleno/cloudways-api-git-pull-action@stable
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Deploy to Cloudways Staging
+        uses: roelmagdaleno/cloudways-api-git-pull-action@stable
         with:
           email: ${{ secrets.CLOUDWAYS_EMAIL }}
           api-key: ${{ secrets.CLOUDWAYS_API_KEY }}
