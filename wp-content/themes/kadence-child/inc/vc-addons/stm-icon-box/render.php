@@ -50,11 +50,9 @@ function kadence_child_stm_icon_box_render( $atts ) {
 	$css_class       .= ' stm_icon_box_hover_' . $hover_pos;
 	$icon_b_classes   = array( $css_class, $link_color_style, $unique, 'box_align_' . $box_align, 'clearfix' );
 
-	$handle = 'kadence-child-style';
-	wp_add_inline_style( $handle, $inline_css );
-
 	ob_start();
 	?>
+	<style type="text/css" id="stm-icon-box-<?php echo esc_attr( $unique ); ?>"><?php echo $inline_css; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- dynamic CSS from shortcode atts ?></style>
 		<?php if ( ! empty( $link['url'] ) ) : ?>
 			<a href="<?php echo esc_url( $link['url'] ); ?>" title="<?php echo esc_attr( ! empty( $link['title'] ) ? $link['title'] : '' ); ?>"
 				<?php echo ! empty( $link['target'] ) ? ' target="_blank"' : ''; ?>>
@@ -79,15 +77,4 @@ function kadence_child_stm_icon_box_render( $atts ) {
 		<?php endif; ?>
 	<?php
 	return ob_get_clean();
-}
-
-/**
- * Enqueue base iconbox CSS and per-element inline styles.
- * Uses stm_module_styles when available (MasterStudy), otherwise local enqueue.
- *
- * @param string $inline_css Per-element CSS.
- */
-function stm_icon_box_enqueue_styles( $inline_css ) {
-
-	
 }
