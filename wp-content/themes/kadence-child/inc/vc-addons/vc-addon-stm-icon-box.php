@@ -228,6 +228,7 @@ function kadence_child_stm_icon_box_render( $atts ) {
 
 	ob_start();
 	?>
+    <div class="kadence-child-stm-icon-box">
 	<?php if ( ! empty( $link['url'] ) ) : ?>
 		<a href="<?php echo esc_url( $link['url'] ); ?>" title="<?php echo esc_attr( ! empty( $link['title'] ) ? $link['title'] : '' ); ?>"
 			<?php echo ! empty( $link['target'] ) ? ' target="_blank"' : ''; ?>>
@@ -250,6 +251,7 @@ function kadence_child_stm_icon_box_render( $atts ) {
 	<?php if ( ! empty( $link['url'] ) ) : ?>
 		</a>
 	<?php endif; ?>
+	</div>
 	<?php
 	return ob_get_clean();
 }
