@@ -49,6 +49,7 @@ wp-config.php
 !/wp-content/themes/
 /wp-content/themes/*
 !/wp-content/themes/masterstudy-child/
+/wp-content/themes/kadence/
 
 # Plugins
 !/wp-content/plugins/
