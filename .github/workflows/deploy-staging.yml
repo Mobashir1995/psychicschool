@@ -5,11 +5,18 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      ACTIONS_STEP_DEBUG: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Deploy to Cloudways Staging
         uses: roelmagdaleno/cloudways-api-git-pull-action@stable
+        env:
+          EMAIL: ${{ secrets.CLOUDWAYS_EMAIL }}
+          API_KEY: ${{ secrets.CLOUDWAYS_API_KEY }}
+          SERVER_ID: ${{ secrets.CLOUDWAYS_SERVER_ID }}
+          APP_ID: ${{ secrets.CLOUDWAYS_APP_ID }}
         with:
           email: ${{ secrets.CLOUDWAYS_EMAIL }}
           api-key: ${{ secrets.CLOUDWAYS_API_KEY }}
