@@ -51,7 +51,7 @@ github-actions-*
 !/wp-content/themes/
 /wp-content/themes/*
 !/wp-content/themes/masterstudy-child/
-/wp-content/themes/kadence/
+!/wp-content/themes/kadence-child/
 
 # Plugins
 !/wp-content/plugins/
