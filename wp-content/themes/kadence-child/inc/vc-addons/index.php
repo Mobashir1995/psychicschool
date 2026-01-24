@@ -11,7 +11,7 @@ if (!is_plugin_active('js_composer/js_composer.php')) {
     return;
 }
 
-
+$vc_addons_dir = get_stylesheet_directory() . '/inc/vc-addons';
 if (!is_dir($vc_addons_dir)) {
     return;
 }
