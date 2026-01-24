@@ -19,6 +19,8 @@
 
 # Configuration
 wp-config.php
+github-actions-*
+!.github/*
 
 # Example themes
 /wp-content/themes/twenty*/
