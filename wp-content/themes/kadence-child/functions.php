@@ -1,7 +1,4 @@
 <?php
-
-
-
 add_action( 'ppw_sitewide_above_password_form_container', 'add_sitewide_custom_content' );
 
 function add_sitewide_custom_content() {
