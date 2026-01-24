@@ -50,8 +50,8 @@ function kadence_child_stm_icon_box_render( $atts ) {
 	$css_class       .= ' stm_icon_box_hover_' . $hover_pos;
 	$icon_b_classes   = array( $css_class, $link_color_style, $unique, 'box_align_' . $box_align, 'clearfix' );
 
-	// Enqueue base + per-element styles
-	stm_icon_box_enqueue_styles( $inline_css );
+	$handle = 'kadence-child-style';
+	wp_add_inline_style( $handle, $inline_css );
 
 	ob_start();
 	?>
@@ -88,18 +88,6 @@ function kadence_child_stm_icon_box_render( $atts ) {
  * @param string $inline_css Per-element CSS.
  */
 function stm_icon_box_enqueue_styles( $inline_css ) {
-	if ( function_exists( 'stm_module_styles' ) ) {
-		stm_module_styles( 'iconbox', 'style_1', array(), $inline_css );
-		return;
-	}
 
-	static $base_loaded = false;
-	$handle = 'kadence-child-stm-iconbox';
-
-	if ( ! $base_loaded ) {
-		wp_enqueue_style( $handle, false, array(), KADENCE_CHILD_VERSION );
-		$base_loaded = true;
-	}
-
-	wp_add_inline_style( $handle, $inline_css );
+	
 }
