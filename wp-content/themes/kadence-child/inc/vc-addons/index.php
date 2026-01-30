@@ -17,6 +17,15 @@ function remove_kadence_pro_run_in_the_wpbakery_content_filter($run)
         return $run;
     }
 
+    // Check for AJAX requests from WPBakery
+    if (wp_doing_ajax()) {
+        $action = isset($_REQUEST['action']) ? sanitize_text_field($_REQUEST['action']) : '';
+        // Common WPBakery actions start with vc_ or wpb_
+        if (strpos($action, 'vc_') === 0 || strpos($action, 'wpb_') === 0) {
+            return false;
+        }
+    }
+
     global $pagenow;
 
     // Only post edit screens
@@ -25,7 +34,7 @@ function remove_kadence_pro_run_in_the_wpbakery_content_filter($run)
     }
 
     // Check if WPBakery is used in content
-    if (vc_is_wpb_content()) {
+    if (function_exists('vc_is_wpb_content') && vc_is_wpb_content()) {
         $run = false;
     }
 
