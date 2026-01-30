@@ -42,7 +42,7 @@ function remove_kadence_pro_run_in_the_wpbakery_content_filter($run)
 }
 add_filter('kadence_pro_run_in_the_content_filter', 'remove_kadence_pro_run_in_the_wpbakery_content_filter', 99, 1);
 
-
+remove_action('plugins_loaded', ['KadenceWP\KadencePro\Uplink\Connect', 'load_licensing']);
 require_once get_stylesheet_directory() . '/inc/vc-addons/stm-icon-box/vc-addon-stm-icon-box.php';
 // $vc_addons_dir = get_stylesheet_directory() . '/inc/vc-addons';
 // if (!is_dir($vc_addons_dir)) {
