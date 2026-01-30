@@ -10,6 +10,39 @@ if (!function_exists('is_plugin_active')) {
 if (!is_plugin_active('js_composer/js_composer.php')) {
     return;
 }
+
+function remove_kadence_pro_run_in_the_wpbakery_content_filter($run)
+{
+    if (! is_admin()) {
+        return $run;
+    }
+
+    // Check for AJAX requests from WPBakery
+    if (wp_doing_ajax()) {
+        $action = isset($_REQUEST['action']) ? sanitize_text_field($_REQUEST['action']) : '';
+        // Common WPBakery actions start with vc_ or wpb_
+        if (strpos($action, 'vc_') === 0 || strpos($action, 'wpb_') === 0) {
+            return false;
+        }
+    }
+
+    global $pagenow;
+
+    // Only post edit screens
+    if (! in_array($pagenow, ['post.php', 'post-new.php'], true)) {
+        return $run;
+    }
+
+    // Check if WPBakery is used in content
+    if (function_exists('vc_is_wpb_content') && vc_is_wpb_content()) {
+        $run = false;
+    }
+
+    return $run;
+}
+add_filter('kadence_pro_run_in_the_content_filter', 'remove_kadence_pro_run_in_the_wpbakery_content_filter', 99, 1);
+
+
 require_once get_stylesheet_directory() . '/inc/vc-addons/stm-icon-box/vc-addon-stm-icon-box.php';
 // $vc_addons_dir = get_stylesheet_directory() . '/inc/vc-addons';
 // if (!is_dir($vc_addons_dir)) {
