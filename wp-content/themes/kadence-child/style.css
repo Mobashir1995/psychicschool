@@ -117,3 +117,17 @@ body.architecture .icon_box p{
     font-size:16px
   }
 }
+
+
+
+.woocommerce ul.products li.product {
+  border: 1px solid #dcdcdc;
+  border-radius: 0
+}
+.woocommerce ul.products.woo-archive-action-on-hover li.product:hover .entry-content-wrap,
+.woocommerce ul.products.woo-archive-action-on-hover li.product:focus-within .entry-content-wrap {
+  transform: inherit
+}
+.woocommerce li.product a:hover{
+  color:#0aed80;
+}
