@@ -17,4 +17,328 @@ body .vc_row[data-vc-full-width] {
 .text-decoration-none {
   text-decoration: none;
 }
-.icon_box p,.stm_icon_box_hover_bottom,.stm_icon_box_hover_left,.stm_icon_box_hover_right,.stm_icon_box_hover_top{transition:.3s ease}body.architecture .icon_box p{margin:0}.icon_box{position:relative;top:0;padding:30px 32px 50px}.icon_box .fa-icon-stm_icon_book{margin-left:-5px}.icon_box p{margin-bottom:10px;opacity:.6}.icon_box.dark a{color:#555;border:0;text-decoration:none}.icon_box.dark a:hover{color:#48a7d4;border-color:#48a7d4}.icon_box:hover p{opacity:1}.overflowed_content{position:relative;z-index:22}.overflowed_content .icon_box:hover{top:-25px}.overflowed_content .icon_box:hover:after{content:"";display:block;position:absolute;width:100%;height:25px;z-index:10;top:100%;left:0}.stm_icon_box_hover_top{-webkit-transform:translateY(0);transform:translateY(0)}.stm_icon_box_hover_top:hover{-webkit-transform:translateY(-7px);transform:translateY(-7px)}.stm_icon_box_hover_bottom{-webkit-transform:translateY(0);transform:translateY(0)}.stm_icon_box_hover_bottom:hover{-webkit-transform:translateY(7px);transform:translateY(7px)}.stm_icon_box_hover_right{-webkit-transform:translateX(0);transform:translateX(0)}.stm_icon_box_hover_right:hover{-webkit-transform:translateX(7px);transform:translateX(7px)}.stm_icon_box_hover_left{-webkit-transform:translateX(0);transform:translateX(0)}.stm_icon_box_hover_left:hover{-webkit-transform:translateX(-7px);transform:translateX(-7px)}@media (max-width:1023px){.icon_box .icon_text p{font-size:16px}}
+.icon_box p,
+.stm_icon_box_hover_bottom,
+.stm_icon_box_hover_left,
+.stm_icon_box_hover_right,
+.stm_icon_box_hover_top{
+  transition:.3s ease
+}
+
+body.architecture .icon_box p{
+  margin:0
+}
+
+.icon_box{
+  position:relative;
+  top:0;
+  padding:30px 32px 50px
+}
+.icon_box .fa-icon-stm_icon_book{
+  margin-left:-5px
+}
+
+.icon_box p{
+  margin-bottom:10px;
+  opacity:.6
+}
+
+.icon_box.dark a{
+  color:#555;
+  border:0;
+  text-decoration:none
+}
+
+.icon_box.dark a:hover{
+  color:#48a7d4;
+  border-color:#48a7d4
+}
+
+.icon_box:hover p{
+  opacity:1
+}
+
+.overflowed_content{
+  position:relative;
+  z-index:22
+}
+
+.overflowed_content .icon_box:hover{
+  top:-25px
+}
+.overflowed_content .icon_box:hover:after{
+  content:"";
+  display:block;
+  position:absolute;
+  width:100%;
+  height:25px;
+  z-index:10;
+  top:100%;
+  left:0
+}
+
+.stm_icon_box_hover_top{-webkit-transform:translateY(0);transform:translateY(0)}.stm_icon_box_hover_top:hover{-webkit-transform:translateY(-7px);transform:translateY(-7px)}.stm_icon_box_hover_bottom{-webkit-transform:translateY(0);transform:translateY(0)}.stm_icon_box_hover_bottom:hover{-webkit-transform:translateY(7px);transform:translateY(7px)}.stm_icon_box_hover_right{-webkit-transform:translateX(0);transform:translateX(0)}.stm_icon_box_hover_right:hover{-webkit-transform:translateX(7px);transform:translateX(7px)}.stm_icon_box_hover_left{-webkit-transform:translateX(0);transform:translateX(0)}.stm_icon_box_hover_left:hover{-webkit-transform:translateX(-7px);transform:translateX(-7px)}@media (max-width:1023px){.icon_box .icon_text p{font-size:16px}}
+
+/* ============================================
+   FOUNDATIONAL COURSES - Product Grid Styles
+   ============================================ */
+
+/* Section Title */
+h2.foundational-courses-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0066cc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Product Grid Container */
+.woocommerce ul.products,
+.products.columns-3,
+ul.products.columns-3 {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  width: 100%;
+}
+
+.woocommerce ul.products::before,
+.woocommerce ul.products::after {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .woocommerce ul.products,
+  .products.columns-3,
+  ul.products.columns-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .woocommerce ul.products,
+  .products.columns-3,
+  ul.products.columns-3 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Course Card */
+li.kadence-course-card {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: block;
+}
+
+.kadence-course-card-inner {
+  position: relative;
+  background: #ffffff;
+  border: 4px solid #00a651;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.kadence-course-card-inner:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Green border with subtle circular pattern effect */
+.kadence-course-card-inner::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(0, 166, 81, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0, 166, 81, 0.1) 0%, transparent 50%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 15px,
+      rgba(0, 166, 81, 0.15) 15px,
+      rgba(0, 166, 81, 0.15) 16px
+    );
+  border-radius: 10px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Person Icon with Green Halo */
+.course-card-icon {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.course-card-icon i {
+  font-size: 24px;
+  color: #ffffff;
+  text-shadow: 
+    0 0 8px #00a651,
+    0 0 12px #00a651,
+    0 0 16px #00a651;
+  filter: drop-shadow(0 0 4px rgba(0, 166, 81, 0.8));
+}
+
+/* Course Image */
+.course-card-image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 3px solid #00a651;
+}
+
+.course-card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  min-height: 200px;
+}
+
+.course-card-image a {
+  display: block;
+  text-decoration: none;
+}
+
+.no-image-placeholder {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Course Content */
+.course-card-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+/* Course Title */
+.course-card-title {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.course-card-title a {
+  color: #333333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.course-card-title a:hover {
+  color: #0066cc;
+}
+
+/* Instructors */
+.course-card-instructors {
+  font-size: 0.9rem;
+  color: #666666;
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+  flex-grow: 1;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Engagement Metrics */
+.course-card-metrics {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+  flex-wrap: wrap;
+}
+
+.metric-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #666666;
+}
+
+.metric-item i {
+  font-size: 1rem;
+  color: #666666;
+}
+
+.metric-comments i {
+  color: #0066cc;
+}
+
+.metric-participants i {
+  color: #666666;
+}
+
+/* Star Rating */
+.metric-rating {
+  margin-left: auto;
+}
+
+.star-rating {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.star-rating i {
+  font-size: 0.875rem;
+  color: #ffc107;
+}
+
+.star-rating i.far {
+  color: #e0e0e0;
+}
+
+.star-rating i.fas.fa-star-half-alt {
+  color: #ffc107;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h2.foundational-courses-title {
+    font-size: 2rem;
+  }
+  
+  .course-card-content {
+    padding: 1.25rem;
+  }
+  
+  .course-card-title {
+    font-size: 1.1rem;
+  }
+  
+  .course-card-metrics {
+    gap: 0.75rem;
+  }
+}
