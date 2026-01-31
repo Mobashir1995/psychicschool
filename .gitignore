@@ -55,6 +55,7 @@ github-actions-*
 
 # mu-plugins
 !wp-content/mu-plugins/disable-depreacated.php
+!wp-content/mu-plugins/fix-kadence-vc-conflict.php
 
 # Plugins
 !/wp-content/plugins/
