@@ -53,6 +53,9 @@ github-actions-*
 !/wp-content/themes/masterstudy-child/
 !/wp-content/themes/kadence-child/
 
+# mu-plugins
+!wp-content/mu-plugins/disable-depreacated.php
+
 # Plugins
 !/wp-content/plugins/
 /wp-content/plugins/*
