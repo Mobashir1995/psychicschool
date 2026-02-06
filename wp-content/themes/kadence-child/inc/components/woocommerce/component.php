@@ -25,7 +25,7 @@ function remove_kadence_woocommerce_component() {
 	
 	// Remove all filters and actions added by this component
 	// These are the main hooks added in the initialize() method
-	// remove_filter( 'kadence_dynamic_css', array( $woocommerce_component, 'dynamic_css' ), 20 );
+	remove_filter( 'kadence_dynamic_css', array( $woocommerce_component, 'dynamic_css' ), 20 );
 	remove_action( 'wp_head', array( $woocommerce_component, 'frontend_gfonts' ), 80 );
 	remove_action( 'wp_enqueue_scripts', array( $woocommerce_component, 'action_enqueue_scripts' ) );
 	remove_action( 'wp_enqueue_scripts', array( $woocommerce_component, 'action_enqueue_product_scripts' ), 1 );
@@ -49,6 +49,12 @@ function remove_kadence_woocommerce_component() {
 	
 	// Remove the component from the components array
 	// unset( $theme->components['woocommerce'] );
+
+    /**
+     * Remove WooCommerce plugin hooks
+     */
+	remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 ); // Remove price from product loops
+	remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 ); // Remove add to cart button from product loops
 }
 // Hook early to remove component and its hooks
 add_action( 'after_setup_theme', 'remove_kadence_woocommerce_component', 999 );
