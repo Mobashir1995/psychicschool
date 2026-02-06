@@ -46,6 +46,9 @@ function remove_kadence_woocommerce_component() {
 	remove_filter( 'kadence_blocks_carousel_woocommerce_product_loop_start', array( $woocommerce_component, 'product_loop_start' ), 5 );
 	remove_filter( 'post_class', array( $woocommerce_component, 'add_woo_entry_classes' ), 20 );
 	remove_filter( 'product_cat_class', array( $woocommerce_component, 'add_woo_cat_entry_classes' ), 20 );
+    // Add to cart wrap.
+    remove_action( 'woocommerce_after_shop_loop_item', array( $woocommerce_component, 'archive_action_wrap_start' ), 5 );
+	remove_action( 'woocommerce_after_shop_loop_item', array( $woocommerce_component, 'archive_action_wrap_end' ), 20 );
 	
 	// Remove the component from the components array
 	// unset( $theme->components['woocommerce'] );
