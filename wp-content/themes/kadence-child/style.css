@@ -17,6 +17,8 @@ body .vc_row[data-vc-full-width] {
 .text-decoration-none {
   text-decoration: none;
 }
+
+
 .icon_box p,
 .stm_icon_box_hover_bottom,
 .stm_icon_box_hover_left,
@@ -119,7 +121,7 @@ body.architecture .icon_box p{
 }
 
 
-
+/* WooCommerce Product Boxes */
 .woocommerce ul.products li.product {
   border: 1px solid #dcdcdc;
   border-radius: 0
