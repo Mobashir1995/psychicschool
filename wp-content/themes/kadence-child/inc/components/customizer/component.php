@@ -18,13 +18,9 @@ function kadence_child_extend_product_archive_settings( $wp_customize ) {
 	// Check if product_archive_style setting exists and has the expected structure
 	if ( isset( $settings['product_archive_style'] ) && isset( $settings['product_archive_style']['input_attrs']['layout'] ) ) {
 		// Add more layout options to the existing product_archive_style setting
-		$settings['product_archive_style']['input_attrs']['layout']['action-fade'] = array(
-			'tooltip' => __( 'Fade in on hover', 'kadence' ),
-			'name' => __( 'Fade In', 'kadence' ),
-		);
-		$settings['product_archive_style']['input_attrs']['layout']['action-slide-down'] = array(
-			'tooltip' => __( 'Slide down from top', 'kadence' ),
-			'name' => __( 'Slide Down', 'kadence' ),
+		$settings['product_archive_style']['input_attrs']['layout']['view-more'] = array(
+			'tooltip' => __( 'View More Button', 'kadence' ),
+			'name' => __( 'View More', 'kadence' ),
 		);
 		
 		// Update the settings array
