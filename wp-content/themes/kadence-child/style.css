@@ -121,7 +121,7 @@ body.architecture .icon_box p{
 }
 
 
-/* WooCommerce Product Boxes */
+/* WooCommerce Product Boxes 
 .woocommerce ul.products li.product {
   border: 1px solid #dcdcdc;
   border-radius: 0
@@ -129,4 +129,4 @@ body.architecture .icon_box p{
 
 .woocommerce li.product a:hover{
   color:#0aed80;
-}
+}*/
