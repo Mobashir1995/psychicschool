@@ -58,6 +58,21 @@ function remove_kadence_woocommerce_component() {
      */
 	remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 ); // Remove price from product loops
 	remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 ); // Remove add to cart button from product loops
+
+	/**
+	 * Customizations
+	 */
+	add_action( 'woocommerce_shop_loop_item_title', 'kadence_child_start_shop_loop_title_wrap', 10 ); // Start title wrap
+	add_action( 'woocommerce_shop_loop_item_title', 'kadence_child_end_shop_loop_title_wrap', 10 ); // End title wrap
 }
 // Hook early to remove component and its hooks
 add_action( 'after_setup_theme', 'remove_kadence_woocommerce_component', 999 );
+
+
+function kadence_child_start_shop_loop_title_wrap() {
+	echo '<div class="shop-loop-title-wrap">';
+}
+
+function kadence_child_end_shop_loop_title_wrap() {
+	echo '</div>';
+}
