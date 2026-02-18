@@ -126,8 +126,8 @@ body.architecture .icon_box p{
   border: 1px solid #dcdcdc;
   border-radius: 0
 }
-.woocommerce ul.products.woo-archive-action-on-hover li.product:hover .entry-content-wrap,
-.woocommerce ul.products.woo-archive-action-on-hover li.product:focus-within .entry-content-wrap {
+#wrapper .woocommerce ul.products.woo-archive-action-on-hover li.product:hover .entry-content-wrap,
+#wrapper .woocommerce ul.products.woo-archive-action-on-hover li.product:focus-within .entry-content-wrap {
   transform: inherit
 }
 .woocommerce li.product a:hover{
