@@ -58,6 +58,7 @@ function remove_kadence_woocommerce_component() {
      */
 	remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 ); // Remove price from product loops
 	remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 ); // Remove add to cart button from product loops
+	remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 ); // Remove rating from product loops
 
 	/**
 	 * Customizations
@@ -65,7 +66,11 @@ function remove_kadence_woocommerce_component() {
 	add_action( 'woocommerce_shop_loop_item_title', 'kadence_child_start_shop_loop_title_wrap', 6 ); // Start title wrap
 	add_action( 'woocommerce_shop_loop_item_title', 'kadence_child_end_shop_loop_title_wrap', 49 ); // End title wrap
 
-	add_action( 'woocommerce_shop_loop_item_title', 'kadence_child_product_grid_teachers_name', 7 ); // End title wrap
+	add_action( 'woocommerce_shop_loop_item_title', 'kadence_child_product_grid_teachers_name', 11 ); // End title wrap
+
+	add_action( 'woocommerce_shop_loop_item_title', 'kadence_child_end_shop_loop_meta_wrap', 49 ); // Product Grid meta wrap
+
+	
 }
 // Hook early to remove component and its hooks
 add_action( 'after_setup_theme', 'remove_kadence_woocommerce_component', 999 );
@@ -85,15 +90,31 @@ function kadence_child_product_grid_teachers_name() {
 		<div class="product-grid-teachers-name">
 			<?php if ( ! empty( $experts ) && 'no_expert' !== $experts && ( is_array( $experts ) && ! in_array( 'no_expert', $experts, true ) ) ) : ?>
 				<div class="teacher-name">
-					<?php
-					foreach ( $experts as $expert ) {
-						echo esc_html( get_the_title( $expert ) ) . ( end( $experts ) !== $expert ) ? ', ' : '';
-					}
-				?>
+					<?php echo esc_html( implode( ', ', array_map( 'get_the_title', (array) $experts ) ) ); ?>
 				</div>
 			<?php else : ?>
 				<div class="teacher-name">&nbsp;</div>
 			<?php endif; ?>
+		</div>
+	<?php
+}
+
+function kadence_child_end_shop_loop_meta_wrap() {
+	$stock = get_post_meta( get_the_id(), '_stock', true );
+	$comments_num = get_comments_number( get_the_id() ) ? get_comments_number( get_the_id() ) : 0;
+	?>
+		<div class="kadence-shop-loop-meta-wrap">
+			<div class="meta-info">
+				<div class="comment-count">
+					<i class="fa fa-comment"></i><span><?php echo esc_html( $comments_num ); ?></span>
+				</div>
+				<div class="stock-count">
+					<i class="fa fa-user"></i><span><?php echo $stock ? floatval( $stock ) : 0; ?></span>
+				</div>	
+			</div>
+			<div class="meta-rating">
+				<?php woocommerce_template_loop_rating(); ?>
+			</div>
 		</div>
 	<?php
 }
