@@ -130,3 +130,13 @@ body.architecture .icon_box p{
 .woocommerce li.product a:hover{
   color:#0aed80;
 }
+
+.woocommerce-loop-product__title{
+    font-size: 16px !important;
+    line-height: 20px;
+}
+.product-grid-teachers-name {
+    color: #aaa;
+    font-size: 12px;
+    font-weight: 400;
+}
