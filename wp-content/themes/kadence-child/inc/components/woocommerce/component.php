@@ -64,6 +64,8 @@ function remove_kadence_woocommerce_component() {
 	 */
 	add_action( 'woocommerce_shop_loop_item_title', 'kadence_child_start_shop_loop_title_wrap', 6 ); // Start title wrap
 	add_action( 'woocommerce_shop_loop_item_title', 'kadence_child_end_shop_loop_title_wrap', 49 ); // End title wrap
+
+	add_action( 'woocommerce_shop_loop_item_title', 'kadence_child_product_grid_teachers_name', 49 ); // End title wrap
 }
 // Hook early to remove component and its hooks
 add_action( 'after_setup_theme', 'remove_kadence_woocommerce_component', 999 );
@@ -75,4 +77,23 @@ function kadence_child_start_shop_loop_title_wrap() {
 
 function kadence_child_end_shop_loop_title_wrap() {
 	echo '</div>';
+}
+
+function kadence_child_product_grid_teachers_name() {
+	$experts = get_post_meta( get_the_ID(), 'course_expert', true );
+	?>
+		<div class="product-grid-teachers-name">
+			<?php if ( ! empty( $experts ) && 'no_expert' !== $experts && ( is_array( $experts ) && ! in_array( 'no_expert', $experts, true ) ) ) : ?>
+				<div class="teacher-name">
+					<?php
+					foreach ( $experts as $expert ) {
+						echo esc_html( get_the_title( $expert ) ) . ( end( $experts ) !== $expert ) ? ', ' : '';
+					}
+				?>
+				</div>
+			<?php else : ?>
+				<div class="teacher-name">&nbsp;</div>
+			<?php endif; ?>
+		</div>
+	<?php
 }
