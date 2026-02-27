@@ -11,14 +11,21 @@
   Tags: classes, courses, education, education center, learning center, tutoring, teaching, study, studying, learning, lessons, instructor, teacher, mentor
   Text Domain: kadence-child
 */
-body .vc_row[data-vc-full-width] {
-  overflow: visible
-}
+
+/* Global CSS */
 .text-decoration-none {
   text-decoration: none;
 }
 
+/* WPBakery CSS Override */
+body .vc_row[data-vc-full-width] {
+  overflow: visible
+}
+.vc_row {
+    margin-bottom: 35px
+}
 
+/* Icon Box CSS */
 .icon_box p,
 .stm_icon_box_hover_bottom,
 .stm_icon_box_hover_left,
