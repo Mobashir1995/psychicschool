@@ -19,3 +19,24 @@ $kadence_child_components = array(
 foreach ($kadence_child_components as $component) {
     require_once get_stylesheet_directory() . '/inc/components/' . $component . '/component.php';
 }
+
+/**
+ * Override Kadence theme default options
+ * 
+ * This filter allows you to change default values for Kadence customizer settings
+ */
+function kadence_child_override_default_options( $defaults ) {
+	// Set site background color to #ffffff (white)
+	// You can change this to any hex color, e.g., '#ff0000' for red
+	$defaults['site_background'] = array(
+		'desktop' => array(
+			'color' => '#ffffff', // Change to your desired color
+		),
+	);
+	
+	// Set product archive mobile columns (if you want to change this too)
+	// $defaults['product_archive_mobile_columns'] = 'twocolumn';
+	
+	return $defaults;
+}
+// add_filter( 'kadence_theme_options_defaults', 'kadence_child_override_default_options', 20 );
