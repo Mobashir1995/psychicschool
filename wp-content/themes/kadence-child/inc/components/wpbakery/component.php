@@ -12,21 +12,20 @@ if (!is_plugin_active('js_composer/js_composer.php')) {
 }
 
 
-require_once get_stylesheet_directory() . '/inc/vc-addons/stm-icon-box/vc-addon-stm-icon-box.php';
-// $vc_addons_dir = get_stylesheet_directory() . '/inc/vc-addons';
-// if (!is_dir($vc_addons_dir)) {
-//     return;
-// }
+$vc_addons_dir = get_stylesheet_directory() . '/inc/components/wpbakery';
+if (!is_dir($vc_addons_dir)) {
+    return;
+}
 
-// $iterator = new RecursiveIteratorIterator(
-//     new RecursiveDirectoryIterator($vc_addons_dir, RecursiveDirectoryIterator::SKIP_DOTS)
-// );
+$iterator = new RecursiveIteratorIterator(
+    new RecursiveDirectoryIterator($vc_addons_dir, RecursiveDirectoryIterator::SKIP_DOTS)
+);
 
-// foreach ($iterator as $file) {
-//     if ($file->isFile() && $file->getExtension() === 'php') {
-//         $basename = $file->getFilename();
-//         if (strpos($basename, 'vc-addon-') === 0) {
-//             require_once $file->getPathname();
-//         }
-//     }
-// }
+foreach ($iterator as $file) {
+    if ($file->isFile() && $file->getExtension() === 'php') {
+        $basename = $file->getFilename();
+        if (strpos($basename, 'vc-addon-') === 0) {
+            require_once $file->getPathname();
+        }
+    }
+}
