@@ -11,7 +11,7 @@ function kadence_child_enqueue_scripts()
     if ( ! wp_is_mobile() ) {
         wp_enqueue_script(
             'kadence-countup',
-            get_stylesheet_directory_uri() . '/assets/js/countup.min.js',
+            get_stylesheet_directory_uri() . '/vendors/countUp/countUp.min.js',
             array(),
             KADENCE_CHILD_VERSION,
             true
@@ -59,3 +59,11 @@ function kadence_child_override_default_options( $defaults ) {
 	return $defaults;
 }
 // add_filter( 'kadence_theme_options_defaults', 'kadence_child_override_default_options', 20 );
+
+
+add_filter('script_loader_tag', function($tag, $handle) {
+    if ('kadence-countup' === $handle) {
+        return str_replace(' src', ' defer src', $tag);
+    }
+    return $tag;
+}, 10, 2);
