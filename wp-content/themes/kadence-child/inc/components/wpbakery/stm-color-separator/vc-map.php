@@ -19,6 +19,7 @@ function stm_color_separator_get_vc_map() {
 				'type'       => 'colorpicker',
 				'heading'    => __( 'Separator Color', 'kadence-child' ),
 				'param_name' => 'color',
+				'value'      => '#fdc735',
 			),
 			array(
 				'type'       => 'css_editor',

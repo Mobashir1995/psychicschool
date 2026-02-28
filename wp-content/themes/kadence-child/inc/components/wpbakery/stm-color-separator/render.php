@@ -11,22 +11,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function kadence_child_stm_color_separator_render( $atts ) {
-	$color     = isset( $atts['color'] ) ? $atts['color'] : '';
-	$css_class = isset( $atts['css_class'] ) ? $atts['css_class'] : '';
-
-	$style = '';
-	if ( ! empty( $color ) ) {
-		$style .= 'background-color:' . esc_attr( $color ) . ';';
-	}
-
-	// Basic default height and full-width line; can be overridden by custom css.
-	if ( false === strpos( $style, 'height:' ) ) {
-		$style .= 'height:3px;';
-	}
+	$css_class     = isset( $atts['css_class'] ) ? $atts['css_class'] : '';
+	$unique        = isset( $atts['unique'] ) ? $atts['unique'] : ( 'stm_color_separator_' . uniqid() );
+	$inline_styles = isset( $atts['inline_styles'] ) ? $atts['inline_styles'] : '';
 
 	ob_start();
 	?>
-	<div class="stm-color-separator<?php echo $css_class ? ' ' . esc_attr( $css_class ) : ''; ?>"<?php echo $style ? ' style="' . esc_attr( $style ) . '"' : ''; ?>></div>
+	<?php if ( ! empty( $inline_styles ) ) : ?>
+		<style type="text/css" id="stm-color-separator-<?php echo esc_attr( $unique ); ?>"><?php echo $inline_styles; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></style>
+	<?php endif; ?>
+
+	<div class="kadence_colored_separator <?php echo esc_attr( trim( $css_class . ' ' . $unique ) ); ?>">
+		<div class="kadence_triangled_colored_separator">
+			<div class="triangle"></div>
+		</div>
+	</div>
 	<?php
 
 	return ob_get_clean();
