@@ -61,9 +61,9 @@ function kadence_child_override_default_options( $defaults ) {
 // add_filter( 'kadence_theme_options_defaults', 'kadence_child_override_default_options', 20 );
 
 
-add_filter('script_loader_tag', function($tag, $handle) {
-    if ('kadence-countup' === $handle) {
-        return str_replace(' src', ' defer src', $tag);
-    }
-    return $tag;
-}, 10, 2);
+// add_filter('script_loader_tag', function($tag, $handle) {
+//     if ('kadence-countup' === $handle) {
+//         return str_replace(' src', ' defer src', $tag);
+//     }
+//     return $tag;
+// }, 10, 2);
