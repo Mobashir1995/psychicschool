@@ -1,13 +1,20 @@
 /**
  * Kadence Child - Stats Counter behavior (based on MasterStudy).
  *
- * Requires CountUpCountUp.min.js and an `is_on_screen` helper (from WPBakery/MasterStudy or theme).
+ * Requires UMD CountUp v2 (bundled in `vendors/countUp/countUp.min.js`)
+ * and an `is_on_screen` helper (from WPBakery/MasterStudy or theme).
  */
-(function ($) {
+(function ($, window) {
   'use strict';
 
   $(document).ready(function () {
     var counters = [];
+
+    // UMD v2 exposes `window.countUp.CountUp`
+    var CountUpCtor =
+      window.countUp && typeof window.countUp.CountUp === 'function'
+        ? window.countUp.CountUp
+        : null;
 
     $('.kadence_stats_counter').each(function () {
       var $this = $(this);
@@ -15,13 +22,17 @@
       var value = parseFloat($this.attr('data-value') || 0);
       var duration = parseFloat($this.attr('data-duration') || 2.5);
 
-      if (!id || isNaN(value) || typeof CountUpCountUp === 'undefined') {
+      if (!id || isNaN(value) || !CountUpCtor) {
+        console.log('no id', id);
+        console.log('no value', value);
+        console.log('no CountUpCtor', CountUpCtor);
         return;
       }
 
       counters[id] = {
         started: false,
-        counter: new CountUpCountUp(id, 0, value, 0, duration, {
+        counter: new CountUpCtor(id, value, {
+          duration: duration,
           useEasing: true,
           useGrouping: true,
           separator: ''
@@ -43,5 +54,5 @@
       });
     });
   });
-})(jQuery);
+})(jQuery, window);
 
