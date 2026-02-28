@@ -1,7 +1,7 @@
 /**
  * Kadence Child - Stats Counter behavior (based on MasterStudy).
  *
- * Requires countUp.min.js and an `is_on_screen` helper (from WPBakery/MasterStudy or theme).
+ * Requires CountUpCountUp.min.js and an `is_on_screen` helper (from WPBakery/MasterStudy or theme).
  */
 (function ($) {
   'use strict';
@@ -15,13 +15,13 @@
       var value = parseFloat($this.attr('data-value') || 0);
       var duration = parseFloat($this.attr('data-duration') || 2.5);
 
-      if (!id || isNaN(value) || typeof countUp === 'undefined') {
+      if (!id || isNaN(value) || typeof CountUpCountUp === 'undefined') {
         return;
       }
 
       counters[id] = {
         started: false,
-        counter: new countUp(id, 0, value, 0, duration, {
+        counter: new CountUpCountUp(id, 0, value, 0, duration, {
           useEasing: true,
           useGrouping: true,
           separator: ''
