@@ -250,3 +250,16 @@ body.architecture .icon_box p{
   border-right: 3px solid transparent;
   border-bottom: 3px solid #eab830;
 }
+
+/* Stats Counter CSS */
+.stm_fixed_background .vc_parallax-inner:after {
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,.25);
+  position: absolute;
+  z-index: 10;
+  content: "";
+}
