@@ -19,6 +19,9 @@
 .text-center {
   text-align: center;
 }
+.text-uppercase {
+  text-transform: uppercase;
+}
 
 /* WPBakery CSS Override */
 body .vc_row[data-vc-full-width] {
