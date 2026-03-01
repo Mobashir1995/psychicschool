@@ -254,7 +254,6 @@ body.architecture .icon_box p{
 /* Kadence Child - Post List (based on MasterStudy) */
 .kadence_post_list_main_section_wrapper .kadence_post_list_meta_unit {
     position: relative;
-    display: inline-block;
     width: 50px;
     padding-top: 10px;
     margin-bottom: 15px;
@@ -263,13 +262,19 @@ body.architecture .icon_box p{
     border: 2px solid #196ec0;
     text-align: center;
     color: #196ec0;
+    float: left;
 }
 
 .kadence_post_list_main_section_wrapper {
   margin-bottom: 30px;
+  overflow: hidden;
 }
 .kadence_post_list_content_unit {
   margin-bottom: 30px;
+  width: 33.33%;
+  float: left;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .kadence_post_list_featured_image img {
   width: 100%;
@@ -292,26 +297,49 @@ body.architecture .icon_box p{
 }
 .kadence_post_list_comment_num {
   margin-top: 8px;
+  border-top: 2px solid #196ec0;
+  font-size: 12px;
+  margin-left: 5px;
+}
+.kadence_post_list_comment_num i {
+  font-size: 10px;
 }
 .kadence_post_list_inner_content_unit {
   margin-bottom: 20px;
+  float: right;
+  padding-left: 20px;
+  width: calc( 100% - 50px )
 }
 .kadence_post_list_item_title {
   display: block;
   margin-bottom: 10px;
+  font-weight: 400 !important;
 }
 .kadence_post_list_item_excerpt {
   margin-bottom: 10px;
 }
 .kadence_post_list_short_separator {
-  width: 40px;
-  height: 2px;
-  background-color: currentColor;
+  width: 32px;
+  height: 3px;
+  background-color: #0aed80;
   margin: 10px 0;
 }
 .kadence_post_list_cats,
 .kadence_post_list_item_tags {
   font-size: 13px;
+}
+.kadence_post_list_cats a,
+.kadence_post_list_item_tags a,
+.kadence_post_list_divider {
+  color: #0aed80;
+  text-decoration: none;
+}
+.kadence_post_list_cats a:hover,
+.kadence_post_list_item_tags a:hover,
+.kadence_post_list_divider:hover,
+.kadence_post_list_item_title:hover {
+  color: #0aed80;
+  text-decoration: underline;
 }
 .kadence_post_list_divider {
   margin: 0 2px;

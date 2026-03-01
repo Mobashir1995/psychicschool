@@ -67,7 +67,8 @@ function kadence_child_stm_post_list_render( $atts ) {
 								<?php $comments_num = get_comments_number( get_the_ID() ); ?>
 								<?php if ( $comments_num ) : ?>
 									<div class="kadence_post_list_comment_num">
-										<span><?php echo esc_html( $comments_num ); ?></span><i class="fa-icon-stm_icon_comment_o"></i>
+										<span><?php echo esc_html( $comments_num ); ?></span>
+										<i class="fa fa-comment"></i>
 									</div>
 								<?php endif; ?>
 							<?php endif; ?>
@@ -78,7 +79,7 @@ function kadence_child_stm_post_list_render( $atts ) {
 					<?php endif; ?>
 
 					<div class="kadence_post_list_inner_content_unit <?php echo $post_list_show_date ? 'kadence_post_list_inner_content_unit_left' : ''; ?>">
-						<a href="<?php the_permalink(); ?>" class="kadence_post_list_item_title h3"><?php the_title(); ?></a>
+						<a href="<?php the_permalink(); ?>" class="kadence_post_list_item_title text-decoration-none h3"><?php the_title(); ?></a>
 						<div class="kadence_post_list_item_excerpt"><?php the_excerpt(); ?></div>
 						<div class="kadence_post_list_short_separator"></div>
 
