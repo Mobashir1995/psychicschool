@@ -16,6 +16,9 @@
 .text-decoration-none {
   text-decoration: none;
 }
+.text-center {
+  text-align: center;
+}
 
 /* WPBakery CSS Override */
 body .vc_row[data-vc-full-width] {
