@@ -21,6 +21,9 @@
 body .vc_row[data-vc-full-width] {
   overflow: visible
 }
+body .vc_row[data-vc-full-width].vc_parallax{
+  overflow: hidden
+}
 .vc_row {
     margin-bottom: 35px
 }
