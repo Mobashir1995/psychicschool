@@ -2,13 +2,29 @@
  * Kadence Child - Stats Counter behavior (based on MasterStudy).
  *
  * Requires UMD CountUp v2 (bundled in `vendors/countUp/countUp.min.js`)
- * and an `is_on_screen` helper (from WPBakery/MasterStudy or theme).
  */
 (function ($, window) {
   'use strict';
 
   $(document).ready(function () {
     var counters = [];
+
+    function isElementInViewport(el) {
+      if (!el || !el.getBoundingClientRect) {
+        return false;
+      }
+      var rect = el.getBoundingClientRect();
+      var viewHeight = window.innerHeight || document.documentElement.clientHeight || 0;
+      var viewWidth = window.innerWidth || document.documentElement.clientWidth || 0;
+
+      // Partially visible is considered "on screen"
+      return (
+        rect.bottom >= 0 &&
+        rect.right >= 0 &&
+        rect.top <= viewHeight &&
+        rect.left <= viewWidth
+      );
+    }
 
     // UMD v2 exposes `window.countUp.CountUp`
     var CountUpCtor =
@@ -23,9 +39,6 @@
       var duration = parseFloat($this.attr('data-duration') || 2.5);
 
       if (!id || isNaN(value) || !CountUpCtor) {
-        console.log('no id', id);
-        console.log('no value', value);
-        console.log('no CountUpCtor', CountUpCtor);
         return;
       }
 
@@ -39,19 +52,19 @@
         })
       };
 
-      $(window).on('scroll.kadenceStatsCounter resize.kadenceStatsCounter', function () {
-        var $el = $('#' + id);
-        if ($el.length && typeof $el.is_on_screen === 'function') {
-          if ($el.is_on_screen() && !counters[id].started) {
-            counters[id].counter.start();
-            counters[id].started = true;
-          }
-        } else if ($el.length && !counters[id].started) {
-          // Fallback: start immediately if helper is missing.
+      function maybeStart() {
+        if (counters[id].started) {
+          return;
+        }
+        var el = document.getElementById(id);
+        if (el && isElementInViewport(el)) {
           counters[id].counter.start();
           counters[id].started = true;
         }
-      });
+      }
+
+      $(window).on('scroll.kadenceStatsCounter resize.kadenceStatsCounter', maybeStart);
+      maybeStart(); // attempt immediately on load
     });
   });
 })(jQuery, window);
