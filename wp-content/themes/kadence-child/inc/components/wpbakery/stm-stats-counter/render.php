@@ -48,7 +48,7 @@ function kadence_child_stm_stats_counter_render( $atts ) {
 		$css_class .= ' icon_width_enabled';
 	}
 
-	$wrapper_classes = 'kadence_stats_counter ' . $css_class . ' text-' . $icon_text_alignment;
+	$wrapper_classes = 'kadence_stats_counter text-uppercase ' . $css_class . ' text-' . $icon_text_alignment;
 
 	ob_start();
 	?>
