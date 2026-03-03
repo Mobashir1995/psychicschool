@@ -31,14 +31,6 @@
               disableOnInteraction: false,
             }
           : false,
-        pagination: {
-          el: $this.find('.kadence_product_categories_swiper_pagination')[0],
-          clickable: true,
-        },
-        navigation: {
-          nextEl: $this.find('.kadence_product_categories_swiper_button_next')[0],
-          prevEl: $this.find('.kadence_product_categories_swiper_button_prev')[0],
-        },
         breakpoints: {
           0: {
             slidesPerView: 1,
