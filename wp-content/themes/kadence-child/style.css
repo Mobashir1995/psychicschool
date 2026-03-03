@@ -417,9 +417,9 @@ body.architecture .icon_box p{
   align-items: center;
   justify-content: space-between;
 }
-.kadence_testimonials_section_title {
+.kadence_testimonials_header .kadence_testimonials_section_title {
   color: #196EC0;
-  margin: 0;
+  margin: 0 ;
 }
 .kadence_testimonials_button {
   position: relative;

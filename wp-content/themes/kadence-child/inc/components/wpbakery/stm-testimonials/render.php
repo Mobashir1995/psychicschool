@@ -49,17 +49,17 @@ function kadence_child_stm_testimonials_render( $atts ) {
 				<?php
 				while ( $query->have_posts() ) :
 					$query->the_post();
-					$position = get_post_meta( get_the_ID(), 'position', true );
+					$profession = get_post_meta( get_the_ID(), 'testimonial_profession', true );
 					?>
 					<div class="swiper-slide">
 						<div class="kadence_testimonial_item" style="color:<?php echo esc_attr( $text_color ); ?>;">
 							<div class="kadence_testimonial_content">
-								<?php the_content(); ?>
+								<?php the_excerpt(); ?>
 							</div>
 							<div class="kadence_testimonial_meta">
 								<div class="kadence_testimonial_author"><?php the_title(); ?></div>
-								<?php if ( $position ) : ?>
-									<div class="kadence_testimonial_position"><?php echo esc_html( $position ); ?></div>
+								<?php if ( $profession ) : ?>
+									<div class="kadence_testimonial_profession"><?php echo esc_html( $profession ); ?></div>
 								<?php endif; ?>
 							</div>
 						</div>
