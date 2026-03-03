@@ -7,6 +7,28 @@ function kadence_child_enqueue_scripts()
     wp_enqueue_style( 'font-awesome', get_stylesheet_directory_uri() . '/vendors/fontawesome/css/all.min.css', array(), KADENCE_CHILD_VERSION, 'all' );
     wp_enqueue_style( 'fontawesome-shims', get_stylesheet_directory_uri() . '/vendors/fontawesome/css/v4-shims.min.css', array('font-awesome'), KADENCE_CHILD_VERSION, 'all' );
 
+    // Swiper for product categories carousel.
+    wp_enqueue_style(
+        'kadence-swiper',
+        get_stylesheet_directory_uri() . '/vendors/swiper/swiper-bundle.min.css',
+        array(),
+        '12.1.2'
+    );
+    wp_enqueue_script(
+        'kadence-swiper',
+        get_stylesheet_directory_uri() . '/vendors/swiper/swiper-bundle.min.js',
+        array(),
+        '12.1.2',
+        true
+    );
+    wp_enqueue_script(
+        'kadence-product-categories-swiper',
+        get_stylesheet_directory_uri() . '/assets/js/kadence-product-categories-swiper.js',
+        array( 'jquery', 'kadence-swiper' ),
+        KADENCE_CHILD_VERSION,
+        true
+    );
+
     // Stats counter (desktop only) - include countUp + behavior script.
     if ( ! wp_is_mobile() ) {
         wp_enqueue_script(
