@@ -22,6 +22,9 @@
 .text-uppercase {
   text-transform: uppercase;
 }
+.entry.single-entry {
+    box-shadow: none !important;
+}
 
 /* WPBakery CSS Override */
 body .vc_row[data-vc-full-width] {
