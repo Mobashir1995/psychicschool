@@ -48,7 +48,7 @@ function kadence_child_stm_product_categories_render( $atts ) {
 		<?php foreach ( $terms as $term ) : ?>
 			<?php
 			$term_meta = get_option( 'taxonomy_' . $term->term_id );
-			$item_clr  = ( ! empty( $term_meta['custom_term_meta'] ) ) ? $term_meta['custom_term_meta'] : '#eab830';
+			$item_clr  = ( ! empty( $term_meta['custom_term_meta'] ) ) ? $term_meta['custom_term_meta'] : '';
 
 			$thumbnail_id = get_term_meta( $term->term_id, 'thumbnail_id', true );
 			if ( $thumbnail_id ) {
@@ -62,9 +62,9 @@ function kadence_child_stm_product_categories_render( $atts ) {
 			}
 			?>
 			<div class="kadence_product_categories_item_wrapper">
-				<a href="<?php echo esc_url( $term_link ); ?>" title="<?php esc_attr_e( 'View category', 'kadence-child' ); ?>">
+				<a class="text-decoration-none" href="<?php echo esc_url( $term_link ); ?>" title="<?php esc_attr_e( 'View category', 'kadence-child' ); ?>">
 					<div class="kadence_product_categories_item kadence_product_categories_text_<?php echo esc_attr( $text_align ); ?>"
-						style="background-color:<?php echo esc_attr( $item_clr ); ?>;<?php echo $box_text_color ? ' color:' . esc_attr( $box_text_color ) . ';' : ''; ?>">
+						style="<?php $item_clr ? 'background-color:' . esc_attr( $item_clr ) . ';' : ''; ?><?php $box_text_color ? ' color:' . esc_attr( $box_text_color ) . ';' : ''; ?>">
 						<?php if ( ! empty( $term_meta['custom_term_font'] ) && ! $cat_image ) : ?>
 							<i class="fa <?php echo esc_attr( $term_meta['custom_term_font'] ); ?>"
 								style="font-size:<?php echo esc_attr( $icon_size ); ?>px; height:<?php echo esc_attr( $icon_height ); ?>px;"></i>

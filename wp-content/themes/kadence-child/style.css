@@ -378,11 +378,12 @@ body.architecture .icon_box p{
   justify-content: center;
   min-height: 120px;
   padding: 20px;
-  text-decoration: none;
-  transition: opacity 0.2s;
+  transition: all 0.2s;
+  border-radius: 4px;
 }
 .kadence_product_categories_item:hover {
-  opacity: 0.9;
+  background-color: #0aed80 ;
+  transform: translateY(-15px);
 }
 .kadence_product_categories_text_left { align-items: flex-start; text-align: left; }
 .kadence_product_categories_text_right { align-items: flex-end; text-align: right; }
@@ -402,7 +403,7 @@ body.architecture .icon_box p{
 }
 .kadence_product_categories_title {
   margin: 0;
-  font-size: 1em;
+  text-decoration: none;
 }
 
 /* Stats Counter CSS */
