@@ -1,6 +1,14 @@
 <?php
 /**
  * AutomateWoo: variables and rules
+ *
+ * Format options for date variables (e.g. booking.start_date, booking.start_date_site_tz):
+ *   format: 'mysql'        → MySQL datetime (Y-m-d H:i:s)
+ *   format: 'custom', custom-format: 'Y-m-d H:i' → PHP date format (see php.net/date)
+ *   format: 'date'         → Date only (if supported)
+ *   format: 'time'         → Time only (if supported)
+ *   modify: '-1 hour'      → Relative change (+/- time, e.g. '-1 day', '+2 hours')
+ * Example: {{ booking.start_date_site_tz | format: 'mysql', modify: '-1 hour' }}
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -21,6 +29,7 @@ function psychicschool_automatewoo_booking_timezone_variable( $variables ) {
         return $variables;
     }
     $variables['booking']['timezone'] = PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/automatewoo/variable-booking-timezone.php';
+    $variables['booking']['start_date_site_tz'] = PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/automatewoo/variable-booking-start-date-site-tz.php';
     return $variables;
 }
 
