@@ -410,9 +410,57 @@ body.architecture .icon_box p{
 /* Testimonials (Kadence Child, Swiper-based) */
 
 .kadence_testimonials_header {
-  padding-bottom: 25px !important;
+  padding-bottom: 25px;
   color: #196EC0;
+  display: flex;
   border-bottom: 1px solid #ccc;
+  align-items: center;
+  justify-content: space-between;
+}
+.kadence_testimonials_section_title {
+  color: #196EC0;
+  margin: 0;
+}
+.kadence_testimonials_button {
+  position: relative;
+  float: left;
+  width: 35px;
+  height: 36px;
+  vertical-align: top;
+  text-align: center;
+  line-height: 32px;
+  color: #196EC0;
+  border: 2px solid #196EC0;
+  text-decoration: none !important;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.kadence_testimonials_button_prev:before,
+.kadence_testimonials_button_next:after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+.kadence_testimonials_button_prev:hover:before,
+.kadence_testimonials_button_next:hover:after {
+  background: #196EC0;
+}
+.kadence_testimonials_button_prev{
+  border-right: 0;
+  margin-left: 10px;
+}
+.kadence_testimonials_button i {
+  font-size: 16px;
+  z-index: 11;
+  position: relative;
+}
+.kadence_testimonials_button:hover i {
+  color: #fff;
 }
 .kadence_testimonial_item {
   background: #fff;
