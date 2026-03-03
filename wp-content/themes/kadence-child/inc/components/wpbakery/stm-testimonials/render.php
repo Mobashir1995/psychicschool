@@ -38,8 +38,8 @@ function kadence_child_stm_testimonials_render( $atts ) {
 				<h2 class="kadence_testimonials_section_title"><?php echo esc_html( $title ); ?></h2>
 			<?php endif; ?>
 			<div class="kadence_testimonials_button_wrapper">
-				<div class="kadence_testimonials_button_prev"><i class="fa fa-chevron-left"></i></div>
-				<div class="kadence_testimonials_button_next"><i class="fa fa-chevron-right"></i></div>
+				<div class="kadence_testimonials_button kadence_testimonials_button_prev"><i class="fa fa-chevron-left"></i></div>
+				<div class="kadence_testimonials_button kadence_testimonials_button_next"><i class="fa fa-chevron-right"></i></div>
 			</div>
 		</div>
 
