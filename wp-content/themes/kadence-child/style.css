@@ -407,6 +407,34 @@ body.architecture .icon_box p{
   text-decoration: none;
 }
 
+/* Testimonials (Kadence Child, Swiper-based) */
+.kadence_testimonials_wrapper {
+  margin: 40px 0;
+}
+.kadence_testimonials_section_title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.kadence_testimonial_item {
+  background: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.kadence_testimonial_content {
+  margin-bottom: 12px;
+}
+.kadence_testimonial_meta {
+  font-size: 14px;
+  font-weight: 600;
+}
+.kadence_testimonial_author {
+  font-weight: 700;
+}
+.kadence_testimonial_position {
+  opacity: 0.7;
+}
+
 /* Stats Counter CSS */
 .stm_fixed_background .vc_parallax-inner:after {
   display: block;

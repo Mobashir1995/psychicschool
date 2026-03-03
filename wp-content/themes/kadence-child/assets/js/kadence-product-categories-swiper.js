@@ -11,7 +11,7 @@
       return;
     }
 
-    $('.kadence_product_categories_view_carousel .kadence_product_categories_swiper').each(function () {
+    $('.kadence_product_categories_view_carousel .kadence_product_categories_swiper, .kadence_testimonials_swiper').each(function () {
       var $this = $(this);
       var perRow = parseInt($this.data('per-row') || 6, 10);
       var auto = String($this.data('auto')) === '1';
