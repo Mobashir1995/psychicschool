@@ -49,10 +49,6 @@
       };
 
       if (isTestimonials) {
-        config.pagination = {
-          el: $this.find('.kadence_testimonials_pagination')[0],
-          clickable: true,
-        };
         config.navigation = {
           nextEl: $this.find('.kadence_testimonials_button_next')[0],
           prevEl: $this.find('.kadence_testimonials_button_prev')[0],
