@@ -50,7 +50,7 @@ function kadence_child_stm_product_categories_render( $atts ) {
 
 						$thumbnail_id = get_term_meta( $term->term_id, 'thumbnail_id', true );
 						if ( $thumbnail_id ) {
-							$cat_image = wp_get_attachment_image_src( (int) $thumbnail_id, 'medium' );
+							$cat_image = wp_get_attachment_image_src( (int) $thumbnail_id, 'thumbnail' );
 						} else {
 							$cat_image = false;
 						}
