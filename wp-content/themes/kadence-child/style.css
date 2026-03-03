@@ -350,7 +350,7 @@ body.architecture .icon_box p{
 
 
 /* Product Categories (Kadence Child – no row/col) */
-.kadence_product_categories_main_wrapper {
+.kadence_product_categories_main_wrapper:not(.kadence_product_categories_view_carousel) {
   display: grid;
   gap: 20px;
   margin-bottom: 30px;
@@ -366,7 +366,7 @@ body.architecture .icon_box p{
   .kadence_product_categories_per_row_3 { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 640px) {
-  .kadence_product_categories_main_wrapper { grid-template-columns: 1fr; }
+  .kadence_product_categories_main_wrapper:not(.kadence_product_categories_view_carousel) { grid-template-columns: 1fr; }
 }
 .kadence_product_categories_item_wrapper {
   min-width: 0;
@@ -396,6 +396,7 @@ body.architecture .icon_box p{
 .kadence_product_categories_cat_image img {
   max-height: 100%;
   width: auto;
+  display: block;
   object-fit: contain;
 }
 .kadence_product_categories_title_wrapper {
