@@ -33,9 +33,11 @@ function kadence_child_stm_testimonials_render( $atts ) {
 	ob_start();
 	?>
 	<div class="kadence_testimonials_wrapper kadence_testimonials_<?php echo esc_attr( $style ); ?>">
-		<?php if ( $title ) : ?>
-			<h3 class="kadence_testimonials_section_title"><?php echo esc_html( $title ); ?></h3>
-		<?php endif; ?>
+		<div class="kadence_testimonials_header">
+			<?php if ( $title ) : ?>
+				<h2 class="kadence_testimonials_section_title"><?php echo esc_html( $title ); ?></h2>
+			<?php endif; ?>
+		</div>
 
 		<div class="swiper kadence_testimonials_swiper"
 			 data-per-row="<?php echo esc_attr( $slides_per_row ); ?>">

@@ -408,12 +408,11 @@ body.architecture .icon_box p{
 }
 
 /* Testimonials (Kadence Child, Swiper-based) */
-.kadence_testimonials_wrapper {
-  margin: 40px 0;
-}
-.kadence_testimonials_section_title {
-  text-align: center;
-  margin-bottom: 20px;
+
+.kadence_testimonials_header {
+  padding-bottom: 25px !important;
+  color: #196EC0;
+  border-bottom: 1px solid #ccc;
 }
 .kadence_testimonial_item {
   background: #fff;
