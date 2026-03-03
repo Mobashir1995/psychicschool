@@ -30,6 +30,7 @@ function stm_product_categories_get_vc_map() {
 				'type'       => 'checkbox',
 				'heading'    => __( 'Carousel Auto Scroll', 'kadence-child' ),
 				'param_name' => 'auto',
+				'value'      => true,
 			),
 			array(
 				'type'        => 'number_field',
@@ -54,6 +55,7 @@ function stm_product_categories_get_vc_map() {
 				'type'       => 'colorpicker',
 				'heading'    => __( 'Box text Color', 'kadence-child' ),
 				'param_name' => 'box_text_color',
+				'value'      => '#fff',
 				'group'      => __( 'Item Options', 'kadence-child' ),
 			),
 			array(
@@ -72,7 +74,7 @@ function stm_product_categories_get_vc_map() {
 				'heading'     => __( 'Icon size', 'kadence-child' ),
 				'param_name'  => 'icon_size',
 				'group'       => __( 'Item Options', 'kadence-child' ),
-				'value'       => '60',
+				'value'       => '150',
 				'description' => __( 'If category has font icon chosen - size will be applied', 'kadence-child' ),
 			),
 			array(
@@ -80,7 +82,6 @@ function stm_product_categories_get_vc_map() {
 				'heading'     => __( 'Icon height', 'kadence-child' ),
 				'param_name'  => 'icon_height',
 				'group'       => __( 'Item Options', 'kadence-child' ),
-				'value'       => '69',
 				'description' => __( 'If category has font icon chosen - height will be applied', 'kadence-child' ),
 			),
 			array(
