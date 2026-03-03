@@ -39,7 +39,7 @@ function kadence_child_stm_testimonials_render( $atts ) {
 
 		<div class="swiper kadence_testimonials_swiper"
 			 data-per-row="<?php echo esc_attr( $slides_per_row ); ?>">
-			<div class="swiper-wrapper">
+			<div class="swiper-wrapper testimonials-carousel-init">
 				<?php
 				while ( $query->have_posts() ) :
 					$query->the_post();
@@ -60,6 +60,9 @@ function kadence_child_stm_testimonials_render( $atts ) {
 					</div>
 				<?php endwhile; ?>
 			</div>
+			<div class="kadence_testimonials_pagination swiper-pagination"></div>
+			<div class="kadence_testimonials_button_prev swiper-button-prev"></div>
+			<div class="kadence_testimonials_button_next swiper-button-next"></div>
 		</div>
 	</div>
 	<?php
