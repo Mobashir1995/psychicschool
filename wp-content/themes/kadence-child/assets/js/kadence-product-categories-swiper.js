@@ -49,9 +49,10 @@
       };
 
       if (isTestimonials) {
+        var $wrapper = $this.closest('.kadence_testimonials_wrapper');
         config.navigation = {
-          nextEl: $this.find('.kadence_testimonials_button_next')[0],
-          prevEl: $this.find('.kadence_testimonials_button_prev')[0],
+          nextEl: $wrapper.find('.kadence_testimonials_button_next')[0],
+          prevEl: $wrapper.find('.kadence_testimonials_button_prev')[0],
         };
         config.allowTouchMove = false;
       }
