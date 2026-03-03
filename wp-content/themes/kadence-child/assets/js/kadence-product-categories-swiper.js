@@ -21,16 +21,20 @@
       if (perRow > 6) perRow = 6;
 
       /* eslint-disable no-new */
-      new window.Swiper(this, {
+      var isTestimonials = $this.hasClass('kadence_testimonials_swiper');
+
+      var config = {
         slidesPerView: perRow,
         spaceBetween: 20,
-        loop: false,
-        autoplay: auto
-          ? {
-              delay: 4000,
-              disableOnInteraction: false,
-            }
-          : false,
+        loop: isTestimonials ? true : false,
+        autoplay: isTestimonials
+          ? false
+          : auto
+            ? {
+                delay: 4000,
+                disableOnInteraction: false,
+              }
+            : false,
         breakpoints: {
           0: {
             slidesPerView: 1,
@@ -42,7 +46,21 @@
             slidesPerView: perRow,
           },
         },
-      });
+      };
+
+      if (isTestimonials) {
+        config.pagination = {
+          el: $this.find('.kadence_testimonials_pagination')[0],
+          clickable: true,
+        };
+        config.navigation = {
+          nextEl: $this.find('.kadence_testimonials_button_next')[0],
+          prevEl: $this.find('.kadence_testimonials_button_prev')[0],
+        };
+        config.allowTouchMove = false;
+      }
+
+      new window.Swiper(this, config);
       /* eslint-enable no-new */
     });
   });
