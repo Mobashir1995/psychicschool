@@ -30,7 +30,7 @@ function stm_product_categories_get_vc_map() {
 				'type'       => 'checkbox',
 				'heading'    => __( 'Carousel Auto Scroll', 'kadence-child' ),
 				'param_name' => 'auto',
-				'value'      => true,
+				'value'      => 'true',
 			),
 			array(
 				'type'        => 'number_field',
