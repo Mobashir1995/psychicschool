@@ -51,6 +51,14 @@ function kadence_child_enqueue_scripts()
 }
 add_action('wp_enqueue_scripts', 'kadence_child_enqueue_scripts');
 
+/**
+ * Disable widgets block editor
+ * 
+ * @return boolean false
+ * @link https://developer.wordpress.org/reference/hooks/use_widgets_block_editor/
+ */
+add_filter( 'use_widgets_block_editor', '__return_false' );
+
 $kadence_child_components = array(
     'wpbakery',
     'password-protection',
