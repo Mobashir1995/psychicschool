@@ -64,7 +64,7 @@ $kadence_child_components = array(
     'password-protection',
     'woocommerce',
 	'customizer',
-	'footer',
+	// 'footer',
 );
 foreach ($kadence_child_components as $component) {
     require_once get_stylesheet_directory() . '/inc/components/' . $component . '/component.php';
