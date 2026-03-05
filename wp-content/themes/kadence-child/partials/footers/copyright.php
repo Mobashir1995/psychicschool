@@ -17,8 +17,10 @@ if ( '' === (string) $footer_copyright_text && ! function_exists( 'stm_option' )
 ?>
 <?php if ( $footer_copyright_text ) : ?>
 	<div id="footer_copyright">
-		<div class="copyright_text">
-			<?php echo wp_kses_post( $footer_copyright_text ); ?>
+		<div class="footer-container">
+			<div class="copyright_text">
+				<?php echo wp_kses_post( $footer_copyright_text ); ?>
+			</div>
 		</div>
 	</div>
 <?php endif; ?>

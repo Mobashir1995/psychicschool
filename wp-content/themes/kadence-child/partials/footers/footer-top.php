@@ -17,7 +17,7 @@ if ( ! $footer_enabled ) {
 ?>
 <div id="footer_top">
 	<div class="footer_widgets_wrapper">
-		<div class="container">
+		<div class="footer-container">
 			<div class="widgets cols_<?php echo esc_attr( $widget_areas ); ?> clearfix">
 				<?php dynamic_sidebar( 'footer_top' ); ?>
 			</div>

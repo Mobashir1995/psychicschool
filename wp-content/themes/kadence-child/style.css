@@ -559,6 +559,10 @@ body.architecture .icon_box p{
 #footer_bottom .widgets.cols_5 .widget { width: 20%; }
 #footer_top .widgets.cols_6 .widget,
 #footer_bottom .widgets.cols_6 .widget { width: 16.666%; }
+.footer-container{
+  max-width: var(--global-content-width);
+  margin: 0 auto;
+}
 @media (max-width: 992px) {
   #footer_top .widgets .widget,
   #footer_bottom .widgets .widget { width: 50% !important; }
