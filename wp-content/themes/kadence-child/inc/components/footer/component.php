@@ -75,7 +75,7 @@ function kadence_child_footer_markup() {
  * Unhook Kadence footer and hook our MasterStudy-style footer.
  */
 function kadence_child_swap_footer() {
-	remove_action( 'kadence_footer', 'Kadence\footer_markup', 10 );
-	add_action( 'kadence_footer', 'kadence_child_footer_markup', 10 );
+	// remove_action( 'kadence_footer', 'Kadence\footer_markup', 10 );
+	add_action( 'kadence_after_footer', 'kadence_child_footer_markup', 10 );
 }
 add_action( 'init', 'kadence_child_swap_footer', 20 );
