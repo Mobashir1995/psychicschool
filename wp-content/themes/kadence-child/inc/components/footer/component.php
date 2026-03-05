@@ -22,7 +22,7 @@ function kadence_child_register_footer_sidebars() {
 			'description'   => __( 'Widgets in the top footer area.', 'kadence' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
-			'before_title' => '<h4 class="widgettitle">',
+			'before_title' => '<h3 class="widgettitle">',
 			'after_title'  => '</h4>',
 		)
 	);
@@ -33,7 +33,7 @@ function kadence_child_register_footer_sidebars() {
 			'description'   => __( 'Widgets in the bottom footer area.', 'kadence' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
-			'before_title'  => '<h4 class="widgettitle">',
+			'before_title'  => '<h3 class="widgettitle">',
 			'after_title'   => '</h4>',
 		)
 	);
