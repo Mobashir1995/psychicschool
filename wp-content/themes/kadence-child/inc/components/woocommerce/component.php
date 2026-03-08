@@ -72,20 +72,30 @@ function remove_kadence_woocommerce_component() {
 	add_filter( 'woocommerce_product_loop_start', 'kadence_child_woo_archive_product_loop_start', 4 ); // Add search and course filter in WooCommerce Archive Page
 	add_filter( 'woocommerce_product_loop_end', 'kadence_child_woo_archive_product_loop_end', 999 ); // Add search and course filter in WooCommerce Archive Page
 	
+	add_filter( 'woocommerce_before_shop_loop', 'kadence_child_woo_archive_loop_shop_columns', 999 ); // Add search and course filter in WooCommerce Archive Page
 }
 // Hook early to remove component and its hooks
 add_action( 'after_setup_theme', 'remove_kadence_woocommerce_component', 999 );
 
 
 function kadence_child_start_shop_loop_title_wrap() {
+	if ( is_main_query() && is_archive() && ! wc_get_loop_prop( 'is_shortcode' ) ) {
+		return;
+	}
 	echo '<div class="shop-loop-title-wrap">';
 }
 
 function kadence_child_end_shop_loop_title_wrap() {
+	if ( is_main_query() && is_archive() && ! wc_get_loop_prop( 'is_shortcode' ) ) {
+		return;
+	}
 	echo '</div>';
 }
 
 function kadence_child_product_grid_teachers_name() {
+	if ( is_main_query() && is_archive() && ! wc_get_loop_prop( 'is_shortcode' ) ) {
+		return;
+	}
 	$experts = get_post_meta( get_the_ID(), 'course_expert', true );
 	?>
 		<div class="product-grid-teachers-name">
@@ -101,6 +111,9 @@ function kadence_child_product_grid_teachers_name() {
 }
 
 function kadence_child_end_shop_loop_meta_wrap() {
+	if ( is_main_query() && is_archive() && ! wc_get_loop_prop( 'is_shortcode' ) ) {
+		return;
+	}
 	$stock = get_post_meta( get_the_id(), '_stock', true );
 	$comments_num = get_comments_number( get_the_id() ) ? get_comments_number( get_the_id() ) : 0;
 	?>
@@ -156,13 +169,25 @@ function kadence_child_woo_archive_action_section() {
 
 
 function kadence_child_woo_archive_product_loop_start() {
-	?>
+	if ( ! (is_main_query() && is_archive() && ! wc_get_loop_prop( 'is_shortcode' ) ) ) {
+		return;
+	}
+?>
 	<div class="woocommerce-archive-product-loop-start">
 	<?php
 }
 
 function kadence_child_woo_archive_product_loop_end() {
-	?>
+	if ( ! (is_main_query() && is_archive() && ! wc_get_loop_prop( 'is_shortcode' ) ) ) {
+		return;
+	}
+?>
 	</div>
 	<?php
+}
+
+function kadence_child_woo_archive_loop_shop_columns( ) {
+	if ( is_shop() || is_product_category() || is_product_tag() || is_archive() ) {        
+        wc_set_loop_prop( 'columns', 1 );
+    }
 }
