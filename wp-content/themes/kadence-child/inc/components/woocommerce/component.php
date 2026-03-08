@@ -67,8 +67,10 @@ function remove_kadence_woocommerce_component() {
 
 	add_action( 'woocommerce_shop_loop_item_title', 'kadence_child_end_shop_loop_meta_wrap', 49 ); // Product Grid meta wrap
 
-	add_action( 'woocommerce_archive_description', 'kadence_child_woo_archive_action_section', 10 );
+	add_action( 'woocommerce_archive_description', 'kadence_child_woo_archive_action_section', 10 ); // Add search and course filter in WooCommerce Archive Page
 
+	add_filter( 'woocommerce_product_loop_start', 'kadence_child_woo_archive_product_loop_start', 4 ); // Add search and course filter in WooCommerce Archive Page
+	add_filter( 'woocommerce_product_loop_end', 'kadence_child_woo_archive_product_loop_end', 999 ); // Add search and course filter in WooCommerce Archive Page
 	
 }
 // Hook early to remove component and its hooks
@@ -150,4 +152,17 @@ function kadence_child_woo_archive_action_section() {
 		</div>
 	</div>
 	<?php	
+}
+
+
+function kadence_child_woo_archive_product_loop_start() {
+	?>
+	<div class="woocommerce-archive-product-loop-start">
+	<?php
+}
+
+function kadence_child_woo_archive_product_loop_end() {
+	?>
+	</div>
+	<?php
 }
