@@ -149,23 +149,5 @@ function kadence_child_woo_archive_action_section() {
 			</select>
 		</div>
 	</div>
-	<script>
-	(function() {
-		var select = document.getElementById('product_cat');
-		if (select) {
-			select.addEventListener('change', function() {
-				var url = this.value;
-				if (url) {
-					window.location.href = url;
-				} else {
-					var shopUrl = this.getAttribute('data-shop-url');
-					if (shopUrl) {
-						window.location.href = shopUrl;
-					}
-				}
-			});
-		}
-	})();
-	</script>
 	<?php	
 }

@@ -21,15 +21,9 @@ function kadence_child_enqueue_scripts()
         '12.1.2',
         true
     );
-    wp_enqueue_script(
-        'kadence-product-categories-swiper',
-        get_stylesheet_directory_uri() . '/assets/js/kadence-product-categories-swiper.js',
-        array( 'jquery', 'kadence-swiper' ),
-        KADENCE_CHILD_VERSION,
-        true
-    );
 
-    // Stats counter (desktop only) - include countUp + behavior script.
+    // Combined theme script (product cat filter, swiper, stats counter).
+    $kadence_child_script_deps = array( 'jquery', 'kadence-swiper' );
     if ( ! wp_is_mobile() ) {
         wp_enqueue_script(
             'kadence-countup',
@@ -38,15 +32,15 @@ function kadence_child_enqueue_scripts()
             KADENCE_CHILD_VERSION,
             true
         );
-
-        wp_enqueue_script(
-            'kadence-stats-counter',
-            get_stylesheet_directory_uri() . '/assets/js/kadence-stats-counter.js',
-            array( 'jquery', 'kadence-countup' ),
-            KADENCE_CHILD_VERSION,
-            true
-        );
+        $kadence_child_script_deps[] = 'kadence-countup';
     }
+    wp_enqueue_script(
+        'kadence-child',
+        get_stylesheet_directory_uri() . '/assets/js/kadence-child.js',
+        $kadence_child_script_deps,
+        KADENCE_CHILD_VERSION,
+        true
+    );
 
 }
 add_action('wp_enqueue_scripts', 'kadence_child_enqueue_scripts');
