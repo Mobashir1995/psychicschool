@@ -1,7 +1,4 @@
 <?php
-
-
-
 /**
  * Remove Kadence WooCommerce component programmatically
  * 
@@ -70,6 +67,8 @@ function remove_kadence_woocommerce_component() {
 
 	add_action( 'woocommerce_shop_loop_item_title', 'kadence_child_end_shop_loop_meta_wrap', 49 ); // Product Grid meta wrap
 
+	add_action( 'woocommerce_archive_description', 'kadence_child_woo_archive_action_section', 10 );
+
 	
 }
 // Hook early to remove component and its hooks
@@ -120,4 +119,53 @@ function kadence_child_end_shop_loop_meta_wrap() {
 			</div>
 		</div>
 	<?php
+}
+
+
+function kadence_child_woo_archive_action_section() {
+	?>
+	<div class="woocommerce-archive-action-section">
+		<div class="woo-archive-search-form">
+			<form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
+				<input type="text" name="s" placeholder="<?php esc_html_e( 'Search the Courses', 'woocommerce' ); ?>" value="<?php echo get_search_query(); ?>" name="s" />
+				<button type="submit" value="<?php echo esc_attr_x( 'Search', 'submit button', 'woocommerce' ); ?>" class="<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ); ?>"><?php echo esc_html_x( 'Search', 'submit button', 'woocommerce' ); ?></button>
+				<input type="hidden" name="post_type" value="product" />
+			</form>
+		</div>
+		<div class="woo-archive-product-cat-filter">
+			<select name="product_cat" id="product_cat" data-shop-url="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
+				<option value=""><?php esc_html_e( 'All Categories', 'woocommerce' ); ?></option>
+				<?php
+					$product_categories = get_terms( array(
+						'taxonomy' => 'product_cat',
+						'hide_empty' => true,
+					) );
+					foreach ( $product_categories as $product_category ) {
+						$term_link = get_term_link( $product_category );
+						$term_url = ( ! is_wp_error( $term_link ) ) ? $term_link : '';
+						echo '<option value="' . esc_attr( $term_url ) . '">' . esc_html( $product_category->name ) . '</option>';
+					}
+				?>
+			</select>
+		</div>
+	</div>
+	<script>
+	(function() {
+		var select = document.getElementById('product_cat');
+		if (select) {
+			select.addEventListener('change', function() {
+				var url = this.value;
+				if (url) {
+					window.location.href = url;
+				} else {
+					var shopUrl = this.getAttribute('data-shop-url');
+					if (shopUrl) {
+						window.location.href = shopUrl;
+					}
+				}
+			});
+		}
+	})();
+	</script>
+	<?php	
 }

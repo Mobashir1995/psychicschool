@@ -518,6 +518,12 @@ body.architecture .icon_box p{
   content: "";
 }
 
+/* WooCommerce Archive Page */
+.woocommerce-products-header__title {
+  text-transform: uppercase;
+  font-size: 32px;
+}
+
 /* MasterStudy-style footer (kadence-child) */
 #footer {
   color: #fff;
