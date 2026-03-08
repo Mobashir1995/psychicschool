@@ -73,6 +73,7 @@ function remove_kadence_woocommerce_component() {
 	add_filter( 'woocommerce_product_loop_end', 'kadence_child_woo_archive_product_loop_end', 999 ); // Add search and course filter in WooCommerce Archive Page
 	
 	add_filter( 'woocommerce_before_shop_loop', 'kadence_child_woo_archive_loop_shop_columns', 999 ); // Add search and course filter in WooCommerce Archive Page
+	add_action( 'woocommerce_shop_loop_item_title', 'kadence_child_woo_archive_product_grid_teachers_name', 11 ); // Add teachers name in WooCommerce Archive Page
 }
 // Hook early to remove component and its hooks
 add_action( 'after_setup_theme', 'remove_kadence_woocommerce_component', 999 );
@@ -190,4 +191,32 @@ function kadence_child_woo_archive_loop_shop_columns( ) {
 	if ( is_shop() || is_product_category() || is_product_tag() || is_archive() ) {        
         wc_set_loop_prop( 'columns', 1 );
     }
+}
+
+function kadence_child_woo_archive_product_grid_teachers_name() {
+	if ( ! (is_main_query() && is_archive() && ! wc_get_loop_prop( 'is_shortcode' ) ) ) {
+		return;
+	}
+	echo '<div class="woo-archive-product-grid-teachers-name">';
+	$experts = get_post_meta( get_the_ID(), 'course_expert', true );
+	if ( ! empty( $experts ) && 'no_expert' !== $experts && ( is_array( $experts ) && ! in_array( 'no_expert', $experts, true ) ) ) :
+		foreach ( $experts as $expert ) :
+	?>
+		<div class="teacher-item">
+			<div class="teacher-thumbnail">
+				<?php echo get_the_post_thumbnail( $expert, 'img-75-75', false ); ?>
+			</div>
+			<div class="teacher-info">
+				<div class="teacher-name">
+					<?php echo esc_html( get_the_title( $expert ) ); ?>
+				</div>
+				<div class="teacher-role">
+					<?php esc_html_e( 'Teacher', 'kadence-child' ); ?>
+				</div>
+			</div>
+		</div>
+	<?php
+		endforeach;
+	endif;
+	echo '</div>';
 }
