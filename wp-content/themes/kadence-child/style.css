@@ -40,6 +40,11 @@ body .vc_row[data-vc-full-width].vc_parallax{
     margin-bottom: 35px
 }
 
+/* HomePage */
+.home #primary{
+  margin: 0;
+}
+
 /* Icon Box CSS */
 .icon_box p,
 .stm_icon_box_hover_bottom,
