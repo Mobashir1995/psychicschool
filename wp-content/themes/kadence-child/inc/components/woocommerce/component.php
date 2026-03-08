@@ -202,7 +202,7 @@ function kadence_child_woo_archive_product_grid_teachers_name() {
 	if ( ! empty( $experts ) && 'no_expert' !== $experts && ( is_array( $experts ) && ! in_array( 'no_expert', $experts, true ) ) ) :
 		foreach ( $experts as $expert ) :
 	?>
-		<div class="teacher-item">
+		<a href="<?php echo esc_url( get_permalink( $expert ) ); ?>" class="teacher-item">
 			<div class="teacher-thumbnail">
 				<?php echo get_the_post_thumbnail( $expert, 'img-75-75', false ); ?>
 			</div>
@@ -214,7 +214,7 @@ function kadence_child_woo_archive_product_grid_teachers_name() {
 					<?php esc_html_e( 'Teacher', 'kadence-child' ); ?>
 				</div>
 			</div>
-		</div>
+		</a>
 	<?php
 		endforeach;
 	endif;
