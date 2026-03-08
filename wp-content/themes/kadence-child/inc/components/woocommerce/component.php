@@ -74,6 +74,8 @@ function remove_kadence_woocommerce_component() {
 	
 	add_filter( 'woocommerce_before_shop_loop', 'kadence_child_woo_archive_loop_shop_columns', 999 ); // Add search and course filter in WooCommerce Archive Page
 	add_action( 'woocommerce_shop_loop_item_title', 'kadence_child_woo_archive_product_grid_teachers_name', 11 ); // Add teachers name in WooCommerce Archive Page
+
+	add_action( 'woocommerce_after_shop_loop_item_title', 'kadence_child_woo_archive_product_see_more_button', 50 ); // Add see more button in WooCommerce Archive Page
 }
 // Hook early to remove component and its hooks
 add_action( 'after_setup_theme', 'remove_kadence_woocommerce_component', 999 );
@@ -219,4 +221,15 @@ function kadence_child_woo_archive_product_grid_teachers_name() {
 		endforeach;
 	endif;
 	echo '</div>';
+}
+
+function kadence_child_woo_archive_product_see_more_button() {
+	if ( is_main_query() && is_archive() && ! wc_get_loop_prop( 'is_shortcode' ) ) {
+		return;
+	}
+	?>
+	<div class="woo-archive-product-see-more-button">
+		<a href="<?php the_permalink(); ?>" class="btn btn-green-bg"><?php esc_html_e( 'See More', 'kadence-child' ); ?></a>
+	</div>
+	<?php
 }

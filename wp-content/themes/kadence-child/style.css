@@ -598,12 +598,16 @@ body.architecture .icon_box p{
 .woo-archive-product-grid-teachers-name {
   display: flex;
   flex-wrap: wrap;
+  transition: all 500ms;
 }
 .woo-archive-product-grid-teachers-name .teacher-item {
   display: flex;
   flex-wrap: wrap;
   margin-right: 12px;
   align-items: center
+}
+.woo-archive-product-grid-teachers-name .teacher-item:hover .teacher-name{
+  color: #0aed80;
 }
 
 .woo-archive-product-grid-teachers-name .teacher-info {
