@@ -66,6 +66,11 @@ body .vc_row[data-vc-full-width].vc_parallax{
 }
 
 /* HomePage */
+@media screen and (min-width: 1023px) {
+  .home.transparent-header #masthead .site-main-header-wrap .site-header-row-container-inner {
+    background: rgba(255,255,255,0.5);
+  }
+}
 .home #primary{
   margin: 0;
 }
