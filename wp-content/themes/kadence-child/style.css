@@ -29,6 +29,31 @@ a {
     box-shadow: none !important;
 }
 
+/* Select2 Style */
+.woocommerce-archive-action-section .select2{
+  background: #fff;
+  min-width: 215px;
+}
+
+.woocommerce-archive-action-section .select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 40px;
+    font-weight: 400;
+    color: #555;
+    padding: 0 48px 0 15px;
+    height: 40px;
+}
+.woocommerce-archive-action-section .select2-container--default .select2-selection--single .select2-selection__arrow{
+  display: inline-block;
+  height: 40px;
+  width: 48px;
+}
+.woocommerce-archive-action-section .select2-container--default .select2-selection--single{
+  border: 1px solid #ccc;
+  outline: none;
+  box-shadow: none;
+  background: #fff;
+}
+
 /* WPBakery CSS Override */
 body .vc_row[data-vc-full-width] {
   overflow: visible
