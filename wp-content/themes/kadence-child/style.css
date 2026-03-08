@@ -563,7 +563,8 @@ body.architecture .icon_box p{
   display: inherit
 }
 .woocommerce .woocommerce-archive-product-loop-start ul.products li.product .woocommerce-loop-product__title{
-    padding-bottom: 18px;
+  padding-top: 0;  
+  padding-bottom: 18px;
     border-bottom: 1px solid #e1e2e4;
     margin-bottom: 17px;
     font-size: 32px !important;
@@ -574,6 +575,9 @@ body.architecture .icon_box p{
   border: 0;
   box-shadow: none;
   position: relative;
+  padding-bottom: 25px;
+  align-items: flex-start !important;
+  margin-bottom: 15px;
 }
 .woocommerce .woocommerce-archive-product-loop-start ul.products li.product:before,
 .woocommerce .woocommerce-archive-product-loop-start ul.products li.product:after {
@@ -595,6 +599,9 @@ body.architecture .icon_box p{
   bottom: 1px;
   left: 65px;
 }
+.woocommerce .woocommerce-archive-product-loop-start ul.products.products-list-view li.product .entry-content-wrap {
+  padding-top: 0;
+}
 .woo-archive-product-grid-teachers-name {
   display: flex;
   flex-wrap: wrap;
@@ -604,15 +611,16 @@ body.architecture .icon_box p{
   display: flex;
   flex-wrap: wrap;
   margin-right: 12px;
-  align-items: center
+  align-items: center;
+  margin-bottom: 12px;
 }
 .woo-archive-product-grid-teachers-name .teacher-item:hover .teacher-name{
   color: #0aed80;
 }
 
 .woo-archive-product-grid-teachers-name .teacher-info {
-font-size: 12px;
-color: #555;
+  font-size: 12px;
+  color: #555;
 }
 .woo-archive-product-grid-teachers-name .teacher-thumbnail {
   width: 40px;
@@ -620,6 +628,20 @@ color: #555;
   border-radius: 100%;
   overflow: hidden;
   margin-right: 10px;
+}
+.woo-archive-product-see-more-button a {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 2px solid #196EC0;
+  color: #196EC0 !important;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+.woo-archive-product-see-more-button a:hover{
+  background: #196EC0;
+  color: #fff !important;
 }
 /* MasterStudy-style footer (kadence-child) */
 #footer {
