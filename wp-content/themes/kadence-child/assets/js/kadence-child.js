@@ -5,8 +5,16 @@
   'use strict';
 
   $(document).ready(function () {
-    // --- Product category filter: redirect to category or shop URL ---
-    $('#product_cat').on('change', function () {
+    // --- Product category filter: WooCommerce SelectWoo (searchable) + redirect on change ---
+    var $productCat = $('#filtered_product_cat');
+    if ($productCat.length && typeof $.fn.selectWoo !== 'undefined') {
+      $productCat.selectWoo({
+        placeholder: $productCat.find('option:first').text(),
+        allowClear: true,
+        width: '100%'
+      });
+    }
+    $productCat.on('change', function () {
       var url = $(this).val();
       if (url) {
         window.location.href = url;

@@ -133,7 +133,7 @@ function kadence_child_woo_archive_action_section() {
 			</form>
 		</div>
 		<div class="woo-archive-product-cat-filter">
-			<select name="product_cat" id="product_cat" data-shop-url="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
+			<select name="filtered_product_cat" id="filtered_product_cat" data-shop-url="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>">
 				<option value=""><?php esc_html_e( 'All Categories', 'woocommerce' ); ?></option>
 				<?php
 					$product_categories = get_terms( array(

@@ -523,6 +523,14 @@ body.architecture .icon_box p{
   text-transform: uppercase;
   font-size: 32px;
 }
+.woocommerce-archive-action-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0 30px 0;
+  padding: 22px 25px 22px 30px;
+  background: #f0f2f5;
+}
 
 /* MasterStudy-style footer (kadence-child) */
 #footer {

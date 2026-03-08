@@ -22,8 +22,17 @@ function kadence_child_enqueue_scripts()
         true
     );
 
+    // WooCommerce Select2 (selectWoo) for product category filter (shop archive only).
+    if ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() ) && class_exists( 'WooCommerce' ) ) {
+        wp_enqueue_style( 'select2' );   // WC style handle for selectWoo
+        wp_enqueue_script( 'selectWoo' ); // WC script handle
+    }
+
     // Combined theme script (product cat filter, swiper, stats counter).
     $kadence_child_script_deps = array( 'jquery', 'kadence-swiper' );
+    if ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() ) && class_exists( 'WooCommerce' ) ) {
+        $kadence_child_script_deps[] = 'selectWoo';
+    }
     if ( ! wp_is_mobile() ) {
         wp_enqueue_script(
             'kadence-countup',
