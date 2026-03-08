@@ -224,7 +224,7 @@ function kadence_child_woo_archive_product_grid_teachers_name() {
 }
 
 function kadence_child_woo_archive_product_see_more_button() {
-	if ( is_main_query() && is_archive() && ! wc_get_loop_prop( 'is_shortcode' ) ) {
+	if ( ! (is_main_query() && is_archive() && ! wc_get_loop_prop( 'is_shortcode' ) ) ) {
 		return;
 	}
 	?>
