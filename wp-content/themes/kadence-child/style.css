@@ -599,7 +599,7 @@ body.architecture .icon_box p{
   display: flex;
   flex-wrap: wrap;
 }
-.woo-archive-product-grid-teachers-name .tacher-thumbnail {
+.woo-archive-product-grid-teachers-name .teacher-thumbnail {
   width: 40px;
   height: 40px;
   border-radius: 100%;
