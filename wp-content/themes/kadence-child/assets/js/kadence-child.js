@@ -6,9 +6,37 @@
 
   $(document).ready(function () {
 
-    // Disable smooth-scroll / anchor jump on WPBakery tabs, but keep tab switching.
-    $('.vc_general.vc_tta.vc_tta-tabs .vc_tta-tab > a').on('click.psychicNoScroll', function (e) {
+    // Fully override WPBakery/Kadence default click behavior on tabs:
+    // - prevent anchor jump / smooth scroll
+    // - manually switch active tab + panel
+    $('.vc_general.vc_tta.vc_tta-tabs').on('click.psychicNoScroll', '.vc_tta-tab > a', function (e) {
       e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+
+      var $link = $(this);
+      var $tab = $link.closest('.vc_tta-tab');
+      var $tabsContainer = $tab.closest('.vc_tta-tabs');
+
+      // Do nothing if already active
+      if ($tab.hasClass('vc_active')) {
+        return;
+      }
+
+      // Activate tab
+      $tabsContainer.find('.vc_tta-tab').removeClass('vc_active');
+      $tab.addClass('vc_active');
+
+      // Activate corresponding panel without changing location hash
+      var target = $link.attr('href') || $link.data('vc-target');
+      if (target && target.charAt(0) === '#') {
+        var $panel = $(target);
+        if ($panel.length) {
+          var $section = $panel.closest('.vc_tta');
+          $section.find('.vc_tta-panel').removeClass('vc_active');
+          $panel.addClass('vc_active');
+        }
+      }
     });
     // --- Product category filter: WooCommerce SelectWoo (searchable) + redirect on change ---
     var $productCat = $('#filtered_product_cat');
