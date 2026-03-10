@@ -66,6 +66,15 @@ body .vc_row[data-vc-full-width].vc_parallax{
 }
 
 /* Pagination */
+.pagination .page-numbers {
+  overflow: hidden;
+  list-style: none;
+}
+.pagination .page-numbers li {
+  float: left;
+  margin-right: 5px;
+}
+.pagination .page-numbers li .page-numbers,
 .woocommerce nav.woocommerce-pagination ul.page-numbers li .page-numbers {
   width: 35px;
   height: 36px;
@@ -75,11 +84,14 @@ body .vc_row[data-vc-full-width].vc_parallax{
   color: #196ec0;
   font-size: 14px;
 }
+.pagination .page-numbers li .current,
+.pagination .page-numbers li .current:hover,
 .woocommerce nav.woocommerce-pagination ul.page-numbers li .current,
 .woocommerce nav.woocommerce-pagination ul.page-numbers li .page-numbers:hover{
   color: #fff;
   background: #196ec0;
 }
+.pagination .page-numbers li .page-numbers.dots,
 .woocommerce nav.woocommerce-pagination ul.page-numbers li .page-numbers.dots {
   border: 0
 }
