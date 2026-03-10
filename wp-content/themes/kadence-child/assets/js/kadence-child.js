@@ -6,7 +6,7 @@
 
   $(document).ready(function () {
 
-    $('vc_general.vc_tta.vc_tta-tabs .vc_tta-tab').on('click', function (e) {
+    $('.vc_general.vc_tta.vc_tta-tabs .vc_tta-tab').on('click', function (e) {
       e.preventDefault();
     });
     // --- Product category filter: WooCommerce SelectWoo (searchable) + redirect on change ---
