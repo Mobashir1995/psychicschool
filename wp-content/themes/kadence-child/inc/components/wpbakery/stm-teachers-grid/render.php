@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 function kadence_child_stm_teachers_grid_render( $atts ) {
 	$per_page   = isset( $atts['per_page'] ) ? (int) $atts['per_page'] : 8;
-	$image_size = ! empty( $atts['image_size'] ) ? $atts['image_size'] : 'medium';
+	$image_size = ! empty( $atts['image_size'] ) ? $atts['image_size'] : 'large';
 	$pagination = isset( $atts['pagination'] ) ? $atts['pagination'] : 'show';
 	$css        = isset( $atts['css'] ) ? $atts['css'] : '';
 

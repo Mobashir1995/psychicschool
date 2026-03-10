@@ -586,22 +586,22 @@ body.architecture .icon_box p{
 }
 .woocommerce .woocommerce-archive-product-loop-start ul.products li.product:before,
 .woocommerce .woocommerce-archive-product-loop-start ul.products li.product:after,
-.kadence_teachers_grid_item:before,
-.kadence_teachers_grid_item:after {
+.teacher-item-inner:before,
+.teacher-item-inner:after {
   content: '';
   position: absolute;
   z-index: 9999;
 }
 .woocommerce .woocommerce-archive-product-loop-start ul.products li.product:before,
-.kadence_teachers_grid_item:before {
+.teacher-item-inner:before {
   width: 50px;
   height: 3px;
-  left: 15px;
+  left: 0;
   bottom: 0;
   background:#0aed80;
 }
 .woocommerce .woocommerce-archive-product-loop-start ul.products li.product:after,
-.kadence_teachers_grid_item:after {
+.teacher-item-inner:after {
   height: 1px;
   width: 1200px;
   background: #dcdcdc;
@@ -659,9 +659,11 @@ body.architecture .icon_box p{
   flex-wrap: wrap;
 }
 .kadence_teachers_grid_item {
-  position: relative;
   width: 25%;
-  padding: 0 15px;
+  padding: 0px 12px;
+}
+.teacher-item-inner{
+  position: relative;
   margin-bottom: 30px;
   padding-bottom: 30px;
   overflow: hidden;
