@@ -650,74 +650,12 @@ body.architecture .icon_box p{
 }
 
 /* STM Teachers Grid – Kadence child */
-.kadence_teachers_grid_wrapper {
-  margin: 40px 0;
-}
 .kadence_teachers_grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 24px;
-}
-.kadence_teachers_grid_item .teacher-item {
   display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: inherit;
-  transition: color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  padding: 16px;
-  border-radius: 6px;
-  background: #ffffff;
-  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+  flex-wrap: wrap;
 }
-.kadence_teachers_grid_item .teacher-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0,0,0,.08);
-}
-.kadence_teachers_grid_item .teacher-thumbnail {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-right: 14px;
-  flex-shrink: 0;
-  background: #f5f5f5;
-}
-.kadence_teachers_grid_item .teacher-thumb-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.kadence_teachers_grid_item .teacher-info {
-  font-size: 13px;
-  color: #555;
-}
-.kadence_teachers_grid_item .teacher-name {
-  font-weight: 700;
-  font-size: 14px;
-  margin-bottom: 4px;
-}
-.kadence_teachers_grid_item .teacher-role {
-  font-size: 12px;
-  color: #888;
-}
-.kadence_teachers_grid_pagination {
-  margin-top: 24px;
-  text-align: center;
-}
-.kadence_teachers_grid_pagination .page-numbers {
-  display: inline-block;
-  margin: 0 4px;
-  padding: 6px 10px;
-  border-radius: 3px;
-  border: 1px solid #dcdcdc;
-  font-size: 12px;
-}
-.kadence_teachers_grid_pagination .page-numbers.current,
-.kadence_teachers_grid_pagination .page-numbers:hover {
-  background: #196EC0;
-  border-color: #196EC0;
-  color: #fff;
+.kadence_teachers_grid_item {
+  width: 25%;
 }
 /* Sidebar */
 .primary-sidebar.widget-area .widget {

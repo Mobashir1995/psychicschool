@@ -59,7 +59,7 @@ function kadence_child_stm_teachers_grid_render( $atts ) {
 			while ( $query->have_posts() ) :
 				$query->the_post();
 				$teacher_id = get_the_ID();
-				$position   = get_post_meta( $teacher_id, 'teacher_position', true );
+				$position   = get_post_meta(get_the_id(), 'expert_sphere', true);
 				?>
 				<div class="kadence_teachers_grid_item">
 					<a href="<?php echo esc_url( get_permalink( $teacher_id ) ); ?>" class="teacher-item">
@@ -70,17 +70,20 @@ function kadence_child_stm_teachers_grid_render( $atts ) {
 							}
 							?>
 						</div>
-						<div class="teacher-info">
-							<div class="teacher-name">
-								<?php echo esc_html( get_the_title( $teacher_id ) ); ?>
-							</div>
-							<?php if ( ! empty( $position ) ) : ?>
-								<div class="teacher-role">
-									<?php echo esc_html( $position ); ?>
-								</div>
-							<?php endif; ?>
-						</div>
 					</a>
+					<div class="teacher-info">
+						<div class="teacher-name">
+							<a href="<?php echo esc_url( get_permalink( $teacher_id ) ); ?>" title="<?php echo esc_html( get_the_title( $teacher_id ) ); ?>"><?php echo esc_html( get_the_title( $teacher_id ) ); ?></a>
+						</div>
+						<?php if ( ! empty( $position ) ) : ?>
+							<div class="teacher-role">
+								<?php echo esc_html( $position ); ?>
+							</div>
+						<?php endif; ?>
+					</div>
+					<div class="teacher-content">
+						<?php the_excerpt(); ?>
+					</div>
 				</div>
 				<?php
 			endwhile;
