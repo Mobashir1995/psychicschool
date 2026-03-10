@@ -92,19 +92,15 @@ function kadence_child_stm_teachers_grid_render( $atts ) {
 			?>
 		</div>
 		<?php if ( 'show' === $pagination && $query->max_num_pages > 1 ) : ?>
-			<div class="kadence_teachers_grid_pagination">
+			<nav class="pagination">
 				<?php
-				echo wp_kses_post(
-					paginate_links(
-						array(
-							'total'   => $query->max_num_pages,
-							'current' => $paged,
-							'type'    => 'list',
-						)
-					)
-				);
+				the_posts_pagination( array(
+					'mid_size'  => 2,
+					'prev_text' => __( 'Previous', 'textdomain' ),
+					'next_text' => __( 'Next', 'textdomain' ),
+				) );
 				?>
-			</div>
+			</nav>
 		<?php endif; ?>
 	</div>
 	<?php
