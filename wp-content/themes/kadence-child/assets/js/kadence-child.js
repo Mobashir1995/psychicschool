@@ -6,7 +6,8 @@
 
   $(document).ready(function () {
 
-    $('.vc_general.vc_tta.vc_tta-tabs .vc_tta-tab').on('click', function (e) {
+    // Disable smooth-scroll / anchor jump on WPBakery tabs, but keep tab switching.
+    $('.vc_general.vc_tta.vc_tta-tabs .vc_tta-tab > a').on('click.psychicNoScroll', function (e) {
       e.preventDefault();
     });
     // --- Product category filter: WooCommerce SelectWoo (searchable) + redirect on change ---
