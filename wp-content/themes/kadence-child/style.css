@@ -66,6 +66,9 @@ body .vc_row[data-vc-full-width].vc_parallax{
 }
 
 /* Pagination */
+.kadence_teachers_grid_wrapper .pagination .page-numbers{
+  padding: 0;
+}
 .pagination .page-numbers {
   overflow: hidden;
   list-style: none;
@@ -85,7 +88,7 @@ body .vc_row[data-vc-full-width].vc_parallax{
   font-size: 14px;
 }
 .pagination .page-numbers li .current,
-.pagination .page-numbers li .current:hover,
+.pagination .page-numbers li .page-numbers:hover,
 .woocommerce nav.woocommerce-pagination ul.page-numbers li .current,
 .woocommerce nav.woocommerce-pagination ul.page-numbers li .page-numbers:hover{
   color: #fff;

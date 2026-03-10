@@ -100,8 +100,8 @@ function kadence_child_stm_teachers_grid_render( $atts ) {
 							'total'   => $query->max_num_pages,
 							'current' => $paged,
 							'type'    => 'list',
-							'prev_text'          => __( '&laquo;' ),
-							'next_text'          => __( '&raquo;' ),
+							'prev_text' => __( '&laquo;' ),
+							'next_text' => __( '&raquo;' ),
 						)
 					)
 				);
