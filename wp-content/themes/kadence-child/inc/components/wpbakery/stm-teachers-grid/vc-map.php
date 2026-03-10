@@ -20,7 +20,7 @@ function stm_teachers_grid_get_vc_map() {
 				'type'       => 'number_field',
 				'heading'    => __( 'Teachers per page', 'kadence-child' ),
 				'param_name' => 'per_page',
-				'default'    => '8',
+				// 'default'    => '8',
 				'value'      => '8',
 			),
 			array(
