@@ -62,27 +62,29 @@ function kadence_child_stm_teachers_grid_render( $atts ) {
 				$position   = get_post_meta(get_the_id(), 'expert_sphere', true);
 				?>
 				<div class="kadence_teachers_grid_item">
-					<a href="<?php echo esc_url( get_permalink( $teacher_id ) ); ?>" class="teacher-item">
-						<div class="teacher-thumbnail">
-							<?php
-							if ( has_post_thumbnail( $teacher_id ) ) {
-								echo get_the_post_thumbnail( $teacher_id, $image_size, array( 'class' => 'teacher-thumb-img' ) );
-							}
-							?>
-						</div>
-					</a>
-					<div class="teacher-info">
-						<div class="teacher-name">
-							<a href="<?php echo esc_url( get_permalink( $teacher_id ) ); ?>" title="<?php echo esc_html( get_the_title( $teacher_id ) ); ?>"><?php echo esc_html( get_the_title( $teacher_id ) ); ?></a>
-						</div>
-						<?php if ( ! empty( $position ) ) : ?>
-							<div class="teacher-role">
-								<?php echo esc_html( $position ); ?>
+					<div class="teacher-item-inner">
+						<a href="<?php echo esc_url( get_permalink( $teacher_id ) ); ?>" class="teacher-item">
+							<div class="teacher-thumbnail">
+								<?php
+								if ( has_post_thumbnail( $teacher_id ) ) {
+									echo get_the_post_thumbnail( $teacher_id, $image_size, array( 'class' => 'teacher-thumb-img' ) );
+								}
+								?>
 							</div>
-						<?php endif; ?>
-					</div>
-					<div class="teacher-content">
-						<?php the_excerpt(); ?>
+						</a>
+						<div class="teacher-info">
+							<div class="teacher-name">
+								<a href="<?php echo esc_url( get_permalink( $teacher_id ) ); ?>" title="<?php echo esc_html( get_the_title( $teacher_id ) ); ?>"><?php echo esc_html( get_the_title( $teacher_id ) ); ?></a>
+							</div>
+							<?php if ( ! empty( $position ) ) : ?>
+								<div class="teacher-role">
+									<?php echo esc_html( $position ); ?>
+								</div>
+							<?php endif; ?>
+						</div>
+						<div class="teacher-content">
+							<?php the_excerpt(); ?>
+						</div>
 					</div>
 				</div>
 				<?php
