@@ -648,6 +648,145 @@ body.architecture .icon_box p{
   background: #196EC0;
   color: #fff !important;
 }
+
+/* STM Teachers Grid – Kadence child */
+.kadence_teachers_grid_wrapper {
+  margin: 40px 0;
+}
+.kadence_teachers_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+.kadence_teachers_grid_item .teacher-item {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 16px;
+  border-radius: 6px;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+}
+.kadence_teachers_grid_item .teacher-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,.08);
+}
+.kadence_teachers_grid_item .teacher-thumbnail {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 14px;
+  flex-shrink: 0;
+  background: #f5f5f5;
+}
+.kadence_teachers_grid_item .teacher-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.kadence_teachers_grid_item .teacher-info {
+  font-size: 13px;
+  color: #555;
+}
+.kadence_teachers_grid_item .teacher-name {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.kadence_teachers_grid_item .teacher-role {
+  font-size: 12px;
+  color: #888;
+}
+.kadence_teachers_grid_pagination {
+  margin-top: 24px;
+  text-align: center;
+}
+.kadence_teachers_grid_pagination .page-numbers {
+  display: inline-block;
+  margin: 0 4px;
+  padding: 6px 10px;
+  border-radius: 3px;
+  border: 1px solid #dcdcdc;
+  font-size: 12px;
+}
+.kadence_teachers_grid_pagination .page-numbers.current,
+.kadence_teachers_grid_pagination .page-numbers:hover {
+  background: #196EC0;
+  border-color: #196EC0;
+  color: #fff;
+}
+/* Sidebar */
+.primary-sidebar.widget-area .widget {
+  padding: 4px 0;
+}
+/* JS Composer Tabs */
+.vc_general.vc_tta.vc_tta-tabs {
+  border-top: 3px solid transparent;
+  border-color: #0aed80;
+}
+
+.vc_general.vc_tta.vc_tta-tabs .vc_tta-tabs-container {
+  margin: 0 0 30px!important
+}
+
+.vc_general.vc_tta.vc_tta-tabs .vc_tta-tabs-container .vc_tta-tabs-list {
+  display: flex
+}
+
+.vc_general.vc_tta.vc_tta-tabs .vc_tta-tab {
+  margin-left: 0!important;
+  flex-grow: 1;
+}
+
+.vc_general.vc_tta.vc_tta-tabs .vc_tta-tab>a {
+  border: 0!important;
+  border-radius: 0!important;
+  color: #fff!important;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase
+}
+
+.vc_general.vc_tta.vc_tta-tabs .vc_tta-tab.vc_active>a {
+  color: #273044!important
+}
+
+.vc_general.vc_tta.vc_tta-tabs .vc_tta-panels {
+  border: 0!important;
+  background-color: transparent!important
+}
+
+.vc_general.vc_tta.vc_tta-tabs .vc_tta-panels .vc_tta-panel-body {
+  padding: 20px 0 0
+}
+
+@media (max-width: 515px) {
+  .wpb-js-composer .vc_tta-color-grey.vc_tta-style-classic .vc_tta-panel .vc_tta-panel-heading {
+      background-color:transparent!important;
+      border-radius: 0!important
+  }
+
+  .wpb-js-composer .vc_tta-color-grey.vc_tta-style-classic .vc_tta-panel .vc_tta-panel-heading a {
+      font-weight: 600
+  }
+
+  .wpb-js-composer .vc_tta.vc_tta-shape-rounded .vc_tta-panel-body {
+      background-color: transparent!important;
+      border: 0!important;
+      margin-bottom: 30px!important
+  }
+}
+
+@media (min-width: 768px) {
+  .vc_tta.vc_tta-style-classic.vc_tta-tabs .vc_tta-panel {
+      margin:0!important
+  }
+}
 /* MasterStudy-style footer (kadence-child) */
 #footer {
   color: #fff;
