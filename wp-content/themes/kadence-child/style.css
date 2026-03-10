@@ -749,9 +749,12 @@ body.architecture .icon_box p{
   text-align: center;
   font-size: 15px;
   font-weight: 600;
+  background: #0aed80;
   text-transform: uppercase
 }
-
+.vc_general.vc_tta.vc_tta-tabs .vc_tta-tab:not(.vc_active)>a:hover {
+  background: rgba(10, 237, 128, .8);
+}
 .vc_general.vc_tta.vc_tta-tabs .vc_tta-tab.vc_active>a {
   color: #273044!important
 }
