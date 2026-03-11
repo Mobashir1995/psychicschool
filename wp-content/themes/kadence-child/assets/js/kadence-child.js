@@ -4,57 +4,11 @@
 (function ($, window) {
   'use strict';
 
-  function patchKadenceAnchorScroll() {
-    if (!window.kadence || typeof window.kadence.anchorScrollToCheck !== 'function') return;
-    if (window.kadence.anchorScrollToCheck._vcTabsPatched) return;
-    var _anchorScrollToCheck = window.kadence.anchorScrollToCheck;
-    window.kadence.anchorScrollToCheck = function (a, b) {
-      var link = a.target && a.target.getAttribute('href') ? a.target : (a.target && a.target.closest ? a.target.closest('a') : null);
-      if (link && link.closest && link.closest('.vc_general.vc_tta.vc_tta-tabs')) {
-        a.preventDefault();
-        return;
-      }
-      return _anchorScrollToCheck(a, b);
-    };
-    window.kadence.anchorScrollToCheck._vcTabsPatched = true;
-  }
   patchKadenceAnchorScroll();
 
   $(document).ready(function () {
     patchKadenceAnchorScroll();
 
-    // WPBakery VC tabs: switch tab + panel (Kadence no longer scrolls due to override above).
-    // - prevent anchor jump / smooth scroll
-    // - manually switch active tab + panel
-    $('.vc_general.vc_tta.vc_tta-tabs').on('click.psychicNoScroll', '.vc_tta-tab > a', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
-
-      var $link = $(this);
-      var $tab = $link.closest('.vc_tta-tab');
-      var $tabsContainer = $tab.closest('.vc_tta-tabs');
-
-      // Do nothing if already active
-      if ($tab.hasClass('vc_active')) {
-        return;
-      }
-
-      // Activate tab
-      $tabsContainer.find('.vc_tta-tab').removeClass('vc_active');
-      $tab.addClass('vc_active');
-
-      // Activate corresponding panel without changing location hash
-      var target = $link.attr('href') || $link.data('vc-target');
-      if (target && target.charAt(0) === '#') {
-        var $panel = $(target);
-        if ($panel.length) {
-          var $section = $panel.closest('.vc_tta');
-          $section.find('.vc_tta-panel').removeClass('vc_active');
-          $panel.addClass('vc_active');
-        }
-      }
-    });
     // --- Product category filter: WooCommerce SelectWoo (searchable) + redirect on change ---
     var $productCat = $('#filtered_product_cat');
     if ($productCat.length && typeof $.fn.selectWoo !== 'undefined') {
@@ -186,4 +140,22 @@
       });
     }
   });
+
+  // WPBakery VC tabs: switch tab + panel (Kadence no longer scrolls due to override above).
+  // - prevent anchor jump / smooth scroll
+  // - manually switch active tab + panel
+  function patchKadenceAnchorScroll() {
+    if (!window.kadence || typeof window.kadence.anchorScrollToCheck !== 'function') return;
+    if (window.kadence.anchorScrollToCheck._vcTabsPatched) return;
+    var _anchorScrollToCheck = window.kadence.anchorScrollToCheck;
+    window.kadence.anchorScrollToCheck = function (a, b) {
+      var link = a.target && a.target.getAttribute('href') ? a.target : (a.target && a.target.closest ? a.target.closest('a') : null);
+      if (link && link.closest && link.closest('.vc_general.vc_tta.vc_tta-tabs')) {
+        a.preventDefault();
+        return;
+      }
+      return _anchorScrollToCheck(a, b);
+    };
+    window.kadence.anchorScrollToCheck._vcTabsPatched = true;
+  }
 })(jQuery, window);
