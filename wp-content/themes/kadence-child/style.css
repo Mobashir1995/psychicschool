@@ -800,7 +800,7 @@ body.architecture .icon_box p{
   margin-bottom: 20px;
 }
 /* Sidebar */
-.primary-sidebar.widget-area .widget {
+.primary-sidebar.widget-area .widget li a{
   padding: 4px 0;
 }
 /* JS Composer Tabs */
