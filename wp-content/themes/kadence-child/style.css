@@ -428,6 +428,11 @@ body.architecture .icon_box p{
   color: #aaa;
 }
 
+/* Blog Archive */
+ul.kadence_post_list_archive li.kadence_post_list_content_unit {
+  width: 100%;
+  display: initial;
+}
 
 /* Product Categories (Kadence Child – no row/col) */
 .kadence_product_categories_main_wrapper:not(.kadence_product_categories_view_carousel) {
