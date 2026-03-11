@@ -4,9 +4,26 @@
 (function ($, window) {
   'use strict';
 
-  $(document).ready(function () {
+  function patchKadenceAnchorScroll() {
+    if (!window.kadence || typeof window.kadence.anchorScrollToCheck !== 'function') return;
+    if (window.kadence.anchorScrollToCheck._vcTabsPatched) return;
+    var _anchorScrollToCheck = window.kadence.anchorScrollToCheck;
+    window.kadence.anchorScrollToCheck = function (a, b) {
+      var link = a.target && a.target.getAttribute('href') ? a.target : (a.target && a.target.closest ? a.target.closest('a') : null);
+      if (link && link.closest && link.closest('.vc_general.vc_tta.vc_tta-tabs')) {
+        a.preventDefault();
+        return;
+      }
+      return _anchorScrollToCheck(a, b);
+    };
+    window.kadence.anchorScrollToCheck._vcTabsPatched = true;
+  }
+  patchKadenceAnchorScroll();
 
-    // Fully override WPBakery/Kadence default click behavior on tabs:
+  $(document).ready(function () {
+    patchKadenceAnchorScroll();
+
+    // WPBakery VC tabs: switch tab + panel (Kadence no longer scrolls due to override above).
     // - prevent anchor jump / smooth scroll
     // - manually switch active tab + panel
     $('.vc_general.vc_tta.vc_tta-tabs').on('click.psychicNoScroll', '.vc_tta-tab > a', function (e) {
