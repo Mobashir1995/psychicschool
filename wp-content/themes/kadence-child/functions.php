@@ -95,6 +95,19 @@ function kadence_child_override_default_options( $defaults ) {
 // add_filter( 'kadence_theme_options_defaults', 'kadence_child_override_default_options', 20 );
 
 
+/**
+ * Make blog archive use the same grid/card layout as the STM Post List WPBakery widget.
+ */
+function kadence_child_archive_container_classes( $classes ) {
+	$is_post_archive = is_home() || is_category() || is_tag() || is_author() || is_date();
+	if ( $is_post_archive ) {
+		$classes[] = 'kadence_post_list_main_section_wrapper';
+		$classes[] = 'kadence_post_list_archive';
+	}
+	return $classes;
+}
+add_filter( 'kadence_archive_container_classes', 'kadence_child_archive_container_classes', 20 );
+
 add_filter('script_loader_tag', function($tag, $handle) {
     if ('kadence-countup' === $handle) {
         return str_replace(' src', ' defer src', $tag);
