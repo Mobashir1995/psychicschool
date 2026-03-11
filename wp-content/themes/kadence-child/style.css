@@ -433,6 +433,12 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   width: 100%;
   display: initial;
 }
+.kadence_post_list_inner_content_unit_inner{
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  padding-bottom: 30px;
+}
 
 /* Product Categories (Kadence Child – no row/col) */
 .kadence_product_categories_main_wrapper:not(.kadence_product_categories_view_carousel) {
@@ -631,12 +637,15 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
 .woocommerce .woocommerce-archive-product-loop-start ul.products li.product:before,
 .woocommerce .woocommerce-archive-product-loop-start ul.products li.product:after,
 .teacher-item-inner:before,
-.teacher-item-inner:after {
+.teacher-item-inner:after,
+.kadence_post_list_inner_content_unit_inner:before,
+.kadence_post_list_inner_content_unit_inner:after{
   content: '';
   position: absolute;
   z-index: 9999;
 }
 .woocommerce .woocommerce-archive-product-loop-start ul.products li.product:before,
+.kadence_post_list_inner_content_unit_inner:before,
 .teacher-item-inner:before {
   width: 50px;
   height: 3px;
@@ -645,6 +654,7 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   background:#0aed80;
 }
 .woocommerce .woocommerce-archive-product-loop-start ul.products li.product:after,
+.kadence_post_list_inner_content_unit_inner:after,
 .teacher-item-inner:after {
   height: 1px;
   width: 1200px;
