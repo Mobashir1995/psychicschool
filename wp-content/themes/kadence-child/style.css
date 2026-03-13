@@ -799,7 +799,7 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   color: #555;
   line-height: 1.3;
 }
-.kadence_experts_grid_item .expert-name {
+.kadence_experts_grid_item .expert-name a{
   font-weight: 700;
   font-size: 18px;
   color: #333;
