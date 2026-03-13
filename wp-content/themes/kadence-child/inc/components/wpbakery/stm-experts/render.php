@@ -62,8 +62,7 @@ function kadence_child_stm_experts_render( $atts ) {
 				if ( $archive_link ) :
 					?>
 					<a class="kadence_experts_view_all" href="<?php echo esc_url( $archive_link ); ?>">
-						<span><?php esc_html_e( 'View all', 'kadence-child' ); ?></span>
-						<i class="fa fa-arrow-right"></i>
+						<?php esc_html_e( 'View all', 'kadence-child' ); ?>
 					</a>
 				<?php endif; ?>
 				<div class="kadence_testimonials_button_wrapper">
