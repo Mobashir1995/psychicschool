@@ -78,22 +78,21 @@ function kadence_child_stm_experts_render( $atts ) {
 			<?php
 			while ( $query->have_posts() ) :
 				$query->the_post();
-				$expert_id = get_the_ID();
-				$position  = get_post_meta( $expert_id, 'expert_sphere', true );
+				$position  = get_post_meta( get_the_ID(), 'expert_sphere', true );
 				?>
 				<div class="swiper-slide">
 					<div class="kadence_experts_grid_item">
-						<a href="<?php echo esc_url( get_permalink( $expert_id ) ); ?>" class="expert-card">
+						<a href="<?php echo esc_url( get_permalink() ); ?>" class="expert-card">
 							<div class="expert-thumb-wrap">
 								<?php
-								if ( has_post_thumbnail( $expert_id ) ) {
-									echo get_the_post_thumbnail( $expert_id, 'thumbnail', array( 'class' => 'expert-thumb-img' ) );
+								if ( has_post_thumbnail() ) {
+									the_post_thumbnail();
 								}
 								?>
 							</div>
 							<div class="expert-body">
 								<div class="expert-name">
-									<?php echo esc_html( get_the_title( $expert_id ) ); ?>
+									<?php echo esc_html( get_the_title() ); ?>
 								</div>
 								<?php if ( ! empty( $position ) ) : ?>
 									<div class="expert-role">
