@@ -79,7 +79,7 @@ function kadence_child_stm_experts_render( $atts ) {
 			while ( $query->have_posts() ) :
 				$query->the_post();
 				$expert_id = get_the_ID();
-				$position  = get_post_meta( $expert_id, 'teacher_position', true );
+				$position  = get_post_meta( $expert_id, 'expert_sphere', true );
 				?>
 				<div class="swiper-slide">
 					<div class="kadence_experts_grid_item">
@@ -87,7 +87,7 @@ function kadence_child_stm_experts_render( $atts ) {
 							<div class="expert-thumb-wrap">
 								<?php
 								if ( has_post_thumbnail( $expert_id ) ) {
-									echo get_the_post_thumbnail( $expert_id, 'medium', array( 'class' => 'expert-thumb-img' ) );
+									echo get_the_post_thumbnail( $expert_id, 'thumbnail', array( 'class' => 'expert-thumb-img' ) );
 								}
 								?>
 							</div>
@@ -101,7 +101,7 @@ function kadence_child_stm_experts_render( $atts ) {
 									</div>
 								<?php endif; ?>
 								<div class="expert-excerpt">
-									<?php echo wp_kses_post( wp_trim_words( get_the_excerpt( $expert_id ), 18 ) ); ?>
+									<?php the_excerpt(); ?>
 								</div>
 							</div>
 						</a>
