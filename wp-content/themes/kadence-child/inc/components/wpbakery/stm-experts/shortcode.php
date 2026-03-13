@@ -16,12 +16,12 @@ function kadence_child_stm_experts_shortcode( $atts, $content = null ) {
 	$atts = vc_map_get_attributes( 'stm_experts', $atts );
 
 	$defaults = array(
-		'per_page'   => '8',
-		'image_size' => '',
-		'pagination' => 'hide',
-		'orderby'    => 'date',
-		'order'      => 'DESC',
-		'css'        => '',
+		'experts_title'         => '',
+		'teachers_count'        => '8',
+		'expert_slides_per_row' => '2',
+		'orderby'               => 'date',
+		'order'                 => 'DESC',
+		'css'                   => '',
 	);
 
 	$atts = wp_parse_args( $atts, $defaults );
