@@ -86,7 +86,7 @@ function kadence_child_stm_experts_render( $atts ) {
 							<div class="expert-thumb-wrap">
 								<?php
 								if ( has_post_thumbnail() ) {
-									the_post_thumbnail();
+									the_post_thumbnail( 'thumbnail');
 								}
 								?>
 							</div>
