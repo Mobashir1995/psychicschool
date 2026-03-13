@@ -364,6 +364,21 @@ body.architecture .icon_box p{
   color: #efb467;
 }
 
+/* STM Multy Separator – Kadence child */
+.kadence_multy_separator_wrapper {
+  margin: 24px 0;
+}
+.kadence_multy_separator {
+  display: inline-flex;
+  overflow: hidden;
+  border-radius: 999px;
+  background: transparent;
+}
+.kadence_multy_separator_segment {
+  display: block;
+  height: 100%;
+  flex: 1 1 50%;
+}
 /* Kadence Child - Colored Separator (based on MasterStudy style_1) */
 .kadence_colored_separator {
   margin: 18px auto 27px;
@@ -1006,5 +1021,3 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   padding: 20px 0;
   border-top: 1px solid rgba(0,0,0,.08);
 }
-
-
