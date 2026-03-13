@@ -86,7 +86,7 @@ function kadence_child_stm_experts_render( $atts ) {
 								<a href="<?php echo esc_url( get_permalink() ); ?>">
 									<?php
 									if ( has_post_thumbnail() ) {
-										the_post_thumbnail( 'thumbnail' );
+										the_post_thumbnail( 'img-129-129' );
 									}
 									?>
 								</a>
