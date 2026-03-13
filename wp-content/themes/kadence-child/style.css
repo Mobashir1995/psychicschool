@@ -804,6 +804,9 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   font-size: 18px;
   color: #333;
 }
+.kadence_experts_grid_item .expert-name a:hover {
+  color: #196EC0;
+}
 .kadence_experts_grid_item .expert-role {
   font-size: 12px;
   color: #b8bfc9;

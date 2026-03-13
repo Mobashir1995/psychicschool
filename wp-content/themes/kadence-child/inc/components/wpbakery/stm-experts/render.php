@@ -81,17 +81,21 @@ function kadence_child_stm_experts_render( $atts ) {
 				?>
 				<div class="swiper-slide">
 					<div class="kadence_experts_grid_item">
-						<a href="<?php echo esc_url( get_permalink() ); ?>" class="expert-card">
+						<div class="expert-card">
 							<div class="expert-thumb-wrap">
-								<?php
-								if ( has_post_thumbnail() ) {
-									the_post_thumbnail( 'thumbnail');
-								}
-								?>
+								<a href="<?php echo esc_url( get_permalink() ); ?>">
+									<?php
+									if ( has_post_thumbnail() ) {
+										the_post_thumbnail( 'thumbnail' );
+									}
+									?>
+								</a>
 							</div>
 							<div class="expert-body">
 								<div class="expert-name">
-									<?php echo esc_html( get_the_title() ); ?>
+									<a href="<?php echo esc_url( get_permalink() ); ?>">
+										<?php echo esc_html( get_the_title() ); ?>
+									</a>
 								</div>
 								<?php if ( ! empty( $position ) ) : ?>
 									<div class="expert-role">
@@ -102,7 +106,7 @@ function kadence_child_stm_experts_render( $atts ) {
 									<?php the_excerpt(); ?>
 								</div>
 							</div>
-						</a>
+						</div>
 					</div>
 				</div>
 				<?php

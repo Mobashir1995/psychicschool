@@ -87,7 +87,7 @@
             nextEl: $expertsWrapper.find('.kadence_experts_button_next')[0],
             prevEl: $expertsWrapper.find('.kadence_experts_button_prev')[0],
           };
-          config.allowTouchMove = false;
+          // keep experts slider draggable (touch / mouse drag enabled)
         }
 
         new window.Swiper(this, config);
