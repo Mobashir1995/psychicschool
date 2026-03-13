@@ -61,3 +61,4 @@ github-actions-*
 !/wp-content/plugins/
 /wp-content/plugins/*
 !/wp-content/plugins/wc-booking-confirmed-after-paid/
+!/wp-content/plugins/psychicschool-functionalities/

@@ -1,0 +1,84 @@
+<?php
+/**
+ * Plugin Name: Psychicschool Functionalities
+ * Description: This plugin adds functionalities to the Psychicschool website.
+ * Version: 1.0.0
+ * Author: PluginDevs
+ * Author URI: https://plugin-devs.com/
+ * Text Domain: psychicschool-functionalities
+ * Requires at least: 6.2
+ * Requires PHP: 8.2
+ * @package PluginDevs
+ * @license GPL-3.0+
+ * @link https://plugin-devs.com/
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
+/**
+ * Main plugin class
+ */
+class Psychicschool_Functionalities {
+    /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->define_constants();
+        $this->includes();
+        $this->init_hooks();
+    }
+
+    /**
+     * Define constants
+     */
+    public function define_constants() {
+        define( 'PSYCHICSCHOOL_FUNCTIONALITIES_VERSION', '1.0.0' );
+        define( 'PSYCHICSCHOOL_FUNCTIONALITIES_DIR', plugin_dir_path( __FILE__ ) );
+        define( 'PSYCHICSCHOOL_FUNCTIONALITIES_URL', plugin_dir_url( __FILE__ ) );
+    }
+
+    /**
+     * Includes
+     */
+    public function includes() {
+        // require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/class-psychicschool-functionalities-admin.php';
+        // require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/class-psychicschool-functionalities-public.php';
+
+        // AutomateWoo
+        require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/automatewoo/timezone.php';
+    }
+
+    /**
+     * Init hooks
+     */
+    public function init_hooks() {
+        add_action( 'plugins_loaded', array( $this, 'init' ) );
+        add_action( 'admin_init', array( $this, 'admin_init' ) );
+    }
+
+    /**
+     * Init
+     */
+    public function init() {
+        $this->load_textdomain();
+        //
+    }
+
+    /**
+     * Admin init
+     */
+    public function admin_init() {
+        //
+    }
+
+    /**
+     * Load textdomain
+     */
+    public function load_textdomain() {
+        load_plugin_textdomain( 'psychicschool-functionalities', false, PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'languages' );
+    }
+}
+
+new Psychicschool_Functionalities();
