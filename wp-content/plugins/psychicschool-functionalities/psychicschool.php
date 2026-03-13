@@ -43,11 +43,24 @@ class Psychicschool_Functionalities {
      * Includes
      */
     public function includes() {
-        // require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/class-psychicschool-functionalities-admin.php';
-        // require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/class-psychicschool-functionalities-public.php';
+        // Helpers.
+        require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/helpers/hook-helpers.php';
+        require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/helpers/image-sizes.php';
 
-        // AutomateWoo
-        require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/automatewoo/timezone.php';
+        // AutomateWoo (Bookings-related variables & rules).
+        if ( class_exists( 'AutomateWoo' ) ) {
+            require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/automatewoo/timezone.php';
+        }
+
+        // WooCommerce & My Account.
+        require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/woocommerce/general.php';
+        require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/woocommerce/my-account.php';
+
+        // AffiliateWP.
+        require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/affiliatewp/general.php';
+
+        // Misc.
+        require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/misc/maintenance.php';
     }
 
     /**
