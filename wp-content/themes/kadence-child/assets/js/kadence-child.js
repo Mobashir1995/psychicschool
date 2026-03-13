@@ -44,6 +44,28 @@
         var isExperts = $this.hasClass('kadence_experts_swiper');
         var autoplaySpeed = parseInt($this.data('autoplay-speed') || 5000, 10);
 
+        var breakpoints;
+        if (isExperts) {
+          // Experts: 1 slide up to 991px, then perRow on desktop.
+          breakpoints = {
+            0: { slidesPerView: 1 },
+            992: { slidesPerView: perRow }
+          };
+        } else if (isTestimonials) {
+          // Testimonials: 1 slide up to 768px, then perRow above.
+          breakpoints = {
+            0: { slidesPerView: 1 },
+            769: { slidesPerView: perRow }
+          };
+        } else {
+          // Default behaviour for product categories carousel.
+          breakpoints = {
+            0: { slidesPerView: 1 },
+            640: { slidesPerView: Math.min(2, perRow) },
+            1024: { slidesPerView: perRow }
+          };
+        }
+
         var config = {
           slidesPerView: perRow,
           spaceBetween: 20,
@@ -61,17 +83,7 @@
                     disableOnInteraction: false,
                   }
                 : false,
-          breakpoints: {
-            0: {
-              slidesPerView: 1,
-            },
-            640: {
-              slidesPerView: Math.min(2, perRow),
-            },
-            1024: {
-              slidesPerView: perRow,
-            },
-          },
+          breakpoints: breakpoints,
         };
 
         if (isTestimonials) {
