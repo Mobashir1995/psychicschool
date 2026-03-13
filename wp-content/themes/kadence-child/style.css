@@ -365,9 +365,6 @@ body.architecture .icon_box p{
 }
 
 /* STM Multy Separator – Kadence child */
-.kadence_multy_separator_wrapper {
-  margin: 24px 0;
-}
 .kadence_multy_separator {
   position: relative;
   width: 100%;
