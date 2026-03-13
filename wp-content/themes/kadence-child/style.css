@@ -588,6 +588,8 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   cursor: pointer;
   transition: all 0.2s;
 }
+.kadence_experts_button_prev:before,
+.kadence_experts_button_next:after,
 .kadence_testimonials_button_prev:before,
 .kadence_testimonials_button_next:after{
   content: '';
@@ -598,6 +600,8 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   height: 100%;
   z-index: 10;
 }
+.kadence_experts_button_prev:hover:before,
+.kadence_experts_button_next:hover:after,
 .kadence_testimonials_button_prev:hover:before,
 .kadence_testimonials_button_next:hover:after {
   background: #196EC0;
@@ -832,28 +836,10 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   padding: 4px 20px;
   border: 2px solid #196EC0;
 }
-.kadence_experts_view_all i {
-  font-size: 12px;
-}
-.kadence_experts_grid_pagination {
-  margin-top: 24px;
-  text-align: center;
-}
-.kadence_experts_grid_pagination .page-numbers {
-  display: inline-block;
-  margin: 0 4px;
-  padding: 6px 10px;
-  border-radius: 3px;
-  border: 1px solid #dcdcdc;
-  font-size: 12px;
-}
-.kadence_experts_grid_pagination .page-numbers.current,
-.kadence_experts_grid_pagination .page-numbers:hover {
+.kadence_experts_view_all:hover {
   background: #196EC0;
-  border-color: #196EC0;
   color: #fff;
 }
-
 /* STM Teachers Grid – Kadence child */
 .kadence_teachers_grid {
   display: flex;
