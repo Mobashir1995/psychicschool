@@ -174,6 +174,60 @@ body.architecture .icon_box p{
   top:100%;
   left:0
 }
+.box_align_center {
+  text-align: center
+}
+
+.box_align_center>div {
+  display: inline-block;
+  vertical-align: top;
+  text-align: left
+}
+
+.box_align_right {
+  text-align: right
+}
+
+.box_align_right>div {
+  display: inline-block;
+  vertical-align: top;
+  text-align: left
+}
+
+.icon_alignment_left .icon {
+  float: left;
+  margin-right: 20px
+}
+
+.icon_alignment_left .icon_text {
+  overflow: hidden
+}
+
+.icon_alignment_left .icon_text h3 {
+  margin: 6px 0 8px
+}
+
+.icon_alignment_left .icon_text h4 {
+  margin: 1px 0 0
+}
+
+.icon_alignment_left .icon_text h5 {
+  margin: 0 0 1px
+}
+
+.icon_alignment_right .icon {
+  float: right;
+  margin-left: 20px
+}
+
+.icon_alignment_right .icon_text {
+  overflow: hidden
+}
+
+.icon_alignment_right .icon_text h3 {
+  margin-top: 6px;
+  margin-bottom: 7px
+}
 
 .stm_icon_box_hover_top{
   -webkit-transform:translateY(0);
@@ -952,3 +1006,5 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   padding: 20px 0;
   border-top: 1px solid rgba(0,0,0,.08);
 }
+
+
