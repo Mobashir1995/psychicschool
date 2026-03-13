@@ -16,11 +16,6 @@ function kadence_child_stm_multy_separator_shortcode( $atts, $content = null ) {
 	$atts = vc_map_get_attributes( 'stm_multy_separator', $atts );
 
 	$defaults = array(
-		'primary_color'   => '#196EC0',
-		'secondary_color' => '#0AED80',
-		'height'          => '3',
-		'width'           => '15',
-		'align'           => 'center',
 		'css'             => '',
 	);
 

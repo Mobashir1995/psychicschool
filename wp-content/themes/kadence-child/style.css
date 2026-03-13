@@ -369,15 +369,10 @@ body.architecture .icon_box p{
   margin: 24px 0;
 }
 .kadence_multy_separator {
-  display: inline-flex;
+  position: relative;
+  width: 100%;
+  height: 3px;
   overflow: hidden;
-  border-radius: 999px;
-  background: transparent;
-}
-.kadence_multy_separator_segment {
-  display: block;
-  height: 100%;
-  flex: 1 1 50%;
 }
 /* Kadence Child - Colored Separator (based on MasterStudy style_1) */
 .kadence_colored_separator {
@@ -708,14 +703,17 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
 .teacher-item-inner:before,
 .teacher-item-inner:after,
 .kadence_post_list_inner_content_unit_inner:before,
-.kadence_post_list_inner_content_unit_inner:after{
+.kadence_post_list_inner_content_unit_inner:after,
+.kadence_multy_separator:before,
+.kadence_multy_separator:after{
   content: '';
   position: absolute;
   z-index: 9999;
 }
 .woocommerce .woocommerce-archive-product-loop-start ul.products li.product:before,
 .kadence_post_list_inner_content_unit_inner:before,
-.teacher-item-inner:before {
+.teacher-item-inner:before,
+.kadence_multy_separator:before{
   width: 50px;
   height: 3px;
   left: 0;
@@ -724,12 +722,16 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
 }
 .woocommerce .woocommerce-archive-product-loop-start ul.products li.product:after,
 .kadence_post_list_inner_content_unit_inner:after,
-.teacher-item-inner:after {
+.teacher-item-inner:after,
+.kadence_multy_separator:after{
   height: 1px;
   width: 1200px;
   background: #dcdcdc;
   bottom: 1px;
   left: 80px;
+}
+.kadence_multy_separator:after{
+  left: 65px;
 }
 .woocommerce .woocommerce-archive-product-loop-start ul.products.products-list-view li.product .entry-content-wrap {
   padding-top: 0;
