@@ -40,6 +40,13 @@ function stm_experts_get_vc_map() {
 				'std'        => 2,
 			),
 			array(
+				'type'       => 'number_field',
+				'heading'    => __( 'Autoplay speed (ms)', 'kadence-child' ),
+				'param_name' => 'expert_autoplay_speed',
+				'default'    => '5000',
+				'value'      => '5000',
+			),
+			array(
 				'type'       => 'dropdown',
 				'heading'    => __( 'Order By', 'kadence-child' ),
 				'param_name' => 'orderby',

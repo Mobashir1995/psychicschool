@@ -19,6 +19,7 @@ function kadence_child_stm_experts_shortcode( $atts, $content = null ) {
 		'experts_title'         => '',
 		'teachers_count'        => '8',
 		'expert_slides_per_row' => '2',
+		'expert_autoplay_speed' => '5000',
 		'orderby'               => 'date',
 		'order'                 => 'DESC',
 		'css'                   => '',

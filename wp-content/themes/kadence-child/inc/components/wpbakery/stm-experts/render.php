@@ -14,14 +14,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function kadence_child_stm_experts_render( $atts ) {
-	$section_title        = isset( $atts['experts_title'] ) ? $atts['experts_title'] : '';
-	$teachers_count       = isset( $atts['teachers_count'] ) ? (int) $atts['teachers_count'] : 8;
+	$section_title         = isset( $atts['experts_title'] ) ? $atts['experts_title'] : '';
+	$teachers_count        = isset( $atts['teachers_count'] ) ? (int) $atts['teachers_count'] : 8;
 	$expert_slides_per_row = isset( $atts['expert_slides_per_row'] ) ? (int) $atts['expert_slides_per_row'] : 2;
-	$orderby              = isset( $atts['orderby'] ) ? $atts['orderby'] : 'date';
-	$order                = isset( $atts['order'] ) ? $atts['order'] : 'DESC';
-	$css                  = isset( $atts['css'] ) ? $atts['css'] : '';
+	$autoplay_speed        = isset( $atts['expert_autoplay_speed'] ) ? (int) $atts['expert_autoplay_speed'] : 5000;
+	$orderby               = isset( $atts['orderby'] ) ? $atts['orderby'] : 'date';
+	$order                 = isset( $atts['order'] ) ? $atts['order'] : 'DESC';
+	$css                   = isset( $atts['css'] ) ? $atts['css'] : '';
 
 	$expert_slides_per_row = max( 1, min( 2, $expert_slides_per_row ) );
+	if ( $autoplay_speed < 500 ) {
+		$autoplay_speed = 500;
+	}
 
 	// Allow overriding the post type via filter, default to "teachers" CPT (experts).
 	$post_type = apply_filters( 'kadence_child_stm_experts_post_type', 'teachers', $atts );
@@ -48,11 +52,28 @@ function kadence_child_stm_experts_render( $atts ) {
 	ob_start();
 	?>
 	<div class="<?php echo esc_attr( implode( ' ', array_filter( $wrapper_classes ) ) ); ?>">
-		<?php if ( $section_title ) : ?>
-			<h2 class="kadence_experts_section_title"><?php echo esc_html( $section_title ); ?></h2>
-		<?php endif; ?>
+		<div class="kadence_testimonials_header kadence_experts_header">
+			<?php if ( $section_title ) : ?>
+				<h2 class="kadence_testimonials_section_title kadence_experts_section_title"><?php echo esc_html( $section_title ); ?></h2>
+			<?php endif; ?>
+			<div class="kadence_experts_header_right">
+				<?php
+				$archive_link = get_post_type_archive_link( $post_type );
+				if ( $archive_link ) :
+					?>
+					<a class="kadence_experts_view_all" href="<?php echo esc_url( $archive_link ); ?>">
+						<span><?php esc_html_e( 'View all', 'kadence-child' ); ?></span>
+						<i class="fa fa-arrow-right"></i>
+					</a>
+				<?php endif; ?>
+				<div class="kadence_testimonials_button_wrapper">
+					<div class="kadence_testimonials_button kadence_experts_button_prev"><i class="fa fa-chevron-left"></i></div>
+					<div class="kadence_testimonials_button kadence_experts_button_next"><i class="fa fa-chevron-right"></i></div>
+				</div>
+			</div>
+		</div>
 
-		<div class="swiper kadence_experts_swiper" data-per-row="<?php echo esc_attr( $expert_slides_per_row ); ?>">
+		<div class="swiper kadence_experts_swiper" data-per-row="<?php echo esc_attr( $expert_slides_per_row ); ?>" data-autoplay-speed="<?php echo esc_attr( $autoplay_speed ); ?>">
 			<div class="swiper-wrapper">
 			<?php
 			while ( $query->have_posts() ) :

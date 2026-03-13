@@ -30,9 +30,9 @@
       }
     });
 
-    // --- Product Categories / Testimonials Swiper ---
+    // --- Product Categories / Testimonials / Experts Swiper ---
     if (typeof window.Swiper !== 'undefined') {
-      $('.kadence_product_categories_view_carousel .kadence_product_categories_swiper, .kadence_testimonials_swiper').each(function () {
+      $('.kadence_product_categories_view_carousel .kadence_product_categories_swiper, .kadence_testimonials_swiper, .kadence_experts_swiper').each(function () {
         var $this = $(this);
         var perRow = parseInt($this.data('per-row') || 6, 10);
         var auto = String($this.data('auto')) === '1';
@@ -41,19 +41,26 @@
         if (perRow > 6) perRow = 6;
 
         var isTestimonials = $this.hasClass('kadence_testimonials_swiper');
+        var isExperts = $this.hasClass('kadence_experts_swiper');
+        var autoplaySpeed = parseInt($this.data('autoplay-speed') || 5000, 10);
 
         var config = {
           slidesPerView: perRow,
           spaceBetween: 20,
-          loop: isTestimonials ? true : false,
+          loop: isTestimonials || isExperts ? true : false,
           autoplay: isTestimonials
             ? false
-            : auto
+            : isExperts
               ? {
-                  delay: 4000,
-                  disableOnInteraction: false,
+                  delay: autoplaySpeed,
+                  disableOnInteraction: false
                 }
-              : false,
+              : auto
+                ? {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                  }
+                : false,
           breakpoints: {
             0: {
               slidesPerView: 1,
@@ -72,6 +79,13 @@
           config.navigation = {
             nextEl: $wrapper.find('.kadence_testimonials_button_next')[0],
             prevEl: $wrapper.find('.kadence_testimonials_button_prev')[0],
+          };
+          config.allowTouchMove = false;
+        } else if (isExperts) {
+          var $expertsWrapper = $this.closest('.kadence_experts_carousel_wrapper');
+          config.navigation = {
+            nextEl: $expertsWrapper.find('.kadence_experts_button_next')[0],
+            prevEl: $expertsWrapper.find('.kadence_experts_button_prev')[0],
           };
           config.allowTouchMove = false;
         }
