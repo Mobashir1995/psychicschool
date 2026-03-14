@@ -235,6 +235,30 @@ function kadence_child_woo_archive_product_see_more_button() {
 }
 
 /**
+ * Set up global $wp_query->comments so have_comments() works correctly when
+ * single-product-reviews.php is rendered directly (without comments_template()).
+ * This mirrors what WordPress's comments_template() does internally.
+ */
+function kadence_child_setup_product_reviews_query() {
+	global $wp_query;
+
+	$reviews_query = new WP_Comment_Query(
+		array(
+			'post_id' => get_the_ID(),
+			'status'  => 'approve',
+			'type'    => 'review',
+		)
+	);
+
+	$wp_query->comments      = apply_filters( 'comments_array', $reviews_query->comments, get_the_ID() );
+	$GLOBALS['comments']     = &$wp_query->comments;
+	$wp_query->comment_count = count( $wp_query->comments );
+
+	update_comment_cache( $wp_query->comments );
+	$wp_query->rewind_comments();
+}
+
+/**
  * Single product: remove tabs and strip unwanted items from the right-column summary.
  * Title is rendered full-width in the template; description/reviews are rendered
  * directly in the left column, so the tab system and those summary hooks are not needed.

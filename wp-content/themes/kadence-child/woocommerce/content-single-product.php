@@ -50,7 +50,10 @@ if ( post_password_required() ) {
 			</div>
 
 			<div class="single-product-reviews">
-				<?php wc_get_template( 'single-product-reviews.php' ); ?>
+				<?php
+				kadence_child_setup_product_reviews_query();
+				wc_get_template( 'single-product-reviews.php' );
+				?>
 			</div>
 		</div>
 
