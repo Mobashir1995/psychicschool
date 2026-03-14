@@ -130,13 +130,17 @@ if ( ! function_exists( 'psycics_memberships_my_memberships_actions' ) ) {
 
 if ( ! function_exists( 'psycics_woocommerce_account_downloads_columns' ) ) {
 	/**
-	 * Rename the downloads product column label.
+	 * Customize My Account > Downloads table columns: rename Product to Course,
+	 * remove Download remaining and Download expires columns.
 	 *
 	 * @param array $columns Columns.
 	 * @return array
 	 */
 	function psycics_woocommerce_account_downloads_columns( $columns ) {
 		$columns['download-product'] = __( 'Course', 'woocommerce' );
+
+		unset( $columns['download-remaining'] );
+		unset( $columns['download-expires'] );
 
 		return $columns;
 	}
