@@ -366,4 +366,4 @@ function kadence_child_single_product_sidebar(){
 		</div>
 	<?php
 }
-add_action( 'woocommerce_after_single_product', 'kadence_child_single_product_sidebar', 10 );	
+add_action( 'woocommerce_after_single_product_summary', 'kadence_child_single_product_sidebar', 10 );	

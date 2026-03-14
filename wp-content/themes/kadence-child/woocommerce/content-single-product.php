@@ -27,41 +27,41 @@ if ( post_password_required() ) {
 }
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
-
-	<div class="single-product-title">
-		<?php wc_get_template( 'single-product/title.php' ); ?>
-	</div>
-
-	<div class="single-product-layout">
-
-		<div class="single-product-main">
-			<?php
-			/**
-			 * Hook: woocommerce_before_single_product_summary.
-			 *
-			 * @hooked woocommerce_show_product_sale_flash - 10
-			 * @hooked woocommerce_show_product_images   - 20
-			 */
-			do_action( 'woocommerce_before_single_product_summary' );
-			?>
-
-			<div class="single-product-description">
-				<?php woocommerce_product_description_tab(); ?>
-			</div>
-
-			<?php kadence_child_single_product_about_instructors(); ?>
-
-			<div class="single-product-reviews">
-				<?php
-				kadence_child_setup_product_reviews_query();
-				wc_get_template( 'single-product-reviews.php' );
-				?>
-			</div>
+	<div class="single-product-container">
+		<div class="single-product-title">
+			<?php wc_get_template( 'single-product/title.php' ); ?>
 		</div>
 
-	</div>
-	<div class="clear"></div>
+		<div class="single-product-layout">
 
+			<div class="single-product-main">
+				<?php
+				/**
+				 * Hook: woocommerce_before_single_product_summary.
+				 *
+				 * @hooked woocommerce_show_product_sale_flash - 10
+				 * @hooked woocommerce_show_product_images   - 20
+				 */
+				do_action( 'woocommerce_before_single_product_summary' );
+				?>
+
+				<div class="single-product-description">
+					<?php woocommerce_product_description_tab(); ?>
+				</div>
+
+				<?php kadence_child_single_product_about_instructors(); ?>
+
+				<div class="single-product-reviews">
+					<?php
+					kadence_child_setup_product_reviews_query();
+					wc_get_template( 'single-product-reviews.php' );
+					?>
+				</div>
+			</div>
+
+		</div>
+		<div class="clear"></div>
+	</div>
 	<?php
 	/**
 	 * Hook: woocommerce_after_single_product_summary.
