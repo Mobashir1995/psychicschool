@@ -144,18 +144,55 @@ if ( ! function_exists( 'psycics_woocommerce_account_downloads_columns' ) ) {
 	add_filter( 'woocommerce_account_downloads_columns', 'psycics_woocommerce_account_downloads_columns', 99, 1 );
 }
 
-if ( ! function_exists( 'filter_function_name_5824' ) ) {
+if ( ! function_exists( 'psychicschool_my_account_menu_items' ) ) {
 	/**
-	 * Placeholder filter for account menu items (currently passthrough).
+	 * Customize My Account menu: order and labels (theme-agnostic).
+	 * Uses woocommerce_account_menu_items so any theme can use the default navigation template.
 	 *
-	 * @param array $items      Menu items.
-	 * @param array $endpoints  Endpoints.
+	 * @param array $items     Menu items (endpoint => label).
+	 * @param array $endpoints Endpoints (endpoint => slug).
 	 * @return array
 	 */
-	function filter_function_name_5824( $items, $endpoints ) {
-		return $items;
+	function psychicschool_my_account_menu_items( $items, $endpoints ) {
+		$order = array(
+			'dashboard',
+			'orders',
+			'bookings',
+			'members-area',
+			'downloads',
+			'fs-affiliates-section',
+			'edit-account',
+			'customer-logout',
+		);
+
+		$labels = array(
+			'dashboard'             => __( 'Dashboard', 'psychicschool-functionalities' ),
+			'orders'                => __( 'Orders', 'psychicschool-functionalities' ),
+			'bookings'              => __( 'Bookings', 'psychicschool-functionalities' ),
+			'members-area'          => __( 'Classrooms', 'psychicschool-functionalities' ),
+			'downloads'             => __( 'Workshops', 'psychicschool-functionalities' ),
+			'fs-affiliates-section' => __( 'Partnership', 'psychicschool-functionalities' ),
+			'edit-account'          => __( 'User Info', 'psychicschool-functionalities' ),
+			'customer-logout'       => __( 'Logout', 'psychicschool-functionalities' ),
+		);
+
+		$ordered = array();
+		foreach ( $order as $endpoint ) {
+			if ( isset( $items[ $endpoint ] ) ) {
+				$ordered[ $endpoint ] = isset( $labels[ $endpoint ] ) ? $labels[ $endpoint ] : $items[ $endpoint ];
+			}
+		}
+
+		// Append any items added by other plugins that are not in our order.
+		foreach ( $items as $endpoint => $label ) {
+			if ( ! isset( $ordered[ $endpoint ] ) ) {
+				$ordered[ $endpoint ] = isset( $labels[ $endpoint ] ) ? $labels[ $endpoint ] : $label;
+			}
+		}
+
+		return $ordered;
 	}
 
-	add_filter( 'woocommerce_account_menu_items', 'filter_function_name_5824', 10, 2 );
+	add_filter( 'woocommerce_account_menu_items', 'psychicschool_my_account_menu_items', 20, 2 );
 }
 
