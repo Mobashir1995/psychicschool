@@ -95,3 +95,21 @@ class Psychicschool_Functionalities {
 }
 
 new Psychicschool_Functionalities();
+
+/**
+ * Flush rewrite rules on plugin activation so custom My Account endpoint (fs-affiliates-section) is recognized.
+ */
+function psychicschool_functionalities_activation() {
+	// Register endpoint before flushing so it is included in the new rules.
+	add_rewrite_endpoint( 'fs-affiliates-section', EP_ROOT | EP_PAGES );
+	flush_rewrite_rules();
+}
+register_activation_hook( __FILE__, 'psychicschool_functionalities_activation' );
+
+/**
+ * Flush rewrite rules on deactivation to remove the custom endpoint from rules.
+ */
+function psychicschool_functionalities_deactivation() {
+	flush_rewrite_rules();
+}
+register_deactivation_hook( __FILE__, 'psychicschool_functionalities_deactivation' );

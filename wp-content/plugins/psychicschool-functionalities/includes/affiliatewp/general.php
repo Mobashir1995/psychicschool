@@ -61,6 +61,22 @@ if ( ! function_exists( 'psycics_wc_my_account_register_endpoints' ) ) {
 	add_action( 'init', 'psycics_wc_my_account_register_endpoints' );
 }
 
+if ( ! function_exists( 'psychicschool_add_fs_affiliates_section_query_var' ) ) {
+	/**
+	 * Expose the fs-affiliates-section endpoint as a query var so WordPress and WooCommerce recognize it.
+	 * Without this, the URL /my-account/fs-affiliates-section may not set the query var and can redirect to homepage.
+	 *
+	 * @param array $vars Query vars.
+	 * @return array
+	 */
+	function psychicschool_add_fs_affiliates_section_query_var( $vars ) {
+		$vars[] = 'fs-affiliates-section';
+		return $vars;
+	}
+
+	add_filter( 'query_vars', 'psychicschool_add_fs_affiliates_section_query_var', 0 );
+}
+
 if ( ! function_exists( 'psycics_affwp_custom_affiliate_tab' ) ) {
 	/**
 	 * Add a custom AffiliateWP tab that links to Woo My Account.
