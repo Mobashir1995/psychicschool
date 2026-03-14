@@ -803,14 +803,18 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   border-right: 1px solid #fff;
 }
 .woocommerce-account .account-navigation-wrap .is-active.menu-item a,
-.woocommerce table.my_account_orders .button{
+.woocommerce table.my_account_orders .button,
+.woocommerce table.my_account_bookings .button,
+.woocommerce table.woocommerce-table a.button,
+.woocommerce table.shop_table .button{
   background: #09dc77;
   border-bottom-color: #09dc77 !important;
 }
 .woocommerce .shop_table>tbody>tr td {
   padding: 20px 8px;
 }
- .woocommerce table.my_account_orders .button {
+ .woocommerce table.my_account_orders .button,
+ .woocommerce table.my_account_bookings .button{
    text-transform: uppercase;
    font-size: 14px;
    font-weight: 700;
@@ -819,11 +823,18 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
    padding: 15px 12px; 
    margin-right: 5px
  }
-.woocommerce table.my_account_orders {
+.woocommerce table.my_account_orders,
+.woocommerce table.shop_table,
+.woocommerce table.my_account_bookings{
   font-size: inherit !important;
 }
-.my_account_orders .order-actions {
+.my_account_orders .order-actions,
+.woocommerce-table--order-downloads thead .download-file{
   text-align: right
+}
+.woocommerce-table--order-downloads tbody .download-file {
+  text-align: right;
+  text-transform: uppercase;
 }
 /* STM Experts Grid – Kadence child */
 .kadence_experts_grid_item .expert-card {
