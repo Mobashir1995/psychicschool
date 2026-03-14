@@ -192,3 +192,19 @@ add_action( 'woocommerce_init', function () {
 	add_filter( 'woocommerce_account_menu_items', 'psychicschool_my_account_menu_items', 999, 2 );
 }, 20 );
 
+if ( ! function_exists( 'psychicschool_remove_my_orders_pay_action' ) ) {
+	/**
+	 * Remove the Pay button from My Account > Orders actions.
+	 *
+	 * @param array    $actions Order actions (pay, view, cancel).
+	 * @param WC_Order $order   Order instance.
+	 * @return array
+	 */
+	function psychicschool_remove_my_orders_pay_action( $actions, $order ) {
+		unset( $actions['pay'] );
+		return $actions;
+	}
+
+	add_filter( 'woocommerce_my_account_my_orders_actions', 'psychicschool_remove_my_orders_pay_action', 10, 2 );
+}
+
