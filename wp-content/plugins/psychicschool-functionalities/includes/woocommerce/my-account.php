@@ -192,7 +192,10 @@ if ( ! function_exists( 'psychicschool_my_account_menu_items' ) ) {
 
 		return $ordered;
 	}
-
-	add_filter( 'woocommerce_account_menu_items', 'psychicschool_my_account_menu_items', 20, 2 );
 }
+
+// Register filter after WooCommerce is loaded so it reliably runs; priority 999 so custom menu wins.
+add_action( 'woocommerce_init', function () {
+	add_filter( 'woocommerce_account_menu_items', 'psychicschool_my_account_menu_items', 999, 2 );
+}, 20 );
 
