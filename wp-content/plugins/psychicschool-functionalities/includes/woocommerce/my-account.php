@@ -180,10 +180,22 @@ if ( ! function_exists( 'psychicschool_my_account_menu_items' ) ) {
 			'customer-logout'       => __( 'Logout', 'psychicschool-functionalities' ),
 		);
 
+		// Endpoints we register ourselves (in affiliatewp/general.php); add to menu even if not in $items.
+		$custom_endpoints = array( 'fs-affiliates-section' );
+
 		$ordered = array();
 		foreach ( $order as $endpoint ) {
 			if ( isset( $items[ $endpoint ] ) ) {
 				$ordered[ $endpoint ] = isset( $labels[ $endpoint ] ) ? $labels[ $endpoint ] : $items[ $endpoint ];
+			} elseif ( in_array( $endpoint, $custom_endpoints, true ) && isset( $labels[ $endpoint ] ) ) {
+				$ordered[ $endpoint ] = $labels[ $endpoint ];
+			}
+		}
+
+		// Append any items added by other plugins that are not in our order.
+		foreach ( $items as $endpoint => $label ) {
+			if ( ! isset( $ordered[ $endpoint ] ) ) {
+				$ordered[ $endpoint ] = isset( $labels[ $endpoint ] ) ? $labels[ $endpoint ] : $label;
 			}
 		}
 
