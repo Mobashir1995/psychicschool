@@ -28,14 +28,14 @@ a {
 .entry.single-entry {
     box-shadow: none !important;
 }
-.transparent-header .header-navigation .header-menu-container > ul > li.menu-item.current-menu-item > a,
-.transparent-header .header-menu-container > ul > li.menu-item.current_page_item > a {
+.header-navigation .header-menu-container > ul > li.menu-item.current-menu-item > a,
+.header-menu-container > ul > li.menu-item.current_page_item > a {
   position: relative;
 }
-.transparent-header .header-navigation .header-menu-container > ul > li.menu-item.current-menu-item > a:before,
-.transparent-header .header-menu-container > ul > li.menu-item.current_page_item > a:before,
-.transparent-header .header-navigation .header-menu-container > ul > li.menu-item > a:before,
-.transparent-header .header-menu-container > ul > li.menu-item > a:before{
+.header-navigation .header-menu-container > ul > li.menu-item.current-menu-item > a:before,
+.header-menu-container > ul > li.menu-item.current_page_item > a:before,
+.header-navigation .header-menu-container > ul > li.menu-item > a:before,
+.header-menu-container > ul > li.menu-item > a:before{
   content: '';
   position: absolute;
   left: 8px;
@@ -45,25 +45,25 @@ a {
   background: #196ec0;
   transition: all 500ms;
 }
-.transparent-header .header-navigation .header-menu-container > ul > li.menu-item > a:before,
-.transparent-header .header-menu-container > ul > li.menu-item > a:before {
+.header-navigation .header-menu-container > ul > li.menu-item > a:before,
+.header-menu-container > ul > li.menu-item > a:before {
   right: 50%;
   left: 50%;
 }
-.transparent-header .header-navigation .header-menu-container > ul > li.menu-item:not(.current-menu-item) > a:hover:before,
-.transparent-header .header-menu-container > ul > li.menu-item:not(.current-menu-item) > a:hover:before {
+.header-navigation .header-menu-container > ul > li.menu-item:not(.current-menu-item) > a:hover:before,
+.header-menu-container > ul > li.menu-item:not(.current-menu-item) > a:hover:before {
   right: 8px;
   left: 8px;
   background: #0AED80 ;
 }
-.transparent-header .header-navigation .header-menu-container > ul > li.menu-item:not(.current-menu-item) > a:hover:after,
-.transparent-header .header-menu-container > ul > li.menu-item:not(.current-menu-item) > a:hover:after{
+.header-navigation .header-menu-container > ul > li.menu-item:not(.current-menu-item) > a:hover:after,
+.header-menu-container > ul > li.menu-item:not(.current-menu-item) > a:hover:after{
   border-color: transparent transparent #0AED80;
 }
-.transparent-header .header-navigation .header-menu-container > ul > li.menu-item.current-menu-item > a:after,
-.transparent-header .header-menu-container > ul > li.menu-item.current_page_item > a:after,
-.transparent-header .header-navigation .header-menu-container > ul > li.menu-item > a:hover:after,
-.transparent-header .header-menu-container > ul > li.menu-item > a:hover:after{
+.header-navigation .header-menu-container > ul > li.menu-item.current-menu-item > a:after,
+.header-menu-container > ul > li.menu-item.current_page_item > a:after,
+.header-navigation .header-menu-container > ul > li.menu-item > a:hover:after,
+.header-menu-container > ul > li.menu-item > a:hover:after{
   content: "";
   position: absolute;
   bottom: 3px;
@@ -72,6 +72,10 @@ a {
   border-style: solid;
   border-width: 0 3px 3px;
   border-color: transparent transparent #196ec0;
+}
+.transparent-header .header-navigation .header-menu-container > ul > li.menu-item.current-menu-item > a:after,
+.transparent-header .header-menu-container > ul > li.menu-item.current_page_item > a:after {
+  bottom: 4px;
 }
 /* Select2 Style */
 .woocommerce-archive-action-section .select2{
