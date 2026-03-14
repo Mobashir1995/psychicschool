@@ -259,6 +259,77 @@ function kadence_child_setup_product_reviews_query() {
 }
 
 /**
+ * Single product: output the "About Instructor(s)" section.
+ * Mirrors MasterStudy's if/else structure:
+ *   - is_array( $experts )                               → multiple instructors
+ *   - ! empty( $experts ) && 'no_expert' !== $experts   → single instructor
+ * Reads the 'course_expert' post meta (post ID or array of post IDs).
+ * Cleans up MasterStudy's Bootstrap/clearfix markup: uses class="clear", minimal DOM.
+ */
+function kadence_child_single_product_about_instructors() {
+	$experts = get_post_meta( get_the_ID(), 'course_expert', true );
+
+	if ( empty( $experts ) || 'no_expert' === $experts ) {
+		return;
+	}
+
+	if ( is_array( $experts ) && in_array( 'no_expert', $experts, true ) ) {
+		return;
+	}
+
+	$socials      = array( 'facebook', 'linkedin', 'twitter', 'google-plus', 'youtube-play' );
+	$is_multiple  = is_array( $experts );
+	$experts_list = $is_multiple ? $experts : array( $experts );
+	?>
+
+	<div class="single-product-instructors">
+
+		<h3 class="instructors-title">
+			<?php echo $is_multiple ? esc_html__( 'About Instructors', 'kadence-child' ) : esc_html__( 'About Instructor', 'kadence-child' ); ?>
+		</h3>
+
+		<?php foreach ( $experts_list as $expert_id ) :
+			$teacher_post = get_post( $expert_id );
+			$teacher_job  = get_post_meta( $expert_id, 'expert_sphere', true );
+			$expert_image = wp_get_attachment_image_src( get_post_thumbnail_id( $expert_id ), 'thumbnail', false );
+		?>
+			<div class="instructor-card">
+
+				<a href="<?php echo esc_url( get_the_permalink( $expert_id ) ); ?>">
+					<?php if ( ! empty( $expert_image[0] ) ) : ?>
+						<img src="<?php echo esc_url( $expert_image[0] ); ?>" alt="<?php echo esc_attr( get_the_title( $expert_id ) ); ?>" />
+					<?php endif; ?>
+					<div class="instructor-name"><?php echo esc_html( get_the_title( $expert_id ) ); ?></div>
+					<?php if ( ! empty( $teacher_job ) ) : ?>
+						<span class="instructor-job"><?php echo esc_html( $teacher_job ); ?></span>
+					<?php endif; ?>
+				</a>
+
+				<div class="instructor-socials">
+					<?php foreach ( $socials as $social ) :
+						$social_url = get_post_meta( $expert_id, $social, true );
+						if ( empty( $social_url ) ) {
+							continue;
+						}
+					?>
+						<a href="<?php echo esc_url( $social_url ); ?>" class="instructor-social-<?php echo esc_attr( $social ); ?>">
+							<i class="fab fa-<?php echo esc_attr( str_replace( 'youtube-play', 'youtube', $social ) ); ?>"></i>
+						</a>
+					<?php endforeach; ?>
+				</div>
+
+				<?php if ( ! empty( $teacher_post->post_excerpt ) ) : ?>
+					<div class="instructor-bio"><?php echo esc_html( $teacher_post->post_excerpt ); ?></div>
+				<?php endif; ?>
+
+			</div>
+		<?php endforeach; ?>
+
+	</div>
+	<?php
+}
+
+/**
  * Single product: remove tabs and strip unwanted items from the right-column summary.
  * Title is rendered full-width in the template; description/reviews are rendered
  * directly in the left column, so the tab system and those summary hooks are not needed.
