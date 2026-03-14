@@ -17,11 +17,11 @@ global $product;
 
 // Check if the product is a valid WooCommerce product and ensure its visibility before proceeding.
 if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
-    return;
+	return;
 }
 ?>
 <li <?php wc_product_class( '', $product ); ?>>
-<?php
+	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
 	 *
@@ -60,4 +60,4 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 	 */
 	do_action( 'woocommerce_after_shop_loop_item' );
 	?>
-    </li>
+</li>
