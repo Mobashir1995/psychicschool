@@ -781,7 +781,8 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
 }
 
 /* WooCommerce My Account */
-.woocommerce-MyAccount-navigation ul {
+.woocommerce-MyAccount-navigation ul,
+#affwp-affiliate-dashboard-tabs{
   display: table!important;
   table-layout: fixed;
   width: 100%;
@@ -790,11 +791,14 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   margin: 0 0 30px
 }
 
-.woocommerce-MyAccount-navigation ul>li {
+.woocommerce-MyAccount-navigation ul>li,
+#affwp-affiliate-dashboard-tabs li{
   display: table-cell
 }
-.woocommerce-account .account-navigation-wrap .menu-item a{
+.woocommerce-account .account-navigation-wrap .menu-item a,
+#affwp-affiliate-dashboard-tabs a{
   font-size: 12px;
+  font-weight: 400;
   text-transform: uppercase;
   padding: 12px 20px !important;
   text-align: center;
@@ -802,11 +806,20 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   color: #fff;
   border-right: 1px solid #fff;
 }
+#affwp-affiliate-dashboard-tabs a {
+  font-size: 14px;
+}
+#affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs li{
+  padding: 0;
+  margin: 0;
+}
+
 .woocommerce-account .account-navigation-wrap .is-active.menu-item a,
 .woocommerce table.my_account_orders .button,
 .woocommerce table.my_account_bookings .button,
 .woocommerce table.woocommerce-table a.button,
-.woocommerce table.shop_table .button{
+.woocommerce table.shop_table .button,
+#affwp-affiliate-dashboard-tabs .active a{
   background: #09dc77;
   border-bottom-color: #09dc77 !important;
 }
