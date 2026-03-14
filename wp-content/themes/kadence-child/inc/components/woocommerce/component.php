@@ -233,3 +233,21 @@ function kadence_child_woo_archive_product_see_more_button() {
 	</div>
 	<?php
 }
+
+/**
+ * Single product: remove tabs and strip unwanted items from the right-column summary.
+ * Title is rendered full-width in the template; description/reviews are rendered
+ * directly in the left column, so the tab system and those summary hooks are not needed.
+ */
+function kadence_child_single_product_summary_hooks() {
+	// Remove the tabs UI — description and reviews are output directly in the template.
+	remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
+
+	// Remove items from the right-column summary that are placed elsewhere or not shown.
+	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
+	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10 );
+	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
+}
+add_action( 'woocommerce_init', 'kadence_child_single_product_summary_hooks' );
