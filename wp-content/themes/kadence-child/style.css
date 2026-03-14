@@ -364,12 +364,6 @@ body.architecture .icon_box p{
   color: #efb467;
 }
 
-/* WooCommerce */
-.woocommerce-account .account-navigation-wrap .woocommerce-MyAccount-navigation-link a {
-  background: #357cd2;
-  color: #fff;
-}
-
 /* STM Multy Separator – Kadence child */
 .kadence_multy_separator {
   position: relative;
@@ -787,6 +781,18 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
 }
 
 /* WooCommerce My Account */
+.woocommerce-MyAccount-navigation ul {
+  display: table!important;
+  table-layout: fixed;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px
+}
+
+.woocommerce-MyAccount-navigation ul>li {
+  display: table-cell
+}
 .woocommerce-account .account-navigation-wrap .menu-item a{
   font-size: 12px;
   text-transform: uppercase;
@@ -796,11 +802,25 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   color: #fff;
   border-right: 1px solid #fff;
 }
-.woocommerce-account .account-navigation-wrap .is-active.menu-item a {
-  background: #09dc77; 
+.woocommerce-account .account-navigation-wrap .is-active.menu-item a,
+.woocommerce table.my_account_orders .button{
+  background: #09dc77;
   border-bottom-color: #09dc77 !important;
 }
-
+.woocommerce .shop_table>tbody>tr td {
+  padding: 20px 8px;
+}
+ .woocommerce table.my_account_orders .button {
+   text-transform: uppercase;
+   font-size: 14px;
+   font-weight: 700;
+   min-width: 135px;
+   text-align: center;
+   padding: 15px 12px; 
+ }
+.woocommerce table.my_account_orders {
+  font-size: inherit !important;
+}
 /* STM Experts Grid – Kadence child */
 .kadence_experts_grid_item .expert-card {
   display: flex;
