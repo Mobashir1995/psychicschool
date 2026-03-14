@@ -33,7 +33,9 @@ a {
   position: relative;
 }
 .transparent-header .header-navigation .header-menu-container > ul > li.menu-item.current-menu-item > a:before,
-.transparent-header .header-menu-container > ul > li.menu-item.current_page_item > a:before {
+.transparent-header .header-menu-container > ul > li.menu-item.current_page_item > a:before,
+.transparent-header .header-navigation .header-menu-container > ul > li.menu-item > a:before,
+.transparent-header .header-menu-container > ul > li.menu-item > a:before{
   content: '';
   position: absolute;
   left: 8px;
@@ -41,9 +43,27 @@ a {
   right: 8px;
   height: 3px;
   background: #196ec0;
+  transition: all 500ms;
+}
+.transparent-header .header-navigation .header-menu-container > ul > li.menu-item > a:before,
+.transparent-header .header-menu-container > ul > li.menu-item > a:before {
+  right: 50%;
+  left: 50%;
+}
+.transparent-header .header-navigation .header-menu-container > ul > li.menu-item:not(.current-menu-item) > a:hover:before,
+.transparent-header .header-menu-container > ul > li.menu-item:not(.current-menu-item) > a:hover:before {
+  right: 8px;
+  left: 8px;
+  background: #0AED80 ;
+}
+.transparent-header .header-navigation .header-menu-container > ul > li.menu-item:not(.current-menu-item) > a:hover:after,
+.transparent-header .header-menu-container > ul > li.menu-item:not(.current-menu-item) > a:hover:after{
+  border-color: transparent transparent #0AED80;
 }
 .transparent-header .header-navigation .header-menu-container > ul > li.menu-item.current-menu-item > a:after,
-.transparent-header .header-menu-container > ul > li.menu-item.current_page_item > a:after{
+.transparent-header .header-menu-container > ul > li.menu-item.current_page_item > a:after,
+.transparent-header .header-navigation .header-menu-container > ul > li.menu-item > a:hover:after,
+.transparent-header .header-menu-container > ul > li.menu-item > a:hover:after{
   content: "";
   position: absolute;
   bottom: 3px;
