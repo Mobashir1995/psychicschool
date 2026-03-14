@@ -54,10 +54,13 @@ a {
 .header-menu-container > ul > li.menu-item:not(.current-menu-item) > a:hover:before {
   right: 8px;
   left: 8px;
+}
+.transparent-header .header-navigation .header-menu-container > ul > li.menu-item:not(.current-menu-item) > a:hover:before,
+.transparent-header .header-menu-container > ul > li.menu-item:not(.current-menu-item) > a:hover:before {
   background: #0AED80 ;
 }
-.header-navigation .header-menu-container > ul > li.menu-item:not(.current-menu-item) > a:hover:after,
-.header-menu-container > ul > li.menu-item:not(.current-menu-item) > a:hover:after{
+.transparent-header .header-navigation .header-menu-container > ul > li.menu-item:not(.current-menu-item) > a:hover:after,
+.transparent-header .header-menu-container > ul > li.menu-item:not(.current-menu-item) > a:hover:after{
   border-color: transparent transparent #0AED80;
 }
 .header-navigation .header-menu-container > ul > li.menu-item.current-menu-item > a:after,
@@ -72,10 +75,6 @@ a {
   border-style: solid;
   border-width: 0 3px 3px;
   border-color: transparent transparent #196ec0;
-}
-.transparent-header .header-navigation .header-menu-container > ul > li.menu-item.current-menu-item > a:after,
-.transparent-header .header-menu-container > ul > li.menu-item.current_page_item > a:after {
-  bottom: 4px;
 }
 /* Select2 Style */
 .woocommerce-archive-action-section .select2{
