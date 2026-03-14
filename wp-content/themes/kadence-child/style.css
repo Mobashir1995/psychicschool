@@ -822,7 +822,8 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
 #affwp-affiliate-dashboard-tabs .active a,
 #affwp-affiliate-dashboard-tabs a:hover,
 #affwp-affiliate-dashboard .button,
-.affwp-modal .button{
+.affwp-modal .button,
+#affwp-creatives-modal .button{
   background: #09dc77;
   border-bottom-color: #09dc77 !important;
 }
@@ -832,7 +833,8 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
  .woocommerce table.my_account_orders .button,
  .woocommerce table.my_account_bookings .button,
 #affwp-affiliate-dashboard .button,
-.affwp-modal .button{
+.affwp-modal .button,
+#affwp-creatives-modal .button{
    text-transform: uppercase;
    font-size: 14px;
    font-weight: 700;
@@ -858,8 +860,9 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   text-align: right;
   text-transform: uppercase;
 }
-.affwp-affiliate-link__display .affwp-affiliate-link__input {
-    background: #f0f2f5;
+.affwp-affiliate-link__display .affwp-affiliate-link__input,
+#affwp-creative-html-code {
+  background: #f0f2f5;
   border: 0;
 }
 /* STM Experts Grid – Kadence child */
