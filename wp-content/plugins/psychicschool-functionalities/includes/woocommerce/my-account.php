@@ -183,13 +183,6 @@ if ( ! function_exists( 'psychicschool_my_account_menu_items' ) ) {
 			}
 		}
 
-		// Append any items added by other plugins that are not in our order.
-		foreach ( $items as $endpoint => $label ) {
-			if ( ! isset( $ordered[ $endpoint ] ) ) {
-				$ordered[ $endpoint ] = isset( $labels[ $endpoint ] ) ? $labels[ $endpoint ] : $label;
-			}
-		}
-
 		return $ordered;
 	}
 }
