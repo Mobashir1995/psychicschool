@@ -346,3 +346,24 @@ function kadence_child_single_product_summary_hooks() {
 	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
 }
 add_action( 'woocommerce_init', 'kadence_child_single_product_summary_hooks' );
+
+function kadence_child_single_product_sidebar(){
+	?>
+		<div class="single-product-sidebar">
+			<div class="summary entry-summary">
+				<?php
+				/**
+				 * Hook: woocommerce_single_product_summary.
+				 * Title, rating, excerpt, meta and sharing are removed via component.php.
+				 *
+				 * @hooked woocommerce_template_single_price        - 10
+				 * @hooked woocommerce_template_single_add_to_cart  - 30
+				 * @hooked WC_Structured_Data::generate_product_data() - 60
+				 */
+				do_action( 'woocommerce_single_product_summary' );
+				?>
+			</div>
+		</div>
+	<?php
+}
+add_action( 'woocommerce_after_single_product_summary', 'kadence_child_single_product_sidebar', 10 );	
