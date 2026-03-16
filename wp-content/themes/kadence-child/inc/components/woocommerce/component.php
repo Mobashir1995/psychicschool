@@ -369,3 +369,11 @@ function kadence_child_single_product_sidebar(){
 add_action( 'woocommerce_after_single_product_summary', 'kadence_child_single_product_sidebar', 10 );	
 
 add_filter( 'woocommerce_product_description_heading', '__return_empty_string', 10 );
+
+// Force quantity = 1 and hide the quantity input on single product pages.
+add_filter( 'woocommerce_is_sold_individually', '__return_true' );
+
+// Output a "Price" label just before the price in the sidebar summary.
+add_action( 'woocommerce_single_product_summary', function() {
+	echo '<p class="single-product-price-label">' . esc_html__( 'Price', 'kadence-child' ) . '</p>';
+}, 9 );
