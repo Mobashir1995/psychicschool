@@ -84,23 +84,12 @@ $experts = get_post_meta( get_the_ID(), 'course_expert', true );
 			if ( $rating_count > 0 ) :
 		?>
 			<div class="single-product-meta-item single-product-rating-info">
-				<div class="single-product-meta-icon">
-					<i class="fa fa-star"></i>
-				</div>
 				<div class="single-product-meta-content">
-					<h3><?php echo esc_html( round( $average, 1 ) ); ?></h3>
-					<a href="#reviews">
-						<?php echo esc_html( sprintf(
-							/* translators: %d: number of reviews */
-							_n( '%d Review', '%d Reviews', $rating_count, 'kadence-child' ),
-							$rating_count
-						) ); ?>
-					</a>
+					<?php woocommerce_template_single_rating(); ?>
 				</div>
 			</div>
 		<?php endif; ?>
 
-		<?php woocommerce_template_single_rating(); ?>
 		</div>
 
 		<div class="single-product-main">
