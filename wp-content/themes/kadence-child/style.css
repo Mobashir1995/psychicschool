@@ -317,6 +317,22 @@ body.architecture .icon_box p{
   }
 }
 
+/* WooCommerce Product Page */
+.single-product .entry-content-wrap.product {
+  display: flex;
+}
+.single-product-layout {
+  width: 75%;
+}
+.single-product-sidebar {
+  width: 25%;
+}
+.single-product .woocommerce-product-gallery {
+  width: 100% !important;
+}
+.single-product .woocommerce-product-gallery img {
+  width: 100%;
+}
 
 /* WooCommerce Product Boxes */
 .woocommerce ul.products li.product,

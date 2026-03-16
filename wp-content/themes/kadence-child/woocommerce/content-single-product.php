@@ -46,6 +46,8 @@ if ( post_password_required() ) {
 				<?php woocommerce_product_description_tab(); ?>
 			</div>
 
+			<?php echo do_shortcode( '[stm_multy_separator]' ); ?>
+
 			<?php kadence_child_single_product_about_instructors(); ?>
 
 			<div class="single-product-reviews">
