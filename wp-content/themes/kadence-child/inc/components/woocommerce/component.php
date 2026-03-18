@@ -386,7 +386,7 @@ add_action( 'woocommerce_single_product_summary', function() {
  */
 function kadence_child_single_product_course_meta() {
 	$fields = array(
-		'status'      => array(
+		'course_status'      => array(
 			'label' => __( 'Status', 'kadence-child' ),
 			'icon'  => 'fa fa-signal',
 		),
