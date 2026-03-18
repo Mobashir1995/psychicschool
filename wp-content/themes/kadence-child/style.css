@@ -838,7 +838,7 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
 }
 /* Single Product Instructor Block */
 .single-product-instructors {
-  margin-top: 30px;
+  margin: 30px 0;
 }
 .instructors-title {
   font-size: 18px;
