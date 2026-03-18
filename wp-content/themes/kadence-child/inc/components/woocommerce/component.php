@@ -1,4 +1,6 @@
 <?php
+require_once get_stylesheet_directory() . '/inc/components/woocommerce/product-rating-summary.php';
+
 /**
  * Remove Kadence WooCommerce component programmatically
  * 

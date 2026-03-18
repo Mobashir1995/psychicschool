@@ -111,12 +111,18 @@ $experts = get_post_meta( get_the_ID(), 'course_expert', true );
 
 			<?php kadence_child_single_product_about_instructors(); ?>
 
-			<div class="single-product-reviews">
-				<?php
-				kadence_child_setup_product_reviews_query();
-				wc_get_template( 'single-product-reviews.php' );
-				?>
-			</div>
+		<div class="single-product-reviews">
+			<?php
+			kadence_child_setup_product_reviews_query();
+			/**
+			 * Hook: kadence_child_before_product_reviews.
+			 *
+			 * @hooked kadence_child_product_rating_summary - 10
+			 */
+			do_action( 'kadence_child_before_product_reviews' );
+			wc_get_template( 'single-product-reviews.php' );
+			?>
+		</div>
 		</div>
 	</div>
 	<?php
