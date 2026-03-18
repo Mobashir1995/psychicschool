@@ -878,6 +878,9 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   float: none;
   width: 100%;
 }
+.woocommerce #reviews #comments ol.commentlist {
+  margin-bottom: 0;
+}
 .woocommerce #reviews #comments ol.commentlist li.review .comment-text {
   margin: 0;
   border: 0;
@@ -916,6 +919,30 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   font-size: 0.7em;
   color: #777;
   padding-top: 2px;
+}
+.woocommerce #review_form #respond .stars {
+  color: #efb467;
+  font-size: 22px;
+  margin: 5px 0 10px 0;
+}
+.woocommerce #review_form #respond textarea{
+  background-color: #f0f2f5;
+  border: 1px solid #e1e2e4;
+  color: #777;
+  font-size: 13px;
+  height: 160px;
+}
+.woocommerce #review_form #respond .form-submit input {
+  background: #0aed80;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  min-width: 135px;
+  padding: 12px 20px;
+}
+.woocommerce #review_form #respond .comment-form-comment {
+  margin: 0;
+  margin-bottom: 10px
 }
 /* WooCommerce Archive Page */
 .woocommerce-products-header__title {
