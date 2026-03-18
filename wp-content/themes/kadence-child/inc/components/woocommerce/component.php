@@ -288,34 +288,42 @@ function kadence_child_single_product_about_instructors() {
 			<?php echo $is_multiple ? esc_html__( 'About Instructors', 'kadence-child' ) : esc_html__( 'About Instructor', 'kadence-child' ); ?>
 		</h3>
 
-		<?php foreach ( $experts_list as $expert_id ) :
+		<?php
+		$last_expert_id = end( $experts_list );
+		foreach ( $experts_list as $expert_id ) :
 			$teacher_post = get_post( $expert_id );
 			$teacher_job  = get_post_meta( $expert_id, 'expert_sphere', true );
-			$expert_image = wp_get_attachment_image_src( get_post_thumbnail_id( $expert_id ), 'thumbnail', false );
+			$expert_image = wp_get_attachment_image_src( get_post_thumbnail_id( $expert_id ), 'img-129-129', false );
+			$permalink = get_the_permalink( $expert_id );
 		?>
 			<div class="instructor-card">
-
-				<a href="<?php echo esc_url( get_the_permalink( $expert_id ) ); ?>">
-					<?php if ( ! empty( $expert_image[0] ) ) : ?>
-						<img src="<?php echo esc_url( $expert_image[0] ); ?>" alt="<?php echo esc_attr( get_the_title( $expert_id ) ); ?>" />
-					<?php endif; ?>
-					<div class="instructor-name"><?php echo esc_html( get_the_title( $expert_id ) ); ?></div>
-					<?php if ( ! empty( $teacher_job ) ) : ?>
-						<span class="instructor-job"><?php echo esc_html( $teacher_job ); ?></span>
-					<?php endif; ?>
-				</a>
-
-				<div class="instructor-socials">
-					<?php foreach ( $socials as $social ) :
-						$social_url = get_post_meta( $expert_id, $social, true );
-						if ( empty( $social_url ) ) {
-							continue;
-						}
-					?>
-						<a href="<?php echo esc_url( $social_url ); ?>" class="instructor-social-<?php echo esc_attr( $social ); ?>">
-							<i class="fab fa-<?php echo esc_attr( str_replace( 'youtube-play', 'youtube', $social ) ); ?>"></i>
+				<div class="instructor-card-top">
+					<a class="instructor-thumbnail" href="<?php echo esc_url( $permalink ); ?>">
+						<?php if ( ! empty( $expert_image[0] ) ) : ?>
+							<img src="<?php echo esc_url( $expert_image[0] ); ?>" alt="<?php echo esc_attr( get_the_title( $expert_id ) ); ?>" />
+						<?php endif; ?>
+					</a>
+					<div class="instructor-info">
+						<a class="instructor-name" href="<?php echo esc_url( $permalink ); ?>">
+							<?php echo esc_html( get_the_title( $expert_id ) ); ?>
 						</a>
-					<?php endforeach; ?>
+						<?php if ( ! empty( $teacher_job ) ) : ?>
+							<span class="instructor-job"><?php echo esc_html( $teacher_job ); ?></span>
+						<?php endif; ?>
+
+						<div class="instructor-socials">
+							<?php foreach ( $socials as $social ) :
+								$social_url = get_post_meta( $expert_id, $social, true );
+								if ( empty( $social_url ) ) {
+									continue;
+								}
+							?>
+								<a href="<?php echo esc_url( $social_url ); ?>" class="instructor-social-<?php echo esc_attr( $social ); ?>">
+									<i class="fab fa-<?php echo esc_attr( str_replace( 'youtube-play', 'youtube', $social ) ); ?>"></i>
+								</a>
+							<?php endforeach; ?>
+						</div>
+					</div>
 				</div>
 
 				<?php if ( ! empty( $teacher_post->post_excerpt ) ) : ?>
@@ -323,6 +331,11 @@ function kadence_child_single_product_about_instructors() {
 				<?php endif; ?>
 
 			</div>
+			<?php if ( $expert_id !== $last_expert_id ) : ?>
+			<div class="kadence_multy_separator_wrapper">
+				<div class="kadence_multy_separator"></div>
+			</div>
+			<?php endif; ?>
 		<?php endforeach; ?>
 
 	</div>
