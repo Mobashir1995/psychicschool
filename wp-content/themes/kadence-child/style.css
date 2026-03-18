@@ -846,18 +846,15 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   margin-bottom: 20px;
 }
 .instructor-card-top {
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
-.instructor-thumbnail {
-  float: left;
-  margin-right: 20px;
-}
-.instructor-thumbnail img{
+.instructor-thumbnail{
   max-width: 100px;
   border-radius: 100%;
-}
-.instructor-info {
-  float: right;
+  overflow: hidden;
+  margin-right: 20px
 }
 .instructor-name {
   font-size: 16px;
@@ -865,6 +862,12 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
 .instructor-job {
   color: #aaa;
   font-size: 13px;
+}
+.instructor-name, .instructor-job {
+  display: block;
+}
+.instructor-card .kadence_multy_separator {
+  margin: 30px 0;
 }
 /* WooCommerce Archive Page */
 .woocommerce-products-header__title {

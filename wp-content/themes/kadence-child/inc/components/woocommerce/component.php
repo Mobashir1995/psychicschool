@@ -329,13 +329,14 @@ function kadence_child_single_product_about_instructors() {
 				<?php if ( ! empty( $teacher_post->post_excerpt ) ) : ?>
 					<div class="instructor-bio"><?php echo esc_html( $teacher_post->post_excerpt ); ?></div>
 				<?php endif; ?>
+				
+				<?php if ( $expert_id !== $last_expert_id ) : ?>
+					<div class="kadence_multy_separator_wrapper">
+						<div class="kadence_multy_separator"></div>
+					</div>
+				<?php endif; ?>
 
 			</div>
-			<?php if ( $expert_id !== $last_expert_id ) : ?>
-			<div class="kadence_multy_separator_wrapper">
-				<div class="kadence_multy_separator"></div>
-			</div>
-			<?php endif; ?>
 		<?php endforeach; ?>
 
 	</div>
