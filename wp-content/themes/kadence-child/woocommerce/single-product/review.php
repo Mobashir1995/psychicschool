@@ -20,6 +20,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+
+global $comment;
+$verified = wc_review_is_from_verified_owner( $comment->comment_ID );
 ?>
 <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
 
@@ -36,21 +39,43 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<div class="comment-text">
 
+			<?php if ( '0' === $comment->comment_approved ) : ?>
+
+				<p class="meta">
+					<em class="woocommerce-review__awaiting-approval">
+						<?php esc_html_e( 'Your review is awaiting approval', 'woocommerce' ); ?>
+					</em>
+				</p>
+
+			<?php else : ?>
+
+				<p class="woocommerce-review__author-name">
+					<strong><?php comment_author(); ?></strong>
+					<?php if ( 'yes' === get_option( 'woocommerce_review_rating_verification_label' ) && $verified ) : ?>
+						<em class="woocommerce-review__verified verified"><?php esc_html_e( '(verified owner)', 'woocommerce' ); ?></em>
+					<?php endif; ?>
+				</p>
+
+				<div class="woocommerce-review__rating-time">
+					<?php
+					/**
+					 * The woocommerce_review_before_comment_meta hook.
+					 *
+					 * @hooked woocommerce_review_display_rating - 10
+					 */
+					do_action( 'woocommerce_review_before_comment_meta', $comment );
+					?>
+					<time class="woocommerce-review__published-date" datetime="<?php echo esc_attr( get_comment_date( 'c' ) ); ?>">
+						<?php
+						/* translators: %s: human-readable time difference, e.g. "7 years ago" */
+						echo esc_html( sprintf( __( '%s ago', 'woocommerce' ), human_time_diff( get_comment_time( 'U' ), current_time( 'timestamp' ) ) ) );
+						?>
+					</time>
+				</div>
+
+			<?php endif; ?>
+
 			<?php
-			/**
-			 * The woocommerce_review_before_comment_meta hook.
-			 *
-			 * @hooked woocommerce_review_display_rating - 10
-			 */
-			do_action( 'woocommerce_review_before_comment_meta', $comment );
-
-			/**
-			 * The woocommerce_review_meta hook.
-			 *
-			 * @hooked woocommerce_review_display_meta - 10
-			 */
-			do_action( 'woocommerce_review_meta', $comment );
-
 			do_action( 'woocommerce_review_before_comment_text', $comment );
 
 			/**
