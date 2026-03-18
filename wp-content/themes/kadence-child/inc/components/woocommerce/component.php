@@ -332,9 +332,7 @@ function kadence_child_single_product_about_instructors() {
 					<div class="instructor-bio"><?php echo esc_html( $teacher_post->post_excerpt ); ?></div>
 				<?php endif; ?>
 				
-				<div class="kadence_multy_separator_wrapper">
-					<div class="kadence_multy_separator"></div>
-				</div>
+				<?php echo do_shortcode( '[stm_multy_separator]' ); ?>
 
 			</div>
 		<?php endforeach; ?>
