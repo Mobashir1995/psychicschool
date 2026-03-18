@@ -583,6 +583,7 @@ body.architecture .icon_box p{
 }
 
 /* Kadence Child - Post List (based on MasterStudy) */
+.search-archive .kadence_post_list_meta_unit,
 .kadence_post_list_main_section_wrapper .kadence_post_list_meta_unit {
     position: relative;
     width: 50px;
@@ -680,6 +681,7 @@ body.architecture .icon_box p{
 }
 
 /* Blog Archive */
+ul.search-archive li.kadence_post_list_content_unit,
 ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   width: 100%;
   display: initial;
