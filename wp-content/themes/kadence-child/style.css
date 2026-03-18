@@ -1313,6 +1313,10 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
 .kadence_teachers_grid_item .teacher-content p{
   margin-bottom: 20px;
 }
+/* Single Post */
+.single-post .entry .post-thumbnail img{
+  width: 100%;
+}
 /* Sidebar */
 .primary-sidebar.widget-area .widget li a{
   padding: 4px 0;
