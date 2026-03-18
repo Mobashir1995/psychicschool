@@ -539,7 +539,7 @@ body.architecture .icon_box p{
   color: #efb467;
 }
 
-/* STM Multy Separator Ã¢â‚¬â€œ Kadence child */
+/* STM Multy Separator ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ Kadence child */
 .kadence_multy_separator {
   position: relative;
   width: 100%;
@@ -676,7 +676,7 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   padding-bottom: 30px;
 }
 
-/* Product Categories (Kadence Child Ã¢â‚¬â€œ no row/col) */
+/* Product Categories (Kadence Child ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ no row/col) */
 .kadence_product_categories_main_wrapper:not(.kadence_product_categories_view_carousel) {
   display: grid;
   gap: 20px;
@@ -881,10 +881,41 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
 .woocommerce #reviews #comments ol.commentlist li.review .comment-text {
   margin: 0;
   border: 0;
+  padding: 0;
 }
 .woocommerce #reviews #comments ol.commentlist li.review {
   border-bottom: 1px solid #e1e2e4;
   padding-bottom: 20px;
+}
+.woocommerce #reviews #comments ol.commentlist li.review .comment-text .woocommerce-review__author-name {
+  margin-bottom: 8px;
+}
+.woocommerce #reviews #comments ol.commentlist li.review .description {
+  font-size: 18px;
+  color: #555;
+  line-height: 22px;
+  margin-top: 15px;
+}
+.woocommerce-review__author-name .woocommerce-review__verified {
+  font-weight: 400;
+  font-style: italic;
+  font-size: 0.85em;
+  margin-left: 5px;
+}
+.woocommerce-review__author-name strong{
+  font-weight: 400;
+  font-size: 16px;
+}
+.woocommerce-review__rating-time {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+  /* align-items: center; */
+}
+.woocommerce-review__published-date {
+  font-size: 0.7em;
+  color: #777;
+  padding-top: 2px;
 }
 /* WooCommerce Archive Page */
 .woocommerce-products-header__title {
@@ -1087,7 +1118,7 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   background: #f0f2f5;
   border: 0;
 }
-/* STM Experts Grid Ã¢â‚¬â€œ Kadence child */
+/* STM Experts Grid ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ Kadence child */
 .kadence_experts_grid_item .expert-card {
   display: flex;
   border-radius: 4px;
@@ -1151,7 +1182,7 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   background: #196EC0;
   color: #fff;
 }
-/* STM Teachers Grid Ã¢â‚¬â€œ Kadence child */
+/* STM Teachers Grid ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ Kadence child */
 .kadence_teachers_grid {
   display: flex;
   flex-wrap: wrap;
@@ -1315,38 +1346,7 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   #footer_top .widgets .widget,
   #footer_bottom .widgets .widget { width: 100% !important; }
 }
-/* =========================================================
-   WooCommerce Reviews – custom layout
-   ========================================================= */
-.woocommerce-review__author-name {
-  margin: 0 0 4px;
-  font-weight: 600;
-}
-.woocommerce-review__author-name .woocommerce-review__verified {
-  font-weight: 400;
-  font-style: italic;
-  font-size: 0.85em;
-  margin-left: 4px;
-}
-.woocommerce-review__rating-time {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 8px;
-}
-.woocommerce-review__rating-time .star-rating {
-  margin: 0;
-  float: none;
-}
-.woocommerce-review__published-date {
-  font-size: 0.85em;
-  color: #777;
-}
 
-/* =========================================================
-   Footer
-   ========================================================= */
 #footer_copyright {
   padding: 20px 0;
   border-top: 1px solid rgba(0,0,0,.08);
