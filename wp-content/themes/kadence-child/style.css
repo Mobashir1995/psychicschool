@@ -333,7 +333,50 @@ body.architecture .icon_box p{
 .single-product .woocommerce-product-gallery img {
   width: 100%;
 }
-
+.single-product-after-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.single-product-meta-item {
+  padding-right: 20px;
+  display: flex;
+}
+.single-product-meta-item {
+  padding-right: 0;
+}
+.single-product-meta-icon {
+  padding-right: 15px;
+  font-size: 30px;
+  color: #196ec0
+}
+.single-product-meta-content h3 {
+  color: #aaa;
+  font-size: 12px;
+  font-weight: 400;
+}
+.single-product-meta-content a{
+  color: #555;
+  text-transform: uppercase;
+  font-size: 12px;
+  display: block;
+}
+.single-product-categories-info a {
+  display: inline-block;
+}
+.woocommerce .product .single-product-meta-content .woocommerce-product-rating {
+  margin-bottom: 0;
+  text-align: right;
+}
+.single-product-meta-content .woocommerce-product-rating .star-rating {
+  float: none !important;
+  color: #efb467;
+}
+.single-product-meta-content .woocommerce-product-rating .woocommerce-review-link{
+  display: block;
+}
 /* WooCommerce Product Boxes */
 .woocommerce ul.products li.product,
 .woocommerce-page ul.products li.product {
@@ -427,7 +470,7 @@ body.architecture .icon_box p{
   color: #efb467;
 }
 
-/* STM Multy Separator – Kadence child */
+/* STM Multy Separator â€“ Kadence child */
 .kadence_multy_separator {
   position: relative;
   width: 100%;
@@ -564,7 +607,7 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   padding-bottom: 30px;
 }
 
-/* Product Categories (Kadence Child – no row/col) */
+/* Product Categories (Kadence Child â€“ no row/col) */
 .kadence_product_categories_main_wrapper:not(.kadence_product_categories_view_carousel) {
   display: grid;
   gap: 20px;
@@ -928,7 +971,7 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   background: #f0f2f5;
   border: 0;
 }
-/* STM Experts Grid – Kadence child */
+/* STM Experts Grid â€“ Kadence child */
 .kadence_experts_grid_item .expert-card {
   display: flex;
   border-radius: 4px;
@@ -992,7 +1035,7 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   background: #196EC0;
   color: #fff;
 }
-/* STM Teachers Grid – Kadence child */
+/* STM Teachers Grid â€“ Kadence child */
 .kadence_teachers_grid {
   display: flex;
   flex-wrap: wrap;

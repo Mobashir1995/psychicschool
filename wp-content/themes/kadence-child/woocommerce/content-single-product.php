@@ -37,7 +37,7 @@ $experts = get_post_meta( get_the_ID(), 'course_expert', true );
 			<?php if ( ! empty( $experts ) && 'no_expert' != $experts && ( is_array( $experts ) && ! in_array( 'no_expert', $experts ) ) ) : ?>
 				<div class="single-product-meta-item single-product-teachers-info">
 					<div class="single-product-meta-icon">
-						<i class="fa fa-user"></i>
+						<i class="fa fa-person-chalkboard"></i>
 					</div>
 					<div class="single-product-meta-content">
 					<?php if ( is_array( $experts ) ) { ?>
@@ -63,7 +63,7 @@ $experts = get_post_meta( get_the_ID(), 'course_expert', true );
 			?>
 				<div class="single-product-meta-item single-product-categories-info">
 					<div class="single-product-meta-icon">
-						<i class="fa fa-tag"></i>
+						<i class="fa fa-bookmark"></i>
 					</div>
 					<div class="single-product-meta-content">
 						<h3><?php esc_html_e( 'Category', 'kadence-child' ); ?></h3>

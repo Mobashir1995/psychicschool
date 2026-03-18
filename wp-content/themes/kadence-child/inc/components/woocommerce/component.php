@@ -377,3 +377,57 @@ add_filter( 'woocommerce_is_sold_individually', '__return_true' );
 add_action( 'woocommerce_single_product_summary', function() {
 	echo '<p class="single-product-price-label">' . esc_html__( 'Price', 'kadence-child' ) . '</p>';
 }, 9 );
+
+/**
+ * Display course detail meta fields below the add-to-cart form in the sidebar.
+ * Meta keys match the "Course Details" meta box used by the MasterStudy theme:
+ *   status, duration, lectures, video, certificate.
+ * Icons are Font Awesome 6 equivalents of the STM icon font.
+ */
+function kadence_child_single_product_course_meta() {
+	$fields = array(
+		'status'      => array(
+			'label' => __( 'Status', 'kadence-child' ),
+			'icon'  => 'fa fa-signal',
+		),
+		'duration'    => array(
+			'label' => __( 'Duration', 'kadence-child' ),
+			'icon'  => 'fa fa-clock',        // stm_icon_clock
+		),
+		'lectures'    => array(
+			'label' => __( 'Lectures', 'kadence-child' ),
+			'icon'  => 'fa fa-bullhorn',     // stm_icon_bullhorn
+		),
+		'video'       => array(
+			'label' => __( 'Video', 'kadence-child' ),
+			'icon'  => 'fa fa-film',         // stm_icon_film-play
+		),
+		'certificate' => array(
+			'label' => __( 'Certificate', 'kadence-child' ),
+			'icon'  => 'fa fa-certificate',  // stm_icon_license
+		),
+	);
+
+	$values = array_filter(
+		array_map( fn( $key ) => get_post_meta( get_the_ID(), $key, true ), array_keys( $fields ) ),
+		fn( $v ) => ! empty( $v )
+	);
+
+	if ( empty( $values ) ) {
+		return;
+	}
+	?>
+	<div class="single-product-course-meta">
+		<?php foreach ( $fields as $key => $field ) :
+			if ( empty( $values[ $key ] ) ) continue;
+		?>
+			<div class="course-meta-item course-meta-<?php echo esc_attr( $key ); ?>">
+				<span class="course-meta-icon"><i class="<?php echo esc_attr( $field['icon'] ); ?>"></i></span>
+				<span class="course-meta-label"><?php echo esc_html( $field['label'] ); ?>:</span>
+				<span class="course-meta-value"><?php echo esc_html( $values[ $key ] ); ?></span>
+			</div>
+		<?php endforeach; ?>
+	</div>
+	<?php
+}
+add_action( 'woocommerce_after_add_to_cart_form', 'kadence_child_single_product_course_meta' );
