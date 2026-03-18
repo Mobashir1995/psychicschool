@@ -408,25 +408,31 @@ function kadence_child_single_product_course_meta() {
 		),
 	);
 
-	$values = array_filter(
-		array_map( fn( $key ) => get_post_meta( get_the_ID(), $key, true ), array_keys( $fields ) ),
-		fn( $v ) => ! empty( $v )
-	);
+	$post_id = get_the_ID();
 
-	if ( empty( $values ) ) {
+	ob_start();
+	foreach ( $fields as $key => $field ) :
+		$meta_value = get_post_meta( $post_id, $key, true );
+
+		if ( empty( $meta_value ) ) {
+			continue;
+		}
+		?>
+		<div class="course-meta-item course-meta-<?php echo esc_attr( $key ); ?>">
+			<span class="course-meta-icon"><i class="<?php echo esc_attr( $field['icon'] ); ?>"></i></span>
+			<span class="course-meta-label"><?php echo esc_html( $field['label'] ); ?>:</span>
+			<span class="course-meta-value"><?php echo esc_html( $meta_value ); ?></span>
+		</div>
+		<?php
+	endforeach;
+	$inner_html = ob_get_clean();
+
+	if ( empty( $inner_html ) ) {
 		return;
 	}
 	?>
 	<div class="single-product-course-meta">
-		<?php foreach ( $fields as $key => $field ) :
-			if ( empty( $values[ $key ] ) ) continue;
-		?>
-			<div class="course-meta-item course-meta-<?php echo esc_attr( $key ); ?>">
-				<span class="course-meta-icon"><i class="<?php echo esc_attr( $field['icon'] ); ?>"></i></span>
-				<span class="course-meta-label"><?php echo esc_html( $field['label'] ); ?>:</span>
-				<span class="course-meta-value"><?php echo esc_html( $values[ $key ] ); ?></span>
-			</div>
-		<?php endforeach; ?>
+		<?php echo $inner_html; // phpcs:ignore WordPress.Security.EscapeOutput -- already escaped in loop ?>
 	</div>
 	<?php
 }
