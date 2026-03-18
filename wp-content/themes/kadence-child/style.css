@@ -939,6 +939,9 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
     border: 2px solid #196ec0;
   border-radius: 4px
 }
+.single-product-rating-summary + .kadence_multy_separator_wrapper {
+  margin-bottom: 30px;
+}
 .single-product-reviews {
   margin-top: 30px;
 }
