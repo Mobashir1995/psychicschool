@@ -119,7 +119,7 @@ $experts = get_post_meta( get_the_ID(), 'course_expert', true );
 			 *
 			 * @hooked kadence_child_product_rating_summary - 10
 			 */
-			do_action( 'kadence_child_before_product_reviews' );
+			do_action( 'kadence_child_before_product_reviews', $product );
 			wc_get_template( 'single-product-reviews.php' );
 			?>
 		</div>

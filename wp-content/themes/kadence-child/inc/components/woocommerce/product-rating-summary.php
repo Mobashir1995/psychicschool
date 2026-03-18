@@ -13,12 +13,10 @@ defined( 'ABSPATH' ) || exit;
  * Only shown when WooCommerce reviews are enabled, comments are open,
  * and the product has at least one rating.
  */
-function kadence_child_product_rating_summary() {
-	if ( 'yes' !== get_option( 'woocommerce_enable_reviews' ) || ! comments_open() ) {
+function kadence_child_product_rating_summary( $product ) {
+	if ( ! wc_review_ratings_enabled() || ! comments_open() ) {
 		return;
 	}
-
-	$product      = wc_get_product( get_the_ID() );
 	$rating_count = $product->get_rating_count();
 	$average      = round( $product->get_average_rating(), 1 );
 
@@ -42,11 +40,10 @@ function kadence_child_product_rating_summary() {
 	<div class="single-product-rating-summary">
 
 		<div class="average_rating">
-			<p class="rating_sub_title"><?php esc_html_e( 'Average Rating', 'kadence-child' ); ?></p>
 			<div class="average_rating_unit">
 				<div class="average_rating_value"><?php echo esc_html( $average ); ?></div>
 				<div class="average-rating-stars">
-					<?php do_action( 'woocommerce_after_shop_loop_item_title' ); ?>
+					<?php echo wc_get_rating_html( $product->get_average_rating() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				</div>
 				<div class="average_rating_num">
 					<?php
@@ -58,7 +55,6 @@ function kadence_child_product_rating_summary() {
 		</div>
 
 		<div class="detailed_rating">
-			<p class="rating_sub_title"><?php esc_html_e( 'Detailed Rating', 'kadence-child' ); ?></p>
 			<table class="detail_rating_unit">
 				<?php foreach ( $rates_desc as $star => $count ) :
 					$fill = ( $rating_count > 0 ) ? round( $count * 100 / $rating_count, 2 ) : 0;
@@ -84,4 +80,4 @@ function kadence_child_product_rating_summary() {
 	</div>
 	<?php
 }
-add_action( 'kadence_child_before_product_reviews', 'kadence_child_product_rating_summary', 10 );
+add_action( 'kadence_child_before_product_reviews', 'kadence_child_product_rating_summary', 10, 1 );
