@@ -341,12 +341,14 @@ body.architecture .icon_box p{
   color: #aaa;
   font-size: 12px;
 }
-.single-product-sidebar ins .woocommerce-Price-amount {
+.single-product-sidebar .woocommerce-Price-amount {
   font-size: 32px;
   font-weight: 700;
 }
-.single-product-sidebar .price del {
+.single-product-sidebar .price del .woocommerce-Price-amount{
   margin-right: 10px;
+  font-size: 1em;
+  font-weight: 400;
 }
 .woocommerce div.product .single-product-sidebar form.cart .variations .label,
 .woocommerce-page label {
