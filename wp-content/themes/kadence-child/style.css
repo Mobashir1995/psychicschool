@@ -323,9 +323,35 @@ body.architecture .icon_box p{
 }
 .single-product-layout {
   width: 75%;
+  padding-right: 30px
 }
 .single-product-sidebar {
   width: 25%;
+  padding-left: 30px;
+}
+.single-product-sidebar .summary.entry-summary{
+  float: none !important;
+  width: 100% !important;
+}
+.single-product-sidebar .summary.entry-summary p {
+  margin: 0 !important;
+}
+.single-product-sidebar .summary.entry-summary .single-product-price-label {
+  text-transform: uppercase;
+  color: #aaa;
+  font-size: 12px;
+}
+.single-product-sidebar .woocommerce-Price-amount {
+  font-size: 32px;
+  font-weight: 700;
+}
+.woocommerce div.product .single-product-sidebar form.cart .variations .label,
+.woocommerce-page label {
+  font-size: 14px;
+  color: #aaa;
+  padding-right: 0;
+  font-weight: 400 !important;
+  line-height: 16px;
 }
 .single-product .woocommerce-product-gallery {
   width: 100% !important;
@@ -376,6 +402,21 @@ body.architecture .icon_box p{
 }
 .single-product-meta-content .woocommerce-product-rating .woocommerce-review-link{
   display: block;
+}
+.woocommerce div.product .single-product-sidebar .button.single_add_to_cart_button {
+  background: #0aed80;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 12px 15px;
+  height: auto;
+}
+.woocommerce div.product .single-product-sidebar form.cart .variations {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.woocommerce div.product .single-product-sidebar form.cart .variations select {
+  margin-right: 0;
+  padding: 8px 35px 8px 8px;
 }
 /* WooCommerce Product Boxes */
 .woocommerce ul.products li.product,
@@ -470,7 +511,7 @@ body.architecture .icon_box p{
   color: #efb467;
 }
 
-/* STM Multy Separator â€“ Kadence child */
+/* STM Multy Separator Ã¢â‚¬â€œ Kadence child */
 .kadence_multy_separator {
   position: relative;
   width: 100%;
@@ -607,7 +648,7 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   padding-bottom: 30px;
 }
 
-/* Product Categories (Kadence Child â€“ no row/col) */
+/* Product Categories (Kadence Child Ã¢â‚¬â€œ no row/col) */
 .kadence_product_categories_main_wrapper:not(.kadence_product_categories_view_carousel) {
   display: grid;
   gap: 20px;
@@ -971,7 +1012,7 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   background: #f0f2f5;
   border: 0;
 }
-/* STM Experts Grid â€“ Kadence child */
+/* STM Experts Grid Ã¢â‚¬â€œ Kadence child */
 .kadence_experts_grid_item .expert-card {
   display: flex;
   border-radius: 4px;
@@ -1035,7 +1076,7 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   background: #196EC0;
   color: #fff;
 }
-/* STM Teachers Grid â€“ Kadence child */
+/* STM Teachers Grid Ã¢â‚¬â€œ Kadence child */
 .kadence_teachers_grid {
   display: flex;
   flex-wrap: wrap;
