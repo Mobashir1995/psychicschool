@@ -414,6 +414,10 @@ function kadence_child_single_product_course_meta() {
 	foreach ( $fields as $key => $field ) :
 		$meta_value = get_post_meta( $post_id, $key, true );
 
+		if( $key == 'course_status' && $meta_value == 'no_status' ) {
+			continue;
+		}
+		
 		if ( empty( $meta_value ) ) {
 			continue;
 		}

@@ -359,6 +359,9 @@ body.architecture .icon_box p{
 .single-product .woocommerce-product-gallery img {
   width: 100%;
 }
+.woocommerce div.product div.images .woocommerce-product-gallery__trigger {
+  left: .5em;
+}
 .single-product-after-title {
   display: flex;
   flex-wrap: wrap;
@@ -399,6 +402,7 @@ body.architecture .icon_box p{
 .single-product-meta-content .woocommerce-product-rating .star-rating {
   float: none !important;
   color: #efb467;
+  font-size: 22px;
 }
 .single-product-meta-content .woocommerce-product-rating .woocommerce-review-link{
   display: block;
@@ -408,6 +412,7 @@ body.architecture .icon_box p{
   text-transform: uppercase;
   font-weight: 700;
   padding: 12px 15px;
+  width: 100%;
   height: auto;
 }
 .woocommerce div.product .single-product-sidebar form.cart .variations {
@@ -417,6 +422,27 @@ body.architecture .icon_box p{
 .woocommerce div.product .single-product-sidebar form.cart .variations select {
   margin-right: 0;
   padding: 8px 35px 8px 8px;
+}
+.course-meta-icon {
+  font-size: 32px;
+  width: 60px;
+  display: inline-block;
+  color: #aaa;
+}
+.course-meta-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e1e2e4;
+}
+.course-meta-label,
+.course-meta-value {
+  color: #555;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 25px 0;
+}
+.course-meta-value {
+  padding-left: 10px;
 }
 /* WooCommerce Product Boxes */
 .woocommerce ul.products li.product,
