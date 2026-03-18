@@ -79,5 +79,6 @@ function kadence_child_product_rating_summary( $product ) {
 
 	</div>
 	<?php
+	echo do_shortcode( '[stm_multy_separator]' );
 }
 add_action( 'kadence_child_before_product_reviews', 'kadence_child_product_rating_summary', 10, 1 );
