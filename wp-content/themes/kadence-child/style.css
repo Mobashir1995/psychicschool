@@ -341,9 +341,12 @@ body.architecture .icon_box p{
   color: #aaa;
   font-size: 12px;
 }
-.single-product-sidebar .woocommerce-Price-amount {
+.single-product-sidebar ins .woocommerce-Price-amount {
   font-size: 32px;
   font-weight: 700;
+}
+.single-product-sidebar .price del {
+  margin-right: 10px;
 }
 .woocommerce div.product .single-product-sidebar form.cart .variations .label,
 .woocommerce-page label {
@@ -445,6 +448,16 @@ body.architecture .icon_box p{
 }
 .course-meta-value {
   padding-left: 10px;
+}
+.wc-bookings-booking-form fieldset {
+  border: 0;
+  padding: 0;
+}
+.single-product-main {
+  position: relative;
+}
+.woocommerce .single-product-main span.onsale {
+  z-index: 999;
 }
 /* WooCommerce Product Boxes */
 .woocommerce ul.products li.product,
@@ -873,6 +886,9 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
 }
 
 /* Product Reviews */
+.single-product-reviews {
+  margin-top: 30px;
+}
 .woocommerce .single-product-reviews #reviews #comments,
 .woocommerce .single-product-reviews #reviews #review_form_wrapper {
   float: none;
