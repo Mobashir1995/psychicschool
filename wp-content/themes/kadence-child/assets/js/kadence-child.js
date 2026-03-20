@@ -42,6 +42,7 @@
 
         var isTestimonials = $this.hasClass('kadence_testimonials_swiper');
         var isExperts = $this.hasClass('kadence_experts_swiper');
+        var isCategories = $this.hasClass('kadence_product_categories_swiper');
         var autoplaySpeed = parseInt($this.data('autoplay-speed') || 5000, 10);
 
         var breakpoints;
@@ -55,14 +56,21 @@
           // Testimonials: 1 slide up to 768px, then perRow above.
           breakpoints = {
             0: { slidesPerView: 1 },
-            769: { slidesPerView: perRow }
+            768: { slidesPerView: perRow }
+          };
+        } else if (isCategories) {
+          breakpoints = {
+            0:   { slidesPerView: 1 },
+            380: { slidesPerView: 1 },
+            575: { slidesPerView: 2 },
+            767: { slidesPerView: 3 },
+            991: { slidesPerView: 4 },
+            992: { slidesPerView: 6 }
           };
         } else {
-          // Default behaviour for product categories carousel.
           breakpoints = {
             0: { slidesPerView: 1 },
-            640: { slidesPerView: Math.min(2, perRow) },
-            1024: { slidesPerView: perRow }
+            768: { slidesPerView: perRow }
           };
         }
 

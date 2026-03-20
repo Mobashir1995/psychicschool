@@ -862,6 +862,7 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
 .kadence_stats_counter .stats_counter_title {
   font-size: 14px;
   margin: 0;
+  font-weight: 700;
 }
 .stm_fixed_background .vc_parallax-inner:after {
   display: block;
@@ -1441,8 +1442,8 @@ div#mobile-drawer {
 
 @media only screen and (max-width: 991px) {
   .kadence_stats_counter .kadence_stats_counter_value {
-    font-size: 24px;
-    line-height: 40px;
+    font-size: 40px;
+    line-height: 60px;
   }
   div.overflowed_content{
     padding: 0 !important;
@@ -1467,6 +1468,16 @@ div#mobile-drawer {
   .vc_do_custom_heading {
     font-size: 24px !important;
     line-height: 35px !important;
+  }
+  .kadence_stats_counter .kadence_stats_counter_value {
+    font-size: 50px;
+    line-height: 80px;
+  }
+  .kadence_stats_counter {
+    margin-bottom: 50px
+  }
+  .kadence_post_list_content_unit {
+    width: 100%;
   }
 }
 
