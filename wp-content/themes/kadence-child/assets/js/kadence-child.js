@@ -65,7 +65,7 @@
             575: { slidesPerView: 2 },
             767: { slidesPerView: 3 },
             991: { slidesPerView: 4 },
-            992: { slidesPerView: 6 }
+            1024: { slidesPerView: 5 }
           };
         } else {
           breakpoints = {

@@ -764,7 +764,7 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
 /* Testimonials (Kadence Child, Swiper-based) */
 
 .kadence_testimonials_header {
-  padding-bottom: 25px;
+  padding-bottom: 8px;
   color: #196EC0;
   display: flex;
   border-bottom: 1px solid #ccc;
@@ -1282,6 +1282,7 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
 .kadence_experts_header {
   margin-bottom: 0;
   border: none;
+  padding-bottom: 25px;
 }
 .kadence_experts_header .kadence_experts_section_title {
   color: #333;
