@@ -68,7 +68,7 @@ function kadence_child_stm_stats_counter_render( $atts ) {
 		<?php endif; ?>
 
 		<?php if ( wp_is_mobile() ) : ?>
-			<div class="h1" id="<?php echo esc_attr( $id ); ?>" <?php echo $text_style_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+			<div class="kadence_stats_counter_value" id="<?php echo esc_attr( $id ); ?>" <?php echo $text_style_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 				<?php echo esc_html( $counter_value ); ?>
 			</div>
 		<?php else : ?>
