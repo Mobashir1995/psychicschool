@@ -16,11 +16,8 @@ function kadence_child_stm_product_categories_shortcode( $atts, $content = null 
 
 	$pairs = array(
 		'title'          => '',
-		'view_type'      => 'stm_vc_product_cat_carousel',
 		'number'         => '',
-		'per_row'        => 6,
 		'box_text_color' => '#fff',
-		'text_align'     => 'center',
 		'icon_size'      => '60',
 		'auto'           => '0',
 		'icon_height'    => '69',

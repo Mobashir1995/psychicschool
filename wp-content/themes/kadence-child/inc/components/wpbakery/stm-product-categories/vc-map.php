@@ -16,17 +16,6 @@ function stm_product_categories_get_vc_map() {
 		'category' => __( 'STM', 'kadence-child' ),
 		'params'   => array(
 			array(
-				'type'       => 'dropdown',
-				'heading'    => __( 'View type', 'kadence-child' ),
-				'param_name' => 'view_type',
-				'value'      => array(
-					'Carousel' => 'stm_vc_product_cat_carousel',
-					'List'     => 'stm_vc_product_cat_list',
-					'Card'     => 'stm_vc_product_cat_card',
-				),
-				'std'        => 'stm_vc_product_cat_carousel',
-			),
-			array(
 				'type'       => 'checkbox',
 				'heading'    => __( 'Carousel Auto Scroll', 'kadence-child' ),
 				'param_name' => 'auto',
@@ -39,34 +28,10 @@ function stm_product_categories_get_vc_map() {
 				'description' => __( 'Leave field empty to display all categories', 'kadence-child' ),
 			),
 			array(
-				'type'       => 'dropdown',
-				'heading'    => __( 'Number of items per row', 'kadence-child' ),
-				'param_name' => 'per_row',
-				'value'      => array(
-					'6' => 6,
-					'4' => 4,
-					'3' => 3,
-					'2' => 2,
-					'1' => 1,
-				),
-				'std'        => 6,
-			),
-			array(
 				'type'       => 'colorpicker',
 				'heading'    => __( 'Box text Color', 'kadence-child' ),
 				'param_name' => 'box_text_color',
 				'value'      => '#fff',
-				'group'      => __( 'Item Options', 'kadence-child' ),
-			),
-			array(
-				'type'       => 'dropdown',
-				'heading'    => __( 'Text box Align', 'kadence-child' ),
-				'param_name' => 'text_align',
-				'value'      => array(
-					'Center' => 'center',
-					'Left'   => 'left',
-					'Right'  => 'right',
-				),
 				'group'      => __( 'Item Options', 'kadence-child' ),
 			),
 			array(
