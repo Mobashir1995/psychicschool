@@ -61,11 +61,11 @@
         } else if (isCategories) {
           breakpoints = {
             0:   { slidesPerView: 1 },
-            380: { slidesPerView: 1 },
-            575: { slidesPerView: 2 },
-            767: { slidesPerView: 3 },
-            991: { slidesPerView: 4 },
-            1024: { slidesPerView: 5 }
+            380: { slidesPerView: 2 },
+            575: { slidesPerView: 3 },
+            767: { slidesPerView: 4 },
+            991: { slidesPerView: 5 },
+            1024: { slidesPerView: 6 }
           };
         } else {
           breakpoints = {
