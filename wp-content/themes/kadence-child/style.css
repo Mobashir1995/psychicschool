@@ -857,9 +857,11 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
 .kadence_stats_counter .kadence_stats_counter_value {
   font-size: 50px;
   line-height: 80px;
+  margin: 0;
 }
 .kadence_stats_counter .stats_counter_title {
   font-size: 14px;
+  margin: 0;
 }
 .stm_fixed_background .vc_parallax-inner:after {
   display: block;
