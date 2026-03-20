@@ -1432,6 +1432,10 @@ div#mobile-drawer {
   grid-template-columns: repeat(3, 1fr) !important;
   justify-items: center !important;
 }
+.woocommerce .woocommerce-archive-product-loop-start ul.products,
+.woocommerce-page .woocommerce-archive-product-loop-start ul.products {
+  grid-template-columns: repeat(1, 1fr) !important;
+}
 
 @media (max-width: 767px) {
   .woocommerce ul.products,
