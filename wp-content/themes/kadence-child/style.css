@@ -1401,6 +1401,10 @@ div#mobile-drawer {
   div.overflowed_content{
     padding: 0 20px !important;
   }
+  .site-footer-row-container-inner .site-footer-row.site-footer-row-tablet-column-layout-default,
+  .site-footer-row-container-inner .site-footer-row.site-footer-row-tablet-column-layout-row{
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 }
 
 @media only screen and (max-width: 991px) {
@@ -1455,6 +1459,10 @@ div#mobile-drawer {
     width: 30px;
     height: 32px;
     line-height: 28px;
+  }
+  .site-footer-row-container-inner .site-footer-row.site-footer-row-tablet-column-layout-default,
+  .site-footer-row-container-inner .site-footer-row.site-footer-row-tablet-column-layout-row{
+    grid-template-columns: repeat(1, 1fr) !important;
   }
 }
 
