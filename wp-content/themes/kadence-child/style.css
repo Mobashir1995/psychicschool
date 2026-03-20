@@ -1414,6 +1414,12 @@ div#mobile-drawer {
   div.overflowed_content .vc_column-inner {
     margin-top: 0 !important;
   }
+  .testimonial-with-video .wpb_column {
+    width: 100% !important;
+  }
+  .kadence_testimonials_section_title {
+    margin: 0 !important;
+  }
 }
 
 /* Product Catalog — columns per row */
@@ -1442,11 +1448,29 @@ div#mobile-drawer {
   .kadence_post_list_content_unit {
     width: 100%;
   }
+  .kadence_testimonials_section_title {
+    font-size: 28px;
+  }
+  .kadence_testimonials_button {
+    width: 30px;
+    height: 32px;
+    line-height: 28px;
+  }
 }
 
 @media (max-width: 575px) {
   .woocommerce ul.products,
   .woocommerce-page ul.products {
     grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .kadence_testimonials_section_title {
+    font-size: 24px;
+  }
+  .kadence_testimonials_button {
+    width: 25px;
+    height: 30px;
   }
 }
