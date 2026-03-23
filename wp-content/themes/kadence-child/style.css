@@ -1149,6 +1149,7 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
 }
 #affwp-affiliate-dashboard-tabs a {
   font-size: 14px;
+  padding: 12px 20px;
 }
 #affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs li{
   padding: 0;
