@@ -1519,6 +1519,15 @@ div#mobile-drawer {
   .kadence_teachers_grid_item {
     width: 100%;
   }
+  .kadence_experts_grid_item .expert-card {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .kadence_experts_header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
   .woo-archive-search-form button {
     margin-top: 5px;
   }
