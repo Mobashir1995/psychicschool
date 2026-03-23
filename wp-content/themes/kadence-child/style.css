@@ -1140,7 +1140,8 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   font-size: 12px;
   font-weight: 400;
   text-transform: uppercase;
-  padding: 12px 20px !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
   text-align: center;
   background: #196ec0;
   color: #fff;
@@ -1428,6 +1429,12 @@ div#mobile-drawer {
   }
   .kadence_testimonials_section_title {
     margin: 0 !important;
+  }
+  .woocommerce-MyAccount-navigation ul,
+  #affwp-affiliate-dashboard-tabs {
+    display: flex !important;
+    flex-direction: column;
+    gap: 10px;
   }
 }
 
