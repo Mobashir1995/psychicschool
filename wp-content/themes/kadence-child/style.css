@@ -1402,6 +1402,9 @@ div#mobile-drawer {
   div.overflowed_content{
     padding: 0 20px !important;
   }
+  .kadence_teachers_grid_item {
+    width: 33.33%;
+  }
   .site-footer-row-container-inner .site-footer-row.site-footer-row-tablet-column-layout-default,
   .site-footer-row-container-inner .site-footer-row.site-footer-row-tablet-column-layout-row{
     grid-template-columns: repeat(2, 1fr) !important;
@@ -1490,6 +1493,9 @@ div#mobile-drawer {
     padding: 0 !important;
     margin: 0;
   }
+  .kadence_teachers_grid_item {
+    width: 50%;
+  }
   .site-footer-row-container-inner .site-footer-row.site-footer-row-tablet-column-layout-default,
   .site-footer-row-container-inner .site-footer-row.site-footer-row-tablet-column-layout-row{
     grid-template-columns: repeat(1, 1fr) !important;
@@ -1509,6 +1515,9 @@ div#mobile-drawer {
   .woo-archive-search-form input[type='text'],
   .woo-archive-search-form button {
     min-width: 100%;
+  }
+  .kadence_teachers_grid_item {
+    width: 100%;
   }
   .woo-archive-search-form button {
     margin-top: 5px;
