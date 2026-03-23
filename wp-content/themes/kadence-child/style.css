@@ -118,6 +118,7 @@ body .vc_row[data-vc-full-width].vc_parallax{
 }
 .pagination .page-numbers {
   overflow: hidden;
+  border-color: #196ec0 !important;
   list-style: none;
 }
 .pagination .page-numbers li {
@@ -1527,6 +1528,12 @@ div#mobile-drawer {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+  }
+  .kadence_post_list_inner_content_unit {
+    float: none;
+    width: 100%;
+    clear: both;
+    padding: 0;
   }
   .woo-archive-search-form button {
     margin-top: 5px;
