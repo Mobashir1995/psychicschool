@@ -431,7 +431,14 @@ body.architecture .icon_box p{
 .woocommerce div.product .single-product-sidebar form.cart .variations select {
   margin-right: 0;
   padding: 8px 35px 8px 8px;
+  margin-top: 10px;
+  width: 100%;
 }
+.woocommerce div.product .single-product-sidebar form.cart .variations tr{
+  display: flex;
+  flex-direction: column;
+}
+
 .course-meta-icon {
   font-size: 32px;
   width: 60px;
@@ -1411,12 +1418,36 @@ div#mobile-drawer {
   text-transform: uppercase;
 }
 
+@media only screen and (max-width: 1050px) {
+  .single-product-layout {
+    padding-right: 20px;
+  }
+  .single-product-sidebar {
+    padding-left: 20px;
+  }
+}
+
 @media only screen and (max-width: 1023px) {
   div.overflowed_content{
     padding: 0 20px !important;
   }
   .kadence_teachers_grid_item {
     width: 33.33%;
+  }
+  .course-meta-item {
+    display: table;
+  }
+  .course-meta-icon {
+    width: auto;
+    padding-right: 10px;
+  }
+  .course-meta-label, .course-meta-value {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .course-meta-icon, .course-meta-label, .course-meta-value {
+    display: table-cell;
+    vertical-align: middle;
   }
   .site-footer-row-container-inner .site-footer-row.site-footer-row-tablet-column-layout-default,
   .site-footer-row-container-inner .site-footer-row.site-footer-row-tablet-column-layout-row{

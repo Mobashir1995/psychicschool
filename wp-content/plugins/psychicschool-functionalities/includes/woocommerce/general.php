@@ -41,3 +41,19 @@ if ( ! function_exists( 'woo_custom_cart_button_text_1' ) ) {
 	add_filter( 'woocommerce_product_single_add_to_cart_text', 'woo_custom_cart_button_text_1' );
 }
 
+if ( ! function_exists( 'psychicschool_variation_dropdown_label' ) ) {
+	/**
+	 * Override variation attribute label shown above the dropdown.
+	 *
+	 * @param string     $label   Attribute label.
+	 * @param string     $name    Attribute name.
+	 * @param WC_Product $product Product object.
+	 * @return string
+	 */
+	function psychicschool_variation_dropdown_label( $label, $name, $product ) {
+		return __( 'Registration & Payment Option', 'psychicschool-functionalities' );
+	}
+
+	add_filter( 'woocommerce_attribute_label', 'psychicschool_variation_dropdown_label', 10, 3 );
+}
+
