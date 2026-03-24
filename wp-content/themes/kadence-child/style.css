@@ -1581,6 +1581,9 @@ div#mobile-drawer {
   .wc-booking-summary .wc-booking-summary-list {
     padding-left: 0;
   }
+  .comment-form .comment-input-wrap p {
+    margin: 0 !important;
+  }
   .site-footer-row-container-inner .site-footer-row.site-footer-row-tablet-column-layout-default,
   .site-footer-row-container-inner .site-footer-row.site-footer-row-tablet-column-layout-row{
     grid-template-columns: repeat(1, 1fr) !important;
