@@ -331,6 +331,10 @@ body.architecture .icon_box p{
   width: 25%;
   padding-left: 30px;
 }
+.mobile-product-sidebar .single-product-sidebar {
+  width: 100%;
+  display: none;
+}
 .single-product-sidebar .summary.entry-summary{
   float: none !important;
   width: 100% !important;
@@ -407,7 +411,7 @@ body.architecture .icon_box p{
   text-align: right;
 }
 .single-product-meta-content .woocommerce-product-rating .star-rating {
-  float: none !important; 
+  float: none !important;
 }
 .woocommerce .star-rating {
   color: #efb467 !important;
@@ -1472,6 +1476,18 @@ div#mobile-drawer {
   .kadence_testimonials_section_title {
     margin: 0 !important;
   }
+  .single-product-sidebar {
+    display: none;
+  }
+  .course-meta-item {
+    display: flex;
+  }
+  .single-product-layout {
+    width: 100%;
+  }
+  .mobile-product-sidebar .single-product-sidebar {
+    display: block;
+  }
   .woocommerce-MyAccount-navigation ul,
   #affwp-affiliate-dashboard-tabs {
     display: flex !important;
@@ -1533,6 +1549,22 @@ div#mobile-drawer {
   .woo-archive-product-cat-filter {
     width: 100%;
   }
+  .single-product-after-title {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .single-product-meta-icon {
+    width: 50px;
+  }
+  .woocommerce .product .single-product-meta-content .woocommerce-product-rating {
+    text-align: left;
+  }
+  .woocommerce .product .single-product-meta-content .woocommerce-product-rating .star-rating {
+    margin: 0;
+  }
+  .single-product-rating-summary {
+    gap: 30px;
+  }
   .woocommerce .woocommerce-archive-product-loop-start ul.products li.product {
     display: flex !important;
   }
@@ -1560,6 +1592,12 @@ div#mobile-drawer {
   .woocommerce-page ul.products {
     grid-template-columns: 1fr !important;
   }
+  .detailed_rating .detail_rating_unit tr td.bar .full_bar {
+    width: 120px;
+  }
+  .single-product-rating-summary {
+    gap: 15px;
+  }
   .woocommerce .woocommerce-archive-product-loop-start ul.products li.product .product-excerpt {
     display: block;
   }
@@ -1586,6 +1624,19 @@ div#mobile-drawer {
     width: 100%;
     clear: both;
     padding: 0;
+  }
+  .single-product-rating-summary {
+     flex-direction: column; 
+  }
+  .average_rating_unit {
+    max-width: 150px;
+    height: 150px;
+  }
+  .detailed_rating .detail_rating_unit {
+    width: auto;
+  }
+  .detailed_rating .detail_rating_unit tr td.bar .full_bar {
+    width: 150px;
   }
   .woo-archive-search-form button {
     margin-top: 5px;

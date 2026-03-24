@@ -102,7 +102,20 @@ $experts = get_post_meta( get_the_ID(), 'course_expert', true );
 			 */
 			do_action( 'woocommerce_before_single_product_summary' );
 			?>
-
+		
+			<div class="mobile-product-sidebar">
+			<?php
+				/**
+				 * Hook: woocommerce_after_single_product_summary.
+				 * woocommerce_output_product_data_tabs removed via component.php.
+				 *
+				 * @hooked woocommerce_upsell_display          - 15
+				 * @hooked woocommerce_output_related_products - 20
+				 */
+				do_action( 'woocommerce_after_single_product_summary' );
+			?>
+			</div>
+		
 			<div class="single-product-description">
 				<?php woocommerce_product_description_tab(); ?>
 			</div>
