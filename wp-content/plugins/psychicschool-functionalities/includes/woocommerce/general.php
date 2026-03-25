@@ -57,3 +57,19 @@ if ( ! function_exists( 'psychicschool_variation_dropdown_label' ) ) {
 	add_filter( 'woocommerce_attribute_label', 'psychicschool_variation_dropdown_label', 10, 3 );
 }
 
+if ( ! function_exists( 'psychicschool_disable_product_gallery_zoom_and_lightbox' ) ) {
+	/**
+	 * Disable WooCommerce single product gallery zoom and lightbox.
+	 *
+	 * This removes both the zoom effect and the gallery search icon trigger.
+	 *
+	 * @return void
+	 */
+	function psychicschool_disable_product_gallery_zoom_and_lightbox() {
+		remove_theme_support( 'wc-product-gallery-zoom' );
+		remove_theme_support( 'wc-product-gallery-lightbox' );
+	}
+
+	add_action( 'after_setup_theme', 'psychicschool_disable_product_gallery_zoom_and_lightbox', 100 );
+}
+
