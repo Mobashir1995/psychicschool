@@ -61,6 +61,9 @@ class Psychicschool_Functionalities {
 
         // Misc.
         require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/misc/maintenance.php';
+
+        // STM Features.
+        require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/stm-features/stm-features.php';
     }
 
     /**
