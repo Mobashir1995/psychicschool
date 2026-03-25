@@ -23,3 +23,6 @@ if ( ! function_exists( 'stm_post_type_filtered_output' ) ) {
 		return apply_filters( 'stm_post_type_filtered_output', $data );
 	}
 }
+
+// 6. Customizer Settings for MailChimp
+require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/stm-features/customizer.php';
