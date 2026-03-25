@@ -73,3 +73,20 @@ if ( ! function_exists( 'psychicschool_disable_product_gallery_zoom_and_lightbox
 	add_action( 'after_setup_theme', 'psychicschool_disable_product_gallery_zoom_and_lightbox', 100 );
 }
 
+if ( ! function_exists( 'psychicschool_remove_product_gallery_image_links' ) ) {
+	/**
+	 * Remove anchor links from single product gallery images.
+	 *
+	 * @param string $html Gallery image HTML.
+	 * @return string
+	 */
+	function psychicschool_remove_product_gallery_image_links( $html ) {
+		$html = preg_replace( '#<a\b[^>]*>#i', '', $html );
+		$html = preg_replace( '#</a>#i', '', $html );
+
+		return $html;
+	}
+
+	add_filter( 'woocommerce_single_product_image_thumbnail_html', 'psychicschool_remove_product_gallery_image_links', 10, 1 );
+}
+
