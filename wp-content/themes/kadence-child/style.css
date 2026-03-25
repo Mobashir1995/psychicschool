@@ -181,6 +181,10 @@ body.architecture .icon_box p{
   top:0;
   padding:30px 32px 50px
 }
+.icon_box,
+.icon_box:hover {
+  transition: all .3s cubic-bezier(0,.01,.27,1);
+}
 .icon_box .fa-icon-stm_icon_book{
   margin-left:-5px
 }
