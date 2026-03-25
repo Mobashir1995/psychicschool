@@ -134,4 +134,4 @@ function register_mailchimp_widget() {
 	register_widget( __NAMESPACE__ . '\Stm_Mailchimp_Widget' );
 }
 
-add_action( 'widgets_init', 'register_mailchimp_widget' );
+add_action( 'widgets_init', __NAMESPACE__ . '\register_mailchimp_widget' );

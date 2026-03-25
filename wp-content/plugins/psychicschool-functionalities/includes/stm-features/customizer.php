@@ -1,8 +1,9 @@
 <?php
+namespace PS\STM_Features;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-namespace PS\STM_Features;
 
 add_action( 'customize_register', __NAMESPACE__ . '\ps_migrated_customize_register' );
 function ps_migrated_customize_register( $wp_customize ) {
