@@ -23,7 +23,7 @@ add_action('plugins_loaded', function () {
 	);
 
 	// Get experts and list them in dropdown woo products
-	add_action('admin_init', 'ps_expert_list');
+	add_action('admin_init', __NAMESPACE__ . '\ps_expert_list');
 
 	function ps_expert_list()
 	{

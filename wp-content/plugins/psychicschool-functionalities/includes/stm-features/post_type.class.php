@@ -99,7 +99,7 @@ class STM_PostType {
 			add_meta_box(
 				$boxId,
 				$args['title'],
-				empty( $args['callback'] ) ? array( get_class(), 'display_metaboxes' ) : $args['callback'],
+				empty( $args['callback'] ) ? array( __CLASS__, 'display_metaboxes' ) : $args['callback'],
 				$args['post_type'],
 				$args['context'],
 				$args['priority'],

@@ -1,4 +1,5 @@
 <?php
+namespace PS\STM_Features;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
