@@ -135,7 +135,7 @@ function kadence_child_end_shop_loop_meta_wrap() {
 				<?php woocommerce_template_loop_rating(); ?>
 			</div>
 			<div class="action-button">
-				<a href="<?php the_permalink(); ?>" class="btn btn-green-bg"><?php esc_html_e( 'View Details', 'kadence-child' ); ?></a>
+				<a href="<?php the_permalink(); ?>" class="button button-style-secondary"><?php esc_html_e( 'View More', 'kadence-child' ); ?></a>
 			</div>
 		</div>
 	<?php

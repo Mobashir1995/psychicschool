@@ -553,7 +553,7 @@ body.architecture .icon_box p{
   transition: all 150ms ease-in-out;
 }
 .action-button a {
-  display: flex;
+  display: flex !important;
   color: #fff !important;
   height: 100%;
   width: 100%;
