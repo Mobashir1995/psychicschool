@@ -125,10 +125,10 @@ function kadence_child_end_shop_loop_meta_wrap() {
 		<div class="kadence-shop-loop-meta-wrap">
 			<div class="meta-info">
 				<div class="comment-count">
-					<i class="fa fa-comment"></i><span><?php echo esc_html( $comments_num ); ?></span>
+					<i class="fa fa-comment"></i><span class="heading-font"><?php echo esc_html( $comments_num ); ?></span>
 				</div>
 				<div class="stock-count">
-					<i class="fa fa-user"></i><span><?php echo $stock ? floatval( $stock ) : 0; ?></span>
+					<i class="fa fa-user"></i><span class="heading-font"><?php echo $stock ? floatval( $stock ) : 0; ?></span>
 				</div>	
 			</div>
 			<div class="meta-rating">
