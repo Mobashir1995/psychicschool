@@ -105,11 +105,11 @@ function kadence_child_product_grid_teachers_name() {
 	?>
 		<div class="product-grid-teachers-name">
 			<?php if ( ! empty( $experts ) && 'no_expert' !== $experts && ( is_array( $experts ) && ! in_array( 'no_expert', $experts, true ) ) ) : ?>
-				<div class="teacher-name">
+				<div class="teacher-name heading-font">
 					<?php echo esc_html( implode( ', ', array_map( 'get_the_title', (array) $experts ) ) ); ?>
 				</div>
 			<?php else : ?>
-				<div class="teacher-name">&nbsp;</div>
+				<div class="teacher-name heading-font">&nbsp;</div>
 			<?php endif; ?>
 		</div>
 	<?php
@@ -211,7 +211,7 @@ function kadence_child_woo_archive_product_grid_teachers_name() {
 				<?php echo get_the_post_thumbnail( $expert, 'img-75-75', false ); ?>
 			</div>
 			<div class="teacher-info">
-				<div class="teacher-name">
+				<div class="teacher-name heading-font">
 					<?php echo esc_html( get_the_title( $expert ) ); ?>
 				</div>
 				<div class="teacher-role">

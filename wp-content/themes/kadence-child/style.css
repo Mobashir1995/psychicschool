@@ -579,7 +579,8 @@ body.architecture .icon_box p{
     font-size: 16px !important;
     line-height: 20px;
 }
-.product-grid-teachers-name {
+.product-grid-teachers-name,
+.product-grid-teachers-name .teachers-name {
     color: #aaa;
     font-size: 12px;
     font-weight: 400;
