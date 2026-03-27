@@ -453,3 +453,68 @@ function kadence_child_single_product_course_meta() {
 	<?php
 }
 add_action( 'woocommerce_after_add_to_cart_form', 'kadence_child_single_product_course_meta' );
+
+/**
+ * Add a CSS class to anchors in an HTML snippet.
+ *
+ * @param string $html HTML markup.
+ * @param string $class CSS class to append.
+ * @return string
+ */
+function kadence_child_add_class_to_anchor_html( $html, $class ) {
+	if ( false === strpos( $html, '<a' ) || empty( $class ) ) {
+		return $html;
+	}
+
+	if ( preg_match( '/class="/', $html ) ) {
+		return preg_replace( '/class="([^"]*)"/', 'class="$1 ' . esc_attr( $class ) . '"', $html, 1 );
+	}
+
+	return preg_replace( '/<a\s+/i', '<a class="' . esc_attr( $class ) . '" ', $html, 1 );
+}
+
+/**
+ * Add secondary button style class on available download links.
+ *
+ * @param string $link_html Download link HTML.
+ * @param array  $download  Download row data.
+ * @return string
+ */
+function kadence_child_woocommerce_available_download_link( $link_html, $download ) {
+	return kadence_child_add_class_to_anchor_html( $link_html, 'button-style-secondary' );
+}
+add_filter( 'woocommerce_available_download_link', 'kadence_child_woocommerce_available_download_link', 20, 2 );
+
+/**
+ * Render account order actions with the secondary button style.
+ *
+ * @param WC_Order $order Order object.
+ */
+function kadence_child_my_account_order_actions_column( $order ) {
+	$actions = wc_get_account_orders_actions( $order );
+
+	if ( empty( $actions ) ) {
+		return;
+	}
+
+	$wp_button_class = wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '';
+
+	foreach ( $actions as $key => $action ) {
+		$action_aria_label = isset( $action['aria-label'] ) && ! empty( $action['aria-label'] )
+			? $action['aria-label']
+			: sprintf( __( '%1$s order number %2$s', 'woocommerce' ), $action['name'], $order->get_order_number() );
+
+		echo '<a href="' . esc_url( $action['url'] ) . '" class="woocommerce-button' . esc_attr( $wp_button_class ) . ' button button-style-secondary ' . sanitize_html_class( $key ) . '" aria-label="' . esc_attr( $action_aria_label ) . '">' . esc_html( $action['name'] ) . '</a>';
+	}
+}
+add_action( 'woocommerce_my_account_my_orders_column_order-actions', 'kadence_child_my_account_order_actions_column', 20 );
+
+/**
+ * Render downloads table action link with the secondary button style.
+ *
+ * @param array $download Download row data.
+ */
+function kadence_child_account_downloads_column_download_file( $download ) {
+	echo '<a href="' . esc_url( $download['download_url'] ) . '" class="woocommerce-MyAccount-downloads-file button button-style-secondary alt">' . esc_html( $download['download_name'] ) . '</a>';
+}
+add_action( 'woocommerce_account_downloads_column_download-file', 'kadence_child_account_downloads_column_download_file', 20 );

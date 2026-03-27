@@ -156,7 +156,7 @@ if ( ! empty( $customer_memberships ) ) : ?>
 							<td class="membership-actions order-actions" data-title="<?php echo esc_attr( $column_name ); ?>">
 								<?php
 
-								echo wc_memberships_get_members_area_action_links( 'my-memberships', $customer_membership, $post );
+								echo str_replace( 'class="button', 'class="button button-style-secondary', wc_memberships_get_members_area_action_links( 'my-memberships', $customer_membership, $post ) );
 
 								// ask confirmation before cancelling a membership
 								wc_enqueue_js( "

@@ -13,6 +13,82 @@
 */
 
 /* Global CSS */
+:is(h1, .h1),
+.wp-block-heading:is(h1, .h1) {
+  color: var(--global-palette3);
+  font-family: var(--global-heading-font-family, inherit);
+  font-size: var(--global-xxl-font-size);
+  font-style: var(--global-heading-font-style, normal);
+  font-weight: var(--global-heading-font-weight, 700);
+  letter-spacing: var(--global-heading-letter-spacing, normal);
+  line-height: var(--global-xxl-line-height);
+  text-transform: var(--global-heading-text-transform, none);
+}
+
+:is(h2, .h2),
+.wp-block-heading:is(h2, .h2) {
+  color: var(--global-palette3);
+  font-family: var(--global-heading-font-family, inherit);
+  font-size: var(--global-xl-font-size);
+  font-style: var(--global-heading-font-style, normal);
+  font-weight: var(--global-heading-font-weight, 700);
+  letter-spacing: var(--global-heading-letter-spacing, normal);
+  line-height: var(--global-xl-line-height);
+  text-transform: var(--global-heading-text-transform, none);
+}
+
+:is(h3, .h3),
+.wp-block-heading:is(h3, .h3) {
+  color: var(--global-palette3);
+  font-family: var(--global-heading-font-family, inherit);
+  font-size: var(--global-lg-font-size);
+  font-style: var(--global-heading-font-style, normal);
+  font-weight: var(--global-heading-font-weight, 700);
+  letter-spacing: var(--global-heading-letter-spacing, normal);
+  line-height: var(--global-lg-line-height);
+  text-transform: var(--global-heading-text-transform, none);
+}
+
+:is(h4, .h4),
+.wp-block-heading:is(h4, .h4) {
+  color: var(--global-palette3);
+  font-family: var(--global-heading-font-family, inherit);
+  font-size: var(--global-md-font-size);
+  font-style: var(--global-heading-font-style, normal);
+  font-weight: var(--global-heading-font-weight, 700);
+  letter-spacing: var(--global-heading-letter-spacing, normal);
+  line-height: var(--global-md-line-height);
+  text-transform: var(--global-heading-text-transform, none);
+}
+
+:is(h5, .h5),
+.wp-block-heading:is(h5, .h5) {
+  color: var(--global-palette3);
+  font-family: var(--global-heading-font-family, inherit);
+  font-size: var(--global-sm-font-size);
+  font-style: var(--global-heading-font-style, normal);
+  font-weight: var(--global-heading-font-weight, 700);
+  letter-spacing: var(--global-heading-letter-spacing, normal);
+  line-height: var(--global-sm-line-height);
+  text-transform: var(--global-heading-text-transform, none);
+}
+
+:is(h6, .h6),
+.wp-block-heading:is(h6, .h6) {
+  color: var(--global-palette3);
+  font-family: var(--global-heading-font-family, inherit);
+  font-size: var(--global-xs-font-size);
+  font-style: var(--global-heading-font-style, normal);
+  font-weight: var(--global-heading-font-weight, 700);
+  letter-spacing: var(--global-heading-letter-spacing, normal);
+  line-height: var(--global-xs-line-height);
+  text-transform: var(--global-heading-text-transform, none);
+}
+.heading-font{
+  font-family: var(--global-heading-font-family, inherit);
+  color: var(--global-palette3);
+}
+
 a {
   text-decoration: none
 }
