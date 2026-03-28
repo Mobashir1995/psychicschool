@@ -65,9 +65,10 @@ function kadence_child_heading_utility_classes_dynamic_css( $css ) {
 
 	$kcss = new \Kadence\Kadence_CSS();
 
-	$media_query            = array();
-	$media_query['mobile']  = apply_filters( 'kadence_mobile_media_query', '(max-width: 767px)' );
-	$media_query['tablet']  = apply_filters( 'kadence_tablet_media_query', '(max-width: 1024px)' );
+	$media_query             = array();
+	$media_query['mobile']   = apply_filters( 'kadence_mobile_media_query', '(max-width: 767px)' );
+	$media_query['tablet']   = apply_filters( 'kadence_tablet_media_query', '(max-width: 1024px)' );
+	$media_query['desktop']  = apply_filters( 'kadence_desktop_media_query', '(min-width: 1025px)' );
 
 	$heading_levels = array(
 		'h1' => 'h1_font',
@@ -82,9 +83,24 @@ function kadence_child_heading_utility_classes_dynamic_css( $css ) {
 	$kcss->add_property( 'font-family', 'var(--global-heading-font-family)' );
 
 	foreach ( $heading_levels as $class => $option_key ) {
+		$font = kadence()->option( $option_key );
 		$kcss->set_selector( '.' . $class . ',.wp-block-heading.' . $class );
-		$kcss->render_font( kadence()->option( $option_key ), $kcss );
+		$kcss->render_font( $font, $kcss );
 	}
+
+	// Large screens: mirror parent tablet/mobile pattern — explicit desktop size/line-height/letter-spacing
+	// (Parent outputs these in the base block via render_font(); this @media matches kadence_desktop_media_query
+	// so .h1-.h6 keep the same desktop typography as h1-h6 above 1024px.)
+	$kcss->start_media_query( $media_query['desktop'] );
+	foreach ( $heading_levels as $class => $option_key ) {
+		$font = kadence()->option( $option_key );
+		$kcss->set_selector( '.' . $class . ',.wp-block-heading.' . $class );
+		$kcss->add_property( 'font-size', $kcss->render_font_size( $font, 'desktop' ) );
+		$kcss->add_property( 'line-height', $kcss->render_font_height( $font, 'desktop' ) );
+		$kcss->add_property( 'letter-spacing', $kcss->render_font_spacing( $font, 'desktop' ) );
+		kadence_child_heading_font_text_transform( $font, $kcss );
+	}
+	$kcss->stop_media_query();
 
 	$kcss->start_media_query( $media_query['tablet'] );
 	foreach ( $heading_levels as $class => $option_key ) {
@@ -93,6 +109,7 @@ function kadence_child_heading_utility_classes_dynamic_css( $css ) {
 		$kcss->add_property( 'font-size', $kcss->render_font_size( $font, 'tablet' ) );
 		$kcss->add_property( 'line-height', $kcss->render_font_height( $font, 'tablet' ) );
 		$kcss->add_property( 'letter-spacing', $kcss->render_font_spacing( $font, 'tablet' ) );
+		kadence_child_heading_font_text_transform( $font, $kcss );
 	}
 	$kcss->stop_media_query();
 
@@ -103,6 +120,7 @@ function kadence_child_heading_utility_classes_dynamic_css( $css ) {
 		$kcss->add_property( 'font-size', $kcss->render_font_size( $font, 'mobile' ) );
 		$kcss->add_property( 'line-height', $kcss->render_font_height( $font, 'mobile' ) );
 		$kcss->add_property( 'letter-spacing', $kcss->render_font_spacing( $font, 'mobile' ) );
+		kadence_child_heading_font_text_transform( $font, $kcss );
 	}
 	$kcss->stop_media_query();
 
@@ -113,4 +131,17 @@ function kadence_child_heading_utility_classes_dynamic_css( $css ) {
 
 	return $css;
 }
+
+/**
+ * Output text-transform from Kadence heading font option (same key as Kadence_CSS::render_font()).
+ *
+ * @param array               $font Heading typography option array.
+ * @param \Kadence\Kadence_CSS $kcss CSS builder instance.
+ */
+function kadence_child_heading_font_text_transform( $font, \Kadence\Kadence_CSS $kcss ) {
+	if ( ! empty( $font['transform'] ) ) {
+		$kcss->add_property( 'text-transform', $font['transform'] );
+	}
+}
+
 add_filter( 'kadence_dynamic_css', 'kadence_child_heading_utility_classes_dynamic_css', 20 );
