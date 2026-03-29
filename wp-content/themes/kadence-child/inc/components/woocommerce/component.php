@@ -515,6 +515,6 @@ add_action( 'woocommerce_my_account_my_orders_column_order-actions', 'kadence_ch
  * @param array $download Download row data.
  */
 function kadence_child_account_downloads_column_download_file( $download ) {
-	echo '<a href="' . esc_url( $download['download_url'] ) . '" class="woocommerce-MyAccount-downloads-file button button-style-secondary alt">' . esc_html( $download['download_name'] ) . '</a>';
+	echo '<a href="' . esc_url( $download['download_url'] ) . '" class="woocommerce-MyAccount-downloads-file button button-style-secondary">' . esc_html( $download['download_name'] ) . '</a>';
 }
 add_action( 'woocommerce_account_downloads_column_download-file', 'kadence_child_account_downloads_column_download_file', 20 );

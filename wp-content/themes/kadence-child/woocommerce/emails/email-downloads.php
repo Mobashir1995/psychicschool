@@ -63,7 +63,7 @@ $email_improvements_enabled = FeaturesUtil::feature_is_enabled( 'email_improveme
 								break;
 							case 'download-file':
 								?>
-								<a href="<?php echo esc_url( $download['download_url'] ); ?>" class="woocommerce-MyAccount-downloads-file button alt"><?php echo esc_html( $download['download_name'] ); ?></a>
+								<a href="<?php echo esc_url( $download['download_url'] ); ?>" class="woocommerce-MyAccount-downloads-file button button-style-secondary"><?php echo esc_html( $download['download_name'] ); ?></a>
 								<?php
 								break;
 							case 'download-expires':
