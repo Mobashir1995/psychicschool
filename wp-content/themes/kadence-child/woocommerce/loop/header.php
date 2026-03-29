@@ -31,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 */
 	if ( apply_filters( 'woocommerce_show_page_title', true ) ) :
 		?>
-		<h2 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h2>
+		<h2 class="woocommerce-products-header__title page-title text-uppercase"><?php woocommerce_page_title(); ?></h2>
 	<?php endif; ?>
 
 	<?php

@@ -1010,10 +1010,6 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   margin-bottom: 10px
 }
 /* WooCommerce Archive Page */
-.woocommerce-products-header__title {
-  text-transform: uppercase;
-  font-size: 32px;
-}
 .woocommerce-archive-action-section {
   display: flex;
   justify-content: space-between;
