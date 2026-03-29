@@ -92,7 +92,7 @@ function kadence_child_stm_experts_render( $atts ) {
 								</a>
 							</div>
 							<div class="expert-body">
-								<div class="expert-name">
+								<div class="expert-name h3">
 									<a href="<?php echo esc_url( get_permalink() ); ?>">
 										<?php echo esc_html( get_the_title() ); ?>
 									</a>
