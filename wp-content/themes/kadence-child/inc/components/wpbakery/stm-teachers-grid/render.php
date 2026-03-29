@@ -72,10 +72,10 @@ function kadence_child_stm_teachers_grid_render( $atts ) {
 								?>
 							</div>
 						</a>
-						<div class="h6">
-							<div class="teacher-name">
+						<div>
+							<h4 class="teacher-name">
 								<a href="<?php echo esc_url( get_permalink( $teacher_id ) ); ?>" title="<?php echo esc_html( get_the_title( $teacher_id ) ); ?>"><?php echo esc_html( get_the_title( $teacher_id ) ); ?></a>
-							</div>
+							</h4>
 							<?php if ( ! empty( $position ) ) : ?>
 								<div class="teacher-role">
 									<?php echo esc_html( $position ); ?>
