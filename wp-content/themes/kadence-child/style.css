@@ -1159,15 +1159,8 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
 }
 
 .woocommerce-account .account-navigation-wrap .is-active.menu-item a,
-.woocommerce table.my_account_orders .button,
-.woocommerce table.my_account_bookings .button,
-.woocommerce table.woocommerce-table a.button,
-.woocommerce table.shop_table .button,
 #affwp-affiliate-dashboard-tabs .active a,
-#affwp-affiliate-dashboard-tabs a:hover,
-#affwp-affiliate-dashboard .button,
-.affwp-modal .button,
-#affwp-creatives-modal .button{
+#affwp-affiliate-dashboard-tabs a:hover{
   background: #09dc77;
   border-bottom-color: #09dc77 !important;
 }
@@ -1188,12 +1181,8 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
 #affwp-affiliate-dashboard .button,
 .affwp-modal .button,
 #affwp-creatives-modal .button{
-   text-transform: uppercase;
-   font-size: 14px;
-   font-weight: 700;
    min-width: 135px;
    text-align: center;
-   padding: 15px 12px;
    margin-right: 5px;
  }
 #affwp-affiliate-dashboard .button,
