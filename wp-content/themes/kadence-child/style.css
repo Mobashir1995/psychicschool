@@ -1010,6 +1010,10 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   margin-bottom: 10px
 }
 /* WooCommerce Archive Page */
+.woo-archive-search-form button {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 .woocommerce-archive-action-section {
   display: flex;
   justify-content: space-between;
@@ -1095,10 +1099,6 @@ ul.kadence_post_list_archive li.kadence_post_list_content_unit {
   color: #0aed80;
 }
 
-.woo-archive-product-grid-teachers-name .teacher-info {
-  font-size: 12px;
-  color: #555;
-}
 .woo-archive-product-grid-teachers-name .teacher-thumbnail {
   width: 40px;
   height: 40px;

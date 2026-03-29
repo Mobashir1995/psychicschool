@@ -72,8 +72,8 @@ function kadence_child_stm_teachers_grid_render( $atts ) {
 								?>
 							</div>
 						</a>
-						<div class="teacher-info">
-							<div class="teacher-name heading-font">
+						<div class="h6">
+							<div class="teacher-name">
 								<a href="<?php echo esc_url( get_permalink( $teacher_id ) ); ?>" title="<?php echo esc_html( get_the_title( $teacher_id ) ); ?>"><?php echo esc_html( get_the_title( $teacher_id ) ); ?></a>
 							</div>
 							<?php if ( ! empty( $position ) ) : ?>

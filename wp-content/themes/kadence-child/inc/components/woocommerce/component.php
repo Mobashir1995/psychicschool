@@ -210,8 +210,8 @@ function kadence_child_woo_archive_product_grid_teachers_name() {
 			<div class="teacher-thumbnail">
 				<?php echo get_the_post_thumbnail( $expert, 'img-75-75', false ); ?>
 			</div>
-			<div class="teacher-info">
-				<div class="teacher-name heading-font">
+			<div class="h6">
+				<div class="teacher-name">
 					<?php echo esc_html( get_the_title( $expert ) ); ?>
 				</div>
 				<div class="teacher-role">
