@@ -54,7 +54,7 @@ function kadence_child_stm_testimonials_render( $atts ) {
 					<div class="swiper-slide">
 						<div class="kadence_testimonial_item" style="color:<?php echo esc_attr( $text_color ); ?>;">
 							<div class="kadence_testimonial_meta">
-								<div class="kadence_testimonial_author"><?php the_title(); ?></div>
+								<h4><?php the_title(); ?></h4>
 								<?php if ( $profession ) : ?>
 									<div class="kadence_testimonial_profession"><?php echo esc_html( $profession ); ?></div>
 								<?php endif; ?>
