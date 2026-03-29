@@ -68,17 +68,17 @@ function kadence_child_stm_stats_counter_render( $atts ) {
 		<?php endif; ?>
 
 		<?php if ( wp_is_mobile() ) : ?>
-			<h3 class="kadence_stats_counter_value" id="<?php echo esc_attr( $id ); ?>" <?php echo $text_style_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+			<div class="h1" id="<?php echo esc_attr( $id ); ?>" <?php echo $text_style_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 				<?php echo esc_html( $counter_value ); ?>
-			</h3>
+			</div>
 		<?php else : ?>
-			<h3 class="kadence_stats_counter_value" id="<?php echo esc_attr( $id ); ?>" <?php echo $text_style_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>></h3>
+			<div class="h1" id="<?php echo esc_attr( $id ); ?>" <?php echo $text_style_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>></div>
 		<?php endif; ?>
 
 		<?php if ( $title ) : ?>
-			<h4 class="stats_counter_title" <?php echo $counter_style_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+			<div class="h5" <?php echo $counter_style_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 				<?php echo esc_html( $title ); ?>
-			</h4>
+			</div>
 		<?php endif; ?>
 	</div>
 	<?php
