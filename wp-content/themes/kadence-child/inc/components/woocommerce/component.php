@@ -518,3 +518,29 @@ function kadence_child_account_downloads_column_download_file( $download ) {
 	echo '<a href="' . esc_url( $download['download_url'] ) . '" class="woocommerce-MyAccount-downloads-file button button-style-secondary">' . esc_html( $download['download_name'] ) . '</a>';
 }
 add_action( 'woocommerce_account_downloads_column_download-file', 'kadence_child_account_downloads_column_download_file', 20 );
+
+/**
+ * Style the single-product review submit button with Kadence secondary button classes.
+ *
+ * @param array $comment_form Comment form args.
+ * @return array
+ */
+function kadence_child_woocommerce_product_review_comment_form_args( $comment_form ) {
+	if ( isset( $comment_form['class_submit'] ) && is_string( $comment_form['class_submit'] ) ) {
+		$classes = preg_split( '/\s+/', trim( $comment_form['class_submit'] ) );
+	} else {
+		$classes = array();
+	}
+
+	if ( ! in_array( 'button', $classes, true ) ) {
+		$classes[] = 'button';
+	}
+	if ( ! in_array( 'button-style-secondary', $classes, true ) ) {
+		$classes[] = 'button-style-secondary';
+	}
+
+	$comment_form['class_submit'] = trim( implode( ' ', array_filter( $classes ) ) );
+
+	return $comment_form;
+}
+add_filter( 'woocommerce_product_review_comment_form_args', 'kadence_child_woocommerce_product_review_comment_form_args', 20 );
