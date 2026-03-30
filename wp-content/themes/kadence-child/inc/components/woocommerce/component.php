@@ -82,30 +82,6 @@ function remove_kadence_woocommerce_component() {
 // Hook early to remove component and its hooks
 add_action( 'after_setup_theme', 'remove_kadence_woocommerce_component', 999 );
 
-/**
- * Output Kadence title area on FunnelKit checkout templates.
- *
- * FunnelKit canvas/full-width templates do not call Kadence's normal title
- * template part, so we render a matching title area manually and use "page"
- * title settings from the Customizer.
- */
-function kadence_child_wfacp_output_kadence_title_area() {
-	if ( ! is_singular( 'wfacp_checkout' ) || ! function_exists( '\Kadence\kadence' ) ) {
-		return;
-	}
-	?>
-	<div class="content-bg entry-hero-container-inner">
-		<header class="entry-header page-title title-align-inherit title-tablet-align-inherit title-mobile-align-inherit">
-			<?php do_action( 'kadence_single_before_entry_header' ); ?>
-			<?php \Kadence\kadence()->render_title( 'page', 'normal' ); ?>
-			<?php do_action( 'kadence_single_after_entry_header' ); ?>
-		</header>
-	</div>
-	<?php
-}
-add_action( 'wfacp_template_body_top', 'kadence_child_wfacp_output_kadence_title_area', 8 );
-
-
 function kadence_child_start_shop_loop_title_wrap() {
 	if ( is_main_query() && is_archive() && ! wc_get_loop_prop( 'is_shortcode' ) ) {
 		return;
