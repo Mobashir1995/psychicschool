@@ -90,7 +90,7 @@ add_action( 'after_setup_theme', 'remove_kadence_woocommerce_component', 999 );
  * title settings from the Customizer.
  */
 function kadence_child_wfacp_output_kadence_title_area() {
-	if ( ! is_singular( 'wfacp_checkout' ) || ! function_exists( '\Kadence\kadence' ) ) {
+	if ( ! function_exists( '\Kadence\kadence' ) || ! class_exists( 'WFACP_Common' ) || absint( WFACP_Common::get_id() ) < 1 ) {
 		return;
 	}
 	?>
@@ -110,14 +110,14 @@ add_action( 'wfacp_template_body_top', 'kadence_child_wfacp_output_kadence_title
  * Force FunnelKit checkout post type to reuse "page" title settings.
  */
 function kadence_child_kadence_entry_header_for_wfacp( $item_type = 'post', $area = 'normal' ) {
-	if ( is_singular( 'wfacp_checkout' ) ) {
+	if ( class_exists( 'WFACP_Common' ) && absint( WFACP_Common::get_id() ) > 0 ) {
 		$item_type = 'page';
 	}
 	\Kadence\kadence()->render_title( $item_type, $area );
 }
 
 function kadence_child_wfacp_map_default_template_title_settings() {
-	if ( ! function_exists( '\Kadence\kadence' ) || ! is_singular( 'wfacp_checkout' ) ) {
+	if ( ! function_exists( '\Kadence\kadence' ) || ! class_exists( 'WFACP_Common' ) || absint( WFACP_Common::get_id() ) < 1 ) {
 		return;
 	}
 	remove_action( 'kadence_entry_header', 'Kadence\kadence_entry_header', 10 );
