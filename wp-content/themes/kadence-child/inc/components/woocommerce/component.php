@@ -564,39 +564,52 @@ function kadence_child_single_product_price_html( $price_html, $product ) {
 		return '<span class="price"><span class="amount">' . esc_html__( 'FREE', 'kadence-child' ) . '</span></span>';
 	}
 
-	$is_subscription = $product->is_type( 'subscription' ) || $product->is_type( 'subscription_variation' );
-	if ( ! $is_subscription ) {
-		return $price_html;
+	return $price_html;
+}
+add_filter( 'woocommerce_get_price_html', 'kadence_child_single_product_price_html', 20, 2 );
+
+/**
+ * Subscription product single-page price format override.
+ *
+ * @param string     $subscription_string Existing subscription price string.
+ * @param WC_Product $product             Product object.
+ * @param array      $include             Included parts in price string.
+ * @return string
+ */
+function kadence_child_single_product_subscription_price_string( $subscription_string, $product, $include ) {
+	if ( ! function_exists( 'is_product' ) || ! is_product() || ! $product instanceof WC_Product ) {
+		return $subscription_string;
 	}
 
 	$billing_period   = (string) $product->get_meta( '_subscription_period', true );
 	$billing_interval = (int) $product->get_meta( '_subscription_period_interval', true );
-	if ( '' === $billing_period ) {
-		return $price_html;
+	if ( 'month' !== $billing_period ) {
+		return $subscription_string;
 	}
 	if ( $billing_interval < 1 ) {
 		$billing_interval = 1;
 	}
-	$price_value      = $product->get_price();
+
+	$price_value = $product->get_price();
 	if ( '' === $price_value ) {
-		return $price_html;
+		return $subscription_string;
 	}
 
-	if ( 'month' === $billing_period ) {
-		if ( $billing_interval > 1 ) {
-			$new_label = sprintf(
-				/* translators: 1: formatted price, 2: billing interval in months */
-				esc_html__( '%1$s every %2$d months', 'kadence-child' ),
-				wp_strip_all_tags( wc_price( $price_value ) ),
-				$billing_interval
-			);
-		} else {
-			$new_label = wc_price( $price_value ) . '/' . esc_html__( 'Monthly', 'kadence-child' );
-		}
+	if ( (float) $price_value <= 0 ) {
+		return '<span class="subscription-details">' . esc_html__( 'FREE', 'kadence-child' ) . '</span>';
+	}
+
+	if ( $billing_interval > 1 ) {
+		$label = sprintf(
+			/* translators: 1: formatted price, 2: number of months */
+			esc_html__( '%1$s every %2$d months', 'kadence-child' ),
+			wp_strip_all_tags( wc_price( $price_value ) ),
+			$billing_interval
+		);
 	} else {
-		$new_label = wc_price( $price_value ) . '/' . ucfirst( $billing_period );
+		$label = wp_kses_post( wc_price( $price_value ) ) . '/' . esc_html__( 'Monthly', 'kadence-child' );
 	}
 
-	return '<span class="price"><span class="amount">' . wp_kses_post( $new_label ) . '</span></span>';
+	return '<span class="subscription-details">' . $label . '</span>';
 }
-add_filter( 'woocommerce_get_price_html', 'kadence_child_single_product_price_html', 20, 2 );
+add_filter( 'woocommerce_subscriptions_product_price_string', 'kadence_child_single_product_subscription_price_string', 20, 3 );
