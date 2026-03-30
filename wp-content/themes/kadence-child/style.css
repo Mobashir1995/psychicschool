@@ -430,12 +430,7 @@ body.architecture .icon_box p{
   display: block;
 }
 .woocommerce div.product .single-product-sidebar .button.single_add_to_cart_button {
-  background: #0aed80;
-  text-transform: uppercase;
-  font-weight: 700;
-  padding: 12px 15px;
   width: 100%;
-  height: auto;
 }
 .woocommerce div.product .single-product-sidebar form.cart .variations {
   margin-top: 20px;
