@@ -82,6 +82,35 @@ function remove_kadence_woocommerce_component() {
 // Hook early to remove component and its hooks
 add_action( 'after_setup_theme', 'remove_kadence_woocommerce_component', 999 );
 
+/**
+ * FunnelKit checkout pages use the custom post type `wfacp_checkout`.
+ * Kadence has no dedicated title settings for that post type, so it falls back
+ * to a plain title output. Force those pages to render the title area using
+ * Kadence "page" title settings from the Customizer.
+ */
+function kadence_child_wfacp_use_page_title_settings() {
+	if ( ! function_exists( 'is_singular' ) || ! is_singular( 'wfacp_checkout' ) ) {
+		return;
+	}
+	if ( ! function_exists( '\Kadence\kadence' ) ) {
+		return;
+	}
+
+	remove_action( 'kadence_entry_header', 'Kadence\kadence_entry_header', 10 );
+	add_action(
+		'kadence_entry_header',
+		function( $item_type = 'post', $area = 'normal' ) {
+			if ( is_singular( 'wfacp_checkout' ) ) {
+				$item_type = 'page';
+			}
+			\Kadence\kadence()->render_title( $item_type, $area );
+		},
+		10,
+		2
+	);
+}
+add_action( 'wp', 'kadence_child_wfacp_use_page_title_settings', 20 );
+
 
 function kadence_child_start_shop_loop_title_wrap() {
 	if ( is_main_query() && is_archive() && ! wc_get_loop_prop( 'is_shortcode' ) ) {
