@@ -544,3 +544,59 @@ function kadence_child_woocommerce_product_review_comment_form_args( $comment_fo
 	return $comment_form;
 }
 add_filter( 'woocommerce_product_review_comment_form_args', 'kadence_child_woocommerce_product_review_comment_form_args', 20 );
+
+/**
+ * Format single-product price display:
+ * - Show FREE when price is 0.00
+ * - Normalize subscription month text to /Monthly with interval indicator.
+ *
+ * @param string     $price_html Existing HTML.
+ * @param WC_Product $product    Product object.
+ * @return string
+ */
+function kadence_child_single_product_price_html( $price_html, $product ) {
+	if ( ! function_exists( 'is_product' ) || ! is_product() || ! $product instanceof WC_Product ) {
+		return $price_html;
+	}
+
+	$raw_price = $product->get_price();
+	if ( '' !== $raw_price && (float) $raw_price <= 0 ) {
+		return '<span class="price"><span class="amount">' . esc_html__( 'FREE', 'kadence-child' ) . '</span></span>';
+	}
+
+	$is_subscription = $product->is_type( 'subscription' ) || $product->is_type( 'subscription_variation' );
+	if ( ! $is_subscription ) {
+		return $price_html;
+	}
+
+	$billing_period   = (string) $product->get_meta( '_subscription_period', true );
+	$billing_interval = (int) $product->get_meta( '_subscription_period_interval', true );
+	if ( '' === $billing_period ) {
+		return $price_html;
+	}
+	if ( $billing_interval < 1 ) {
+		$billing_interval = 1;
+	}
+	$price_value      = $product->get_price();
+	if ( '' === $price_value ) {
+		return $price_html;
+	}
+
+	if ( 'month' === $billing_period ) {
+		if ( $billing_interval > 1 ) {
+			$new_label = sprintf(
+				/* translators: 1: formatted price, 2: billing interval in months */
+				esc_html__( '%1$s every %2$d months', 'kadence-child' ),
+				wp_strip_all_tags( wc_price( $price_value ) ),
+				$billing_interval
+			);
+		} else {
+			$new_label = wc_price( $price_value ) . '/' . esc_html__( 'Monthly', 'kadence-child' );
+		}
+	} else {
+		$new_label = wc_price( $price_value ) . '/' . ucfirst( $billing_period );
+	}
+
+	return '<span class="price"><span class="amount">' . wp_kses_post( $new_label ) . '</span></span>';
+}
+add_filter( 'woocommerce_get_price_html', 'kadence_child_single_product_price_html', 20, 2 );
