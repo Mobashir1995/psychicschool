@@ -58,7 +58,37 @@ function kadence_child_wfacp_default_template_hero_title() {
 			</div>
 		</div>
 	</section>
+	<?php kadence_child_wfacp_render_page_hero_background_css(); ?>
 	<?php
+}
+
+/**
+ * Bridge Kadence page-title background styles for FunnelKit default-template requests.
+ *
+ * Kadence core prints these rules in an is_page() branch. FunnelKit checkout
+ * requests may bypass that branch, so we render the same page title background
+ * rules here from the same Customizer options.
+ */
+function kadence_child_wfacp_render_page_hero_background_css() {
+	if ( ! class_exists( '\Kadence\Kadence_CSS' ) || ! function_exists( '\Kadence\kadence' ) ) {
+		return;
+	}
+
+	$css = new \Kadence\Kadence_CSS();
+
+	$css->set_selector( '.page-hero-section .entry-hero-container-inner' );
+	$css->render_background( \Kadence\kadence()->sub_option( 'page_title_background', 'desktop' ), $css );
+	$css->add_property( 'border-top', $css->render_border( \Kadence\kadence()->sub_option( 'page_title_top_border', 'desktop' ) ) );
+	$css->add_property( 'border-bottom', $css->render_border( \Kadence\kadence()->sub_option( 'page_title_bottom_border', 'desktop' ) ) );
+
+	$css->set_selector( '.page-hero-section .hero-section-overlay' );
+	$css->add_property( 'background', $css->render_color_or_gradient( \Kadence\kadence()->sub_option( 'page_title_overlay_color', 'color' ) ) );
+
+	$compiled_css = trim( $css->css_output() );
+	if ( '' === $compiled_css ) {
+		return;
+	}
+	echo '<style id="kadence-child-wfacp-page-hero-css">' . $compiled_css . '</style>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
 /**
