@@ -105,6 +105,26 @@ function kadence_child_wfacp_output_kadence_title_area() {
 }
 add_action( 'wfacp_template_body_top', 'kadence_child_wfacp_output_kadence_title_area', 8 );
 
+/**
+ * Default template mode uses Kadence's native entry header hook.
+ * Force FunnelKit checkout post type to reuse "page" title settings.
+ */
+function kadence_child_kadence_entry_header_for_wfacp( $item_type = 'post', $area = 'normal' ) {
+	if ( is_singular( 'wfacp_checkout' ) ) {
+		$item_type = 'page';
+	}
+	\Kadence\kadence()->render_title( $item_type, $area );
+}
+
+function kadence_child_wfacp_map_default_template_title_settings() {
+	if ( ! function_exists( '\Kadence\kadence' ) || ! is_singular( 'wfacp_checkout' ) ) {
+		return;
+	}
+	remove_action( 'kadence_entry_header', 'Kadence\kadence_entry_header', 10 );
+	add_action( 'kadence_entry_header', 'kadence_child_kadence_entry_header_for_wfacp', 10, 2 );
+}
+add_action( 'wp', 'kadence_child_wfacp_map_default_template_title_settings', 20 );
+
 
 function kadence_child_start_shop_loop_title_wrap() {
 	if ( is_main_query() && is_archive() && ! wc_get_loop_prop( 'is_shortcode' ) ) {
