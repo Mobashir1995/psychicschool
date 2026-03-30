@@ -125,6 +125,34 @@ function kadence_child_wfacp_map_default_template_title_settings() {
 }
 add_action( 'wp', 'kadence_child_wfacp_map_default_template_title_settings', 20 );
 
+/**
+ * Force hero title output on FunnelKit checkout when using the default theme template.
+ * This bypasses Kadence's "title above/normal" conditional for checkout runtime.
+ */
+function kadence_child_wfacp_force_default_template_hero() {
+	if ( ! function_exists( '\Kadence\kadence' ) || ! class_exists( 'WFACP_Common' ) || absint( WFACP_Common::get_id() ) < 1 ) {
+		return;
+	}
+	?>
+	<div class="content-bg entry-hero-container-inner">
+		<header class="entry-header page-title title-align-inherit title-tablet-align-inherit title-mobile-align-inherit">
+			<?php do_action( 'kadence_single_before_entry_header' ); ?>
+			<?php \Kadence\kadence()->render_title( 'page', 'normal' ); ?>
+			<?php do_action( 'kadence_single_after_entry_header' ); ?>
+		</header>
+	</div>
+	<?php
+}
+
+function kadence_child_wfacp_setup_default_template_hero_hook() {
+	if ( ! class_exists( 'WFACP_Common' ) || absint( WFACP_Common::get_id() ) < 1 ) {
+		return;
+	}
+	remove_action( 'kadence_hero_header', 'Kadence\hero_title' );
+	add_action( 'kadence_hero_header', 'kadence_child_wfacp_force_default_template_hero', 10 );
+}
+add_action( 'wp', 'kadence_child_wfacp_setup_default_template_hero_hook', 30 );
+
 
 function kadence_child_start_shop_loop_title_wrap() {
 	if ( is_main_query() && is_archive() && ! wc_get_loop_prop( 'is_shortcode' ) ) {
