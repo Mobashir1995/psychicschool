@@ -63,11 +63,11 @@ function kadence_child_wfacp_default_template_hero_title() {
 }
 
 /**
- * Bridge Kadence page-title background styles for FunnelKit default-template requests.
+ * Bridge Kadence page-title styles for FunnelKit default-template requests.
  *
  * Kadence core prints these rules in an is_page() branch. FunnelKit checkout
- * requests may bypass that branch, so we render the same page title background
- * rules here from the same Customizer options.
+ * requests may bypass that branch, so we render the same page title rules here
+ * from the same Customizer options (background + typography/text transform).
  */
 function kadence_child_wfacp_render_page_hero_background_css() {
 	if ( ! class_exists( '\Kadence\Kadence_CSS' ) || ! function_exists( '\Kadence\kadence' ) ) {
@@ -83,6 +83,10 @@ function kadence_child_wfacp_render_page_hero_background_css() {
 
 	$css->set_selector( '.page-hero-section .hero-section-overlay' );
 	$css->add_property( 'background', $css->render_color_or_gradient( \Kadence\kadence()->sub_option( 'page_title_overlay_color', 'color' ) ) );
+
+	// Keep title typography in sync with Page Title settings (includes text-transform).
+	$css->set_selector( '.page-title h1' );
+	$css->render_font( \Kadence\kadence()->option( 'page_title_font' ), $css, 'heading' );
 
 	$compiled_css = trim( $css->css_output() );
 	if ( '' === $compiled_css ) {
