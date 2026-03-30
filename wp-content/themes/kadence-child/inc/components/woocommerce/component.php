@@ -83,33 +83,27 @@ function remove_kadence_woocommerce_component() {
 add_action( 'after_setup_theme', 'remove_kadence_woocommerce_component', 999 );
 
 /**
- * FunnelKit checkout pages use the custom post type `wfacp_checkout`.
- * Kadence has no dedicated title settings for that post type, so it falls back
- * to a plain title output. Force those pages to render the title area using
- * Kadence "page" title settings from the Customizer.
+ * Output Kadence title area on FunnelKit checkout templates.
+ *
+ * FunnelKit canvas/full-width templates do not call Kadence's normal title
+ * template part, so we render a matching title area manually and use "page"
+ * title settings from the Customizer.
  */
-function kadence_child_wfacp_use_page_title_settings() {
-	if ( ! function_exists( 'is_singular' ) || ! is_singular( 'wfacp_checkout' ) ) {
+function kadence_child_wfacp_output_kadence_title_area() {
+	if ( ! is_singular( 'wfacp_checkout' ) || ! function_exists( '\Kadence\kadence' ) ) {
 		return;
 	}
-	if ( ! function_exists( '\Kadence\kadence' ) ) {
-		return;
-	}
-
-	remove_action( 'kadence_entry_header', 'Kadence\kadence_entry_header', 10 );
-	add_action(
-		'kadence_entry_header',
-		function( $item_type = 'post', $area = 'normal' ) {
-			if ( is_singular( 'wfacp_checkout' ) ) {
-				$item_type = 'page';
-			}
-			\Kadence\kadence()->render_title( $item_type, $area );
-		},
-		10,
-		2
-	);
+	?>
+	<div class="content-bg entry-hero-container-inner">
+		<header class="entry-header page-title title-align-inherit title-tablet-align-inherit title-mobile-align-inherit">
+			<?php do_action( 'kadence_single_before_entry_header' ); ?>
+			<?php \Kadence\kadence()->render_title( 'page', 'normal' ); ?>
+			<?php do_action( 'kadence_single_after_entry_header' ); ?>
+		</header>
+	</div>
+	<?php
 }
-add_action( 'wp', 'kadence_child_wfacp_use_page_title_settings', 20 );
+add_action( 'wfacp_template_body_top', 'kadence_child_wfacp_output_kadence_title_area', 8 );
 
 
 function kadence_child_start_shop_loop_title_wrap() {
