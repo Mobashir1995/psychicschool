@@ -431,6 +431,8 @@ body.architecture .icon_box p{
 }
 .woocommerce div.product .single-product-sidebar .button.single_add_to_cart_button {
   width: 100%;
+  padding: 5px 10px;
+  height: auto;
 }
 .woocommerce div.product .single-product-sidebar form.cart .variations {
   margin-top: 20px;
