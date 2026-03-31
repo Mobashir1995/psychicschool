@@ -678,3 +678,35 @@ function kadence_child_adjust_variation_ajax_price_html( $variation_data, $produ
 	return $variation_data;
 }
 add_filter( 'woocommerce_available_variation', 'kadence_child_adjust_variation_ajax_price_html', 20, 3 );
+
+/**
+ * Customize Bookings popup validation message via native localized params filter.
+ *
+ * @param array $params Localized booking form params.
+ * @return array
+ */
+function kadence_child_booking_form_params_overrides( $params ) {
+	if ( isset( $params['i18n_choose_options'] ) ) {
+		$params['i18n_choose_options'] = 'Please click to select a date in green, then click to select a time appearing below the calendar, before clicking Book Now.';
+	}
+
+	return $params;
+}
+add_filter( 'booking_form_params', 'kadence_child_booking_form_params_overrides', 20 );
+
+/**
+ * Replace "No blocks available." message for booking slots AJAX response.
+ *
+ * @param string $translated_text Already translated text.
+ * @param string $text            Original source string.
+ * @param string $domain          Text domain.
+ * @return string
+ */
+function kadence_child_booking_no_blocks_text( $translated_text, $text, $domain ) {
+	if ( 'woocommerce-bookings' === $domain && 'No blocks available.' === $text ) {
+		return 'No appointments available. Please select another date.';
+	}
+
+	return $translated_text;
+}
+add_filter( 'gettext', 'kadence_child_booking_no_blocks_text', 20, 3 );
