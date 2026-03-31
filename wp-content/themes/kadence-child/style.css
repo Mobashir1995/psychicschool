@@ -356,6 +356,7 @@ body.architecture .icon_box p{
   color: #aaa;
   font-size: 12px;
 }
+.single-product-sidebar .free-amount-text,
 .single-product-sidebar .woocommerce-Price-amount {
   font-size: 32px;
   font-weight: 700;

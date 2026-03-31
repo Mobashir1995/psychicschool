@@ -561,7 +561,7 @@ function kadence_child_single_product_price_html( $price_html, $product ) {
 
 	$raw_price = $product->get_price();
 	if ( '' !== $raw_price && (float) $raw_price <= 0 ) {
-		return '<span class="price"><span class="amount">' . esc_html__( 'FREE', 'kadence-child' ) . '</span></span>';
+		return '<span class="price"><span class="amount free-amount-text">' . esc_html__( 'FREE', 'kadence-child' ) . '</span></span>';
 	}
 
 	return $price_html;
@@ -580,6 +580,10 @@ function kadence_child_single_product_subscription_price_string( $subscription_s
 	if ( ! function_exists( 'is_product' ) || ! is_product() || ! $product instanceof WC_Product ) {
 		return $subscription_string;
 	}
+	// Keep variation-selected pricing untouched (after dropdown selection).
+	if ( $product->is_type( 'subscription_variation' ) || wp_doing_ajax() ) {
+		return $subscription_string;
+	}
 
 	$billing_period   = (string) $product->get_meta( '_subscription_period', true );
 	$billing_interval = (int) $product->get_meta( '_subscription_period_interval', true );
@@ -596,7 +600,7 @@ function kadence_child_single_product_subscription_price_string( $subscription_s
 	}
 
 	if ( (float) $price_value <= 0 ) {
-		return '<span class="subscription-details">' . esc_html__( 'FREE', 'kadence-child' ) . '</span>';
+		return '<span class="subscription-details free-amount-text">' . esc_html__( 'FREE', 'kadence-child' ) . '</span>';
 	}
 
 	if ( $billing_interval > 1 ) {
