@@ -617,3 +617,64 @@ function kadence_child_single_product_subscription_price_string( $subscription_s
 	return '<span class="subscription-details">' . $label . '</span>';
 }
 add_filter( 'woocommerce_subscriptions_product_price_string', 'kadence_child_single_product_subscription_price_string', 20, 3 );
+
+/**
+ * Normalize variation ajax price wording for specific registration options.
+ *
+ * @param array                $variation_data Variation data used by ajax template.
+ * @param WC_Product           $product        Parent product.
+ * @param WC_Product_Variation $variation      Variation object.
+ * @return array
+ */
+function kadence_child_adjust_variation_ajax_price_html( $variation_data, $product, $variation ) {
+	if ( ! isset( $variation_data['price_html'] ) || '' === $variation_data['price_html'] ) {
+		return $variation_data;
+	}
+	if ( ! $variation instanceof WC_Product_Variation ) {
+		return $variation_data;
+	}
+	$is_subscription_variation = $variation->is_type( 'subscription_variation' ) || '' !== (string) $variation->get_meta( '_subscription_period', true );
+	if ( ! $is_subscription_variation ) {
+		return $variation_data;
+	}
+
+	$variation_name = (string) $variation->get_name();
+	$attributes     = (array) $variation->get_attributes();
+	$attribute_text = implode( ' ', array_map( 'strval', $attributes ) );
+	$label_source   = strtolower( trim( $variation_name . ' ' . $attribute_text ) );
+	$label_slug     = sanitize_title( $label_source );
+
+	$is_automatic_payments = (
+		false !== strpos( $label_source, 'register w/ automatic payments' )
+		|| false !== strpos( $label_source, 'register with automatic payments' )
+		|| false !== strpos( $label_slug, 'register-w-automatic-payments' )
+		|| false !== strpos( $label_slug, 'register-with-automatic-payments' )
+	);
+	$is_deposit_only = (
+		false !== strpos( $label_source, 'register w/ deposit only' )
+		|| false !== strpos( $label_source, 'register with deposit only' )
+		|| false !== strpos( $label_slug, 'register-w-deposit-only' )
+		|| false !== strpos( $label_slug, 'register-with-deposit-only' )
+	);
+
+	$sign_up_fee = (float) $variation->get_meta( '_subscription_sign_up_fee', true );
+
+	if ( $is_automatic_payments && $sign_up_fee > 0 ) {
+		$variation_data['price_html'] = preg_replace(
+			'/sign[\s-]?up fee/i',
+			'last month deposit',
+			$variation_data['price_html']
+		);
+	}
+
+	if ( $is_deposit_only ) {
+		$variation_data['price_html'] = preg_replace(
+			'/for\s+\d+\s+months?/i',
+			'last month deposit',
+			$variation_data['price_html']
+		);
+	}
+
+	return $variation_data;
+}
+add_filter( 'woocommerce_available_variation', 'kadence_child_adjust_variation_ajax_price_html', 20, 3 );
