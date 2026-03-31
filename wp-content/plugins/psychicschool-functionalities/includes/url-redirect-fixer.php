@@ -2,7 +2,6 @@
 !defined('ABSPATH') && exit;
 
 if( function_exists('cuf_save_mappings')) {
-
     return;
 }
 
@@ -137,7 +136,7 @@ function cuf_settings_page() {
 // ======================
 // REDIRECT LOGIC
 // ======================
-add_action('template_redirect', function () {
+add_action('parse_request', function () {
 
     if (is_admin()) return;
 
@@ -146,7 +145,7 @@ add_action('template_redirect', function () {
     if (empty($mappings)) return;
 
     $current_path = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
-
+    
     // only root-level slug
     if (substr_count($current_path, '/') > 0) return;
 
