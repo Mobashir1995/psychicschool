@@ -47,6 +47,11 @@ class Psychicschool_Functionalities {
         require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/helpers/hook-helpers.php';
         require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/helpers/image-sizes.php';
 
+        // URL Redirect Fixer.
+        if( !function_exists('cuf_save_mappings')) {
+            require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/url-redirect-fixer.php';
+        }
+
         // AutomateWoo (Bookings-related variables & rules).
         if ( class_exists( 'AutomateWoo' ) ) {
             require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/automatewoo/timezone.php';
