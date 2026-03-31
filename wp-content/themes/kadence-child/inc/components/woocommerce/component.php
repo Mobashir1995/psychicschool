@@ -607,7 +607,7 @@ function kadence_child_single_product_subscription_price_string( $subscription_s
 			$billing_interval
 		);
 	} else {
-		$label = wp_kses_post( wc_price( $price_value ) ) . '/' . esc_html__( 'Monthly', 'kadence-child' );
+		$label = wp_kses_post( wc_price( $price_value ) ) . '&nbsp;' . esc_html__( 'Monthly', 'kadence-child' );
 	}
 
 	return '<span class="subscription-details">' . $label . '</span>';

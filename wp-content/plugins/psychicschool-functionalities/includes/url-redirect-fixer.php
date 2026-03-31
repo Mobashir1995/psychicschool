@@ -1,7 +1,8 @@
 <?php
 !defined('ABSPATH') && exit;
 
-if( function_exists('cuf_save_mappings')) {
+if (function_exists('cuf_save_mappings')) {
+
     return;
 }
 
@@ -23,7 +24,8 @@ add_action('admin_menu', function () {
 // ======================
 // SAVE DATA
 // ======================
-function cuf_save_mappings() {
+function cuf_save_mappings()
+{
     if (!isset($_POST['cuf_nonce']) || !wp_verify_nonce($_POST['cuf_nonce'], 'cuf_save')) return;
 
     $rows = $_POST['rows'] ?? [];
@@ -45,7 +47,8 @@ function cuf_save_mappings() {
 // ======================
 // SETTINGS PAGE
 // ======================
-function cuf_settings_page() {
+function cuf_settings_page()
+{
 
     if (isset($_POST['cuf_save'])) {
         cuf_save_mappings();
@@ -54,7 +57,7 @@ function cuf_settings_page() {
 
     $mappings = get_option('cuf_mappings', []);
 
-    ?>
+?>
 
     <div class="wrap">
         <h1>Classroom URL Fixer</h1>
@@ -77,13 +80,13 @@ function cuf_settings_page() {
                         <?php
                         $cuf_row = 0;
                         foreach ($mappings as $old => $new) :
-                            ?>
+                        ?>
                             <tr>
                                 <td><input type="text" name="rows[<?php echo (int) $cuf_row; ?>][old]" value="<?php echo esc_attr($old); ?>" class="widefat"></td>
                                 <td><input type="text" name="rows[<?php echo (int) $cuf_row; ?>][new]" value="<?php echo esc_attr($new); ?>" class="widefat"></td>
                                 <td><button type="button" class="button cuf-remove">X</button></td>
                             </tr>
-                            <?php
+                        <?php
                             ++$cuf_row;
                         endforeach;
                         ?>
@@ -103,40 +106,40 @@ function cuf_settings_page() {
     </div>
 
     <script>
-    function cufNextRowIndex() {
-        let max = -1;
-        document.querySelectorAll('#cuf-rows [name^="rows["]').forEach(function (el) {
-            const m = el.name.match(/^rows\[(\d+)\]/);
-            if (m) max = Math.max(max, parseInt(m[1], 10));
-        });
-        return max + 1;
-    }
-    document.getElementById('cuf-add').addEventListener('click', function () {
-        const i = cufNextRowIndex();
-        const row = `
+        function cufNextRowIndex() {
+            let max = -1;
+            document.querySelectorAll('#cuf-rows [name^="rows["]').forEach(function(el) {
+                const m = el.name.match(/^rows\[(\d+)\]/);
+                if (m) max = Math.max(max, parseInt(m[1], 10));
+            });
+            return max + 1;
+        }
+        document.getElementById('cuf-add').addEventListener('click', function() {
+            const i = cufNextRowIndex();
+            const row = `
         <tr>
             <td><input type="text" name="rows[${i}][old]" placeholder="old-slug" class="widefat"></td>
             <td><input type="text" name="rows[${i}][new]" placeholder="/classroom/new-slug/" class="widefat"></td>
             <td><button type="button" class="button cuf-remove">X</button></td>
         </tr>`;
-        document.getElementById('cuf-rows').insertAdjacentHTML('beforeend', row);
-    });
+            document.getElementById('cuf-rows').insertAdjacentHTML('beforeend', row);
+        });
 
-    document.addEventListener('click', function (e) {
-        const btn = e.target.closest('.cuf-remove');
-        if (!btn) return;
-        if (!window.confirm('Remove this row? It will be deleted after you click Save.')) return;
-        btn.closest('tr').remove();
-    });
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.cuf-remove');
+            if (!btn) return;
+            if (!window.confirm('Remove this row? It will be deleted after you click Save.')) return;
+            btn.closest('tr').remove();
+        });
     </script>
 
-    <?php
+<?php
 }
 
 // ======================
 // REDIRECT LOGIC
 // ======================
-add_action('parse_request', function () {
+add_action('template_redirect', function () {
 
     if (is_admin()) return;
 
@@ -145,7 +148,7 @@ add_action('parse_request', function () {
     if (empty($mappings)) return;
 
     $current_path = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
-    
+
     // only root-level slug
     if (substr_count($current_path, '/') > 0) return;
 
