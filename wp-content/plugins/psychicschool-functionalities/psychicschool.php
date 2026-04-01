@@ -53,9 +53,7 @@ class Psychicschool_Functionalities {
         }
 
         // AutomateWoo (Bookings-related variables & rules).
-        if ( class_exists( 'AutomateWoo' ) ) {
-            require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/automatewoo/timezone.php';
-        }
+        require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/automatewoo/timezone.php';
 
         // WooCommerce & My Account.
         require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/woocommerce/general.php';
