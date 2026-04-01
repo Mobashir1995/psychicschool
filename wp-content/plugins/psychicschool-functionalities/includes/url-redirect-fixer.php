@@ -1,12 +1,6 @@
 <?php
 !defined('ABSPATH') && exit;
 
-if (function_exists('cuf_save_mappings')) {
-
-    return;
-}
-
-
 // ======================
 // ADMIN MENU
 // ======================
@@ -139,7 +133,7 @@ function cuf_settings_page()
 // ======================
 // REDIRECT LOGIC
 // ======================
-add_action('template_redirect', function () {
+add_action('parse_request', function () {
 
     if (is_admin()) return;
 
