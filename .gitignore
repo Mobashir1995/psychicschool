@@ -19,6 +19,8 @@
 
 # Configuration
 wp-config.php
+github-actions-*
+!.github/*
 
 # Example themes
 /wp-content/themes/twenty*/
@@ -49,8 +51,14 @@ wp-config.php
 !/wp-content/themes/
 /wp-content/themes/*
 !/wp-content/themes/masterstudy-child/
+!/wp-content/themes/kadence-child/
+
+# mu-plugins
+!/wp-content/mu-plugins/disable-depreacated.php
+!/wp-content/mu-plugins/fix-kadence-vc-conflict.php
 
 # Plugins
 !/wp-content/plugins/
 /wp-content/plugins/*
 !/wp-content/plugins/wc-booking-confirmed-after-paid/
+!/wp-content/plugins/psychicschool-functionalities/
