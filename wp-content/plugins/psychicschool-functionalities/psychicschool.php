@@ -59,6 +59,9 @@ class Psychicschool_Functionalities {
         require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/woocommerce/general.php';
         require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/woocommerce/my-account.php';
 
+        // Breeze + WooCommerce Memberships: exclude restricted content from page cache.
+        require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/woocommerce/breeze-membership-cache-exclusion.php';
+
         // AffiliateWP.
         require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/affiliatewp/general.php';
 
