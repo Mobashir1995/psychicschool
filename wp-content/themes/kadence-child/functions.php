@@ -54,6 +54,36 @@ function kadence_child_enqueue_scripts()
 }
 add_action('wp_enqueue_scripts', 'kadence_child_enqueue_scripts');
 
+/** Load Login NoCaptcha assets on the front end (plugin only does so on wp-login, account, checkout). */
+function kadence_child_enqueue_login_nocaptcha_globally() {
+	if ( is_user_logged_in() || is_admin() ) {
+		return;
+	}
+	if ( ! class_exists( 'LoginNocaptcha' ) ) {
+		return;
+	}
+	LoginNocaptcha::register_scripts_css();
+	wp_enqueue_script( 'login_nocaptcha_google_api' );
+	wp_enqueue_style( 'login_nocaptcha_css' );
+}
+add_action( 'wp_enqueue_scripts', 'kadence_child_enqueue_login_nocaptcha_globally', 25 );
+
+/**
+ * `wp_login_form()` does not fire `login_form`; only `login_form_*` filters. Output the same
+ * captcha as the plugin’s `login_form` callback so it appears in Kadence’s modal.
+ */
+function kadence_child_login_nocaptcha_wp_login_form_middle( $content ) {
+	if ( ! class_exists( 'LoginNocaptcha' ) ) {
+		return $content;
+	}
+	ob_start();
+	echo '<div class="login-recaptcha-wrap">';
+	LoginNocaptcha::nocaptcha_form();
+	echo '</div>';
+	return $content . ob_get_clean();
+}
+add_filter( 'login_form_middle', 'kadence_child_login_nocaptcha_wp_login_form_middle', 10, 2 );
+
 /**
  * Disable widgets block editor
  * 
