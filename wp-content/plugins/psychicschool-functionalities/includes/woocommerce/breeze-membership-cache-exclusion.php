@@ -164,8 +164,8 @@ final class PS_Breeze_Membership_Cache_Exclusion
 				if (in_array($product_slug, $excluded_product_slugs, true)) {
 					$should_exclude = true;
 				} else {
-					// Check if the product belongs to any excluded category slugs.
-					if (!empty($excluded_category_slugs) && has_term($excluded_category_slugs, 'product_cat', $product_id)) {
+					// Check direct + ancestor product categories against excluded slugs.
+					if ($this->product_has_excluded_category_or_ancestor($product_id, $excluded_category_slugs)) {
 						$should_exclude = true;
 					}
 				}
@@ -363,6 +363,73 @@ final class PS_Breeze_Membership_Cache_Exclusion
 	private function breeze_is_active(): bool
 	{
 		return class_exists('Breeze_PurgeCache');
+	}
+
+	/**
+	 * Check if a product has an excluded category assigned directly
+	 * or via any ancestor category.
+	 *
+	 * @param int      $product_id Product ID.
+	 * @param string[] $excluded_category_slugs Excluded category slugs.
+	 * @return bool
+	 */
+	private function product_has_excluded_category_or_ancestor(int $product_id, array $excluded_category_slugs): bool
+	{
+		if (empty($excluded_category_slugs)) {
+			return false;
+		}
+
+		// Fast path: direct category slug match.
+		if (has_term($excluded_category_slugs, 'product_cat', $product_id)) {
+			return true;
+		}
+
+		$terms = wp_get_post_terms($product_id, 'product_cat');
+		if (is_wp_error($terms) || empty($terms)) {
+			return false;
+		}
+
+		$ancestor_ids = [];
+		foreach ($terms as $term) {
+			if (! $term instanceof \WP_Term) {
+				continue;
+			}
+
+			$term_ancestors = get_ancestors((int) $term->term_id, 'product_cat', 'taxonomy');
+			if (! empty($term_ancestors)) {
+				$ancestor_ids = array_merge($ancestor_ids, array_map('intval', $term_ancestors));
+			}
+		}
+
+		$ancestor_ids = array_values(array_unique(array_filter($ancestor_ids)));
+		if (empty($ancestor_ids)) {
+			return false;
+		}
+
+		return $this->ancestor_ids_match_excluded_slugs($ancestor_ids, $excluded_category_slugs);
+	}
+
+	/**
+	 * Determine if any ancestor term IDs map to excluded slugs.
+	 *
+	 * @param int[]    $ancestor_ids Ancestor term IDs.
+	 * @param string[] $excluded_category_slugs Excluded category slugs.
+	 * @return bool
+	 */
+	private function ancestor_ids_match_excluded_slugs(array $ancestor_ids, array $excluded_category_slugs): bool
+	{
+		foreach ($ancestor_ids as $ancestor_id) {
+			$ancestor_term = get_term($ancestor_id, 'product_cat');
+			if (! $ancestor_term instanceof \WP_Term) {
+				continue;
+			}
+
+			if (in_array((string) $ancestor_term->slug, $excluded_category_slugs, true)) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**
