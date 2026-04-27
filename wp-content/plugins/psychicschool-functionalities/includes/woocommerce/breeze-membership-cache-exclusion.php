@@ -144,21 +144,8 @@ final class PS_Breeze_Membership_Cache_Exclusion
 			return;
 		}
 
-		// 1. Array of specific product slugs that should NOT be cached for members.
-		$excluded_product_slugs = [
-			'student-energy-checks-by-clairvoyant-teachers',
-			'psychic-readings-by-clairvoyant-students',
-			'angel-healing-in-the-spiritual-healing-clinic',
-			'the-erasure-lectures'
-		];
-
-		// 2. Array of product category slugs that should NOT be cached for members.
-		$excluded_category_slugs = [
-			'staff-energy-checks',
-			'intuitional-courses-live',
-			'continuational',
-			'downloadable',
-		];
+		$excluded_product_ids  = $this->get_exclusion_option_ids('excluded_products');
+		$excluded_category_ids = $this->get_exclusion_option_ids('excluded_categories');
 
 		$is_product_page = function_exists('is_product') && is_product();
 		$is_wc_ajax      = isset($_GET['wc-ajax']);
@@ -170,13 +157,13 @@ final class PS_Breeze_Membership_Cache_Exclusion
 		} elseif ($is_product_page) {
 			$product = wc_get_product(get_the_ID());
 			if ($product) {
-				$current_slug = $product->get_slug();
-				// Check if the product slug is in the exclusion list.
-				if (in_array($current_slug, $excluded_product_slugs, true)) {
+				$product_id = (int) $product->get_id();
+				// Check if the product ID is in the exclusion list.
+				if (in_array($product_id, $excluded_product_ids, true)) {
 					$should_exclude = true;
 				} else {
-					// Check if the product belongs to any excluded categories.
-					if (has_term($excluded_category_slugs, 'product_cat', $product->get_id())) {
+					// Check if the product belongs to any excluded category IDs.
+					if (!empty($excluded_category_ids) && has_term($excluded_category_ids, 'product_cat', $product_id)) {
 						$should_exclude = true;
 					}
 				}
@@ -374,6 +361,26 @@ final class PS_Breeze_Membership_Cache_Exclusion
 	private function breeze_is_active(): bool
 	{
 		return class_exists('Breeze_PurgeCache');
+	}
+
+	/**
+	 * Read ID arrays from Breeze cache exclusion option.
+	 *
+	 * @param string $key Option child key.
+	 * @return int[]
+	 */
+	private function get_exclusion_option_ids(string $key): array
+	{
+		if (! class_exists('PS_Breeze_Cache_Exclusion_Settings')) {
+			return [];
+		}
+
+		$settings = get_option(PS_Breeze_Cache_Exclusion_Settings::OPTION_NAME, []);
+		if (! is_array($settings) || empty($settings[$key]) || ! is_array($settings[$key])) {
+			return [];
+		}
+
+		return array_values(array_filter(array_map('absint', $settings[$key])));
 	}
 }
 

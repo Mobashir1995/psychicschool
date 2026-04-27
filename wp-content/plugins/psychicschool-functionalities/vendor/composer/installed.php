@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => 'psychicschool/psychicschool-functionalities',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '717508f3b2caf23b5b8feba52db1485b58286633',
+        'type' => 'project',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
+    ),
+    'versions' => array(
+        'alleyinteractive/wordpress-fieldmanager' => array(
+            'pretty_version' => 'v1.6.1',
+            'version' => '1.6.1.0',
+            'reference' => '9e756e67f5264ac05f487992195f4dce99f83f56',
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../alleyinteractive/wordpress-fieldmanager',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'composer/installers' => array(
+            'pretty_version' => 'v2.3.0',
+            'version' => '2.3.0.0',
+            'reference' => '12fb2dfe5e16183de69e784a7b84046c43d97e8e',
+            'type' => 'composer-plugin',
+            'install_path' => __DIR__ . '/./installers',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'psychicschool/psychicschool-functionalities' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '717508f3b2caf23b5b8feba52db1485b58286633',
+            'type' => 'project',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);
