@@ -144,8 +144,8 @@ final class PS_Breeze_Membership_Cache_Exclusion
 			return;
 		}
 
-		$excluded_product_ids  = $this->get_exclusion_option_ids('excluded_products');
-		$excluded_category_ids = $this->get_exclusion_option_ids('excluded_categories');
+		$excluded_product_slugs  = $this->get_exclusion_option_slugs('excluded_products');
+		$excluded_category_slugs = $this->get_exclusion_option_slugs('excluded_categories');
 
 		$is_product_page = function_exists('is_product') && is_product();
 		$is_wc_ajax      = isset($_GET['wc-ajax']);
@@ -157,13 +157,15 @@ final class PS_Breeze_Membership_Cache_Exclusion
 		} elseif ($is_product_page) {
 			$product = wc_get_product(get_the_ID());
 			if ($product) {
-				$product_id = (int) $product->get_id();
-				// Check if the product ID is in the exclusion list.
-				if (in_array($product_id, $excluded_product_ids, true)) {
+				$product_id   = (int) $product->get_id();
+				$product_slug = sanitize_title((string) $product->get_slug());
+
+				// Check if the product slug is in the exclusion list.
+				if (in_array($product_slug, $excluded_product_slugs, true)) {
 					$should_exclude = true;
 				} else {
-					// Check if the product belongs to any excluded category IDs.
-					if (!empty($excluded_category_ids) && has_term($excluded_category_ids, 'product_cat', $product_id)) {
+					// Check if the product belongs to any excluded category slugs.
+					if (!empty($excluded_category_slugs) && has_term($excluded_category_slugs, 'product_cat', $product_id)) {
 						$should_exclude = true;
 					}
 				}
@@ -364,12 +366,12 @@ final class PS_Breeze_Membership_Cache_Exclusion
 	}
 
 	/**
-	 * Read ID arrays from Breeze cache exclusion option.
+	 * Read slug arrays from Breeze cache exclusion option.
 	 *
 	 * @param string $key Option child key.
-	 * @return int[]
+	 * @return string[]
 	 */
-	private function get_exclusion_option_ids(string $key): array
+	private function get_exclusion_option_slugs(string $key): array
 	{
 		if (! class_exists('PS_Breeze_Cache_Exclusion_Settings')) {
 			return [];
@@ -380,7 +382,12 @@ final class PS_Breeze_Membership_Cache_Exclusion
 			return [];
 		}
 
-		return array_values(array_filter(array_map('absint', $settings[$key])));
+		$slugs = [];
+		foreach ($settings[$key] as $value) {
+			$slugs[] = sanitize_title((string) $value);
+		}
+
+		return array_values(array_unique(array_filter($slugs)));
 	}
 }
 

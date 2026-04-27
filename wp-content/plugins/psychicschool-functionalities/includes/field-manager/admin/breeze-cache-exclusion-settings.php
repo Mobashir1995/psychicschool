@@ -89,54 +89,34 @@ final class PS_Breeze_Cache_Exclusion_Settings {
 	}
 
 	public function register_fields(): void {
-		if ( ! class_exists( 'Fieldmanager_Group' ) || ! class_exists( 'Fieldmanager_Autocomplete' ) ) {
+		if ( ! class_exists( 'Fieldmanager_Group' ) || ! class_exists( 'Fieldmanager_TextField' ) ) {
 			return;
 		}
 
 		$field = new Fieldmanager_Group(
 			[
 				'label'    => __( 'Breeze Cache Exclusion Rules', 'psychicschool-functionalities' ),
-				'description' => __( 'Add products or product categories below to bypass Breeze cache. Use autocomplete to search and select items.', 'psychicschool-functionalities' ),
+				'description' => __( 'Add product slug or product category term slug below to bypass Breeze cache.', 'psychicschool-functionalities' ),
 				'name'     => self::OPTION_NAME,
 				'children' => [
-					'excluded_products'   => new Fieldmanager_Autocomplete(
+					'excluded_products'   => new Fieldmanager_TextField(
 						[
-							'label'      => __( 'Excluded Products', 'psychicschool-functionalities' ),
-							'add_more_label' => __( 'Add Product', 'psychicschool-functionalities' ),
+							'label'      => __( 'Excluded Product Slug', 'psychicschool-functionalities' ),
+							'add_more_label' => __( 'Add Product Slug', 'psychicschool-functionalities' ),
 							'limit'      => 0,
 							'sortable'   => true,
 							'extra_elements' => 0,
-							'datasource' => new Fieldmanager_Datasource_Post(
-								[
-									'use_ajax'   => true,
-									'query_args' => [
-										'post_type'      => 'product',
-										'post_status'    => 'publish',
-										'posts_per_page' => 20,
-									],
-								]
-							),
-							'description' => __( 'Select product(s) to always bypass Breeze cache.', 'psychicschool-functionalities' ),
+							'description' => __( 'Enter WooCommerce product Slug (slug only).', 'psychicschool-functionalities' ),
 						]
 					),
-					'excluded_categories' => new Fieldmanager_Autocomplete(
+					'excluded_categories' => new Fieldmanager_TextField(
 						[
-							'label'      => __( 'Excluded Product Categories', 'psychicschool-functionalities' ),
-							'add_more_label' => __( 'Add Product Category', 'psychicschool-functionalities' ),
+							'label'      => __( 'Excluded Product Category Slug', 'psychicschool-functionalities' ),
+							'add_more_label' => __( 'Add Product Category Slug', 'psychicschool-functionalities' ),
 							'limit'      => 0,
 							'sortable'   => true,
 							'extra_elements' => 0,
-							'datasource' => new Fieldmanager_Datasource_Term(
-								[
-									'use_ajax'   => true,
-									'taxonomy'   => 'product_cat',
-									'taxonomy_args' => [
-										'hide_empty' => false,
-										'number'     => 20,
-									],
-								]
-							),
-							'description' => __( 'Select product category(s) to always bypass Breeze cache for products assigned to them.', 'psychicschool-functionalities' ),
+							'description' => __( 'Enter product category term Slug (slug only).', 'psychicschool-functionalities' ),
 						]
 					),
 				],
