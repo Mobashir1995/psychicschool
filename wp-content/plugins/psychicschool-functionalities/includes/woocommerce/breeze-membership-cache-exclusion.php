@@ -140,21 +140,7 @@ final class PS_Breeze_Membership_Cache_Exclusion
 	 */
 	private function donotcache_product_for_logged_in_user(): void
 	{
-		if( function_exists('wc_get_logger') ) {
-			wc_get_logger()->info('donotcache_product_for_logged_in_user initiated', array('source' => 'breeze-membership-cache-exclusion'));
-		}
-
-		if( !is_user_logged_in() ) {
-			if( function_exists('wc_get_logger') ) {
-				wc_get_logger()->info('donotcache_product_for_logged_in_user: user not logged in', array('source' => 'breeze-membership-cache-exclusion'));
-			}
-			return;
-		}
-
 		if (! $this->breeze_is_active()) {
-			if( function_exists('wc_get_logger') ) {
-				wc_get_logger()->info('donotcache_product_for_logged_in_user: breeze not active', array('source' => 'breeze-membership-cache-exclusion'));
-			}
 			return;
 		}
 
@@ -182,51 +168,22 @@ final class PS_Breeze_Membership_Cache_Exclusion
 		if ($is_wc_ajax) {
 			$should_exclude = true;
 		} elseif ($is_product_page) {
-			if( function_exists('wc_get_logger') ) {
-				wc_get_logger()->info('donotcache_product_for_logged_in_user: product page', array('source' => 'breeze-membership-cache-exclusion'));
-			}
 			$product = wc_get_product(get_the_ID());
 			if ($product) {
-				if( function_exists('wc_get_logger') ) {
-					wc_get_logger()->info('donotcache_product_for_logged_in_user: product found', array('source' => 'breeze-membership-cache-exclusion'));
-				}
 				$current_slug = $product->get_slug();
-				if( function_exists('wc_get_logger') ) {
-					wc_get_logger()->info('donotcache_product_for_logged_in_user: product slug: ' . $current_slug, array('source' => 'breeze-membership-cache-exclusion'));
-				}
 				// Check if the product slug is in the exclusion list.
 				if (in_array($current_slug, $excluded_product_slugs, true)) {
-					if( function_exists('wc_get_logger') ) {
-						wc_get_logger()->info('donotcache_product_for_logged_in_user: product slug excluded', array('source' => 'breeze-membership-cache-exclusion'));
-					}
 					$should_exclude = true;
 				} else {
 					// Check if the product belongs to any excluded categories.
 					if (has_term($excluded_category_slugs, 'product_cat', $product->get_id())) {
-						if( function_exists('wc_get_logger') ) {
-							wc_get_logger()->info('donotcache_product_for_logged_in_user: product category excluded', array('source' => 'breeze-membership-cache-exclusion'));
-						}
 						$should_exclude = true;
-					}else{
-						if( function_exists('wc_get_logger') ) {
-							wc_get_logger()->info('donotcache_product_for_logged_in_user: product category not excluded', array('source' => 'breeze-membership-cache-exclusion'));
-						}
 					}
 				}
 			}
 		}
-		if( function_exists('wc_get_logger') ) {
-			wc_get_logger()->info('donotcache_product_for_logged_in_user: should exclude: ' . json_encode($should_exclude), array('source' => 'breeze-membership-cache-exclusion'));
-		}
 		if ($should_exclude && ! defined('DONOTCACHEPAGE')) {
 			define('DONOTCACHEPAGE', true);
-			if( function_exists('wc_get_logger') ) {
-				wc_get_logger()->info('donotcache_product_for_logged_in_user: DONOTCACHEPAGE defined', array('source' => 'breeze-membership-cache-exclusion'));
-			}
-		}else{
-			if( function_exists('wc_get_logger') ) {
-				wc_get_logger()->info('donotcache_product_for_logged_in_user: DONOTCACHEPAGE not defined', array('source' => 'breeze-membership-cache-exclusion'));
-			}
 		}
 	}
 
