@@ -1,0 +1,7 @@
+{
+    "name": "psychicschool/psychicschool-functionalities",
+    "type": "project",
+    "require": {
+        "alleyinteractive/wordpress-fieldmanager": "^1.6"
+    }
+}
