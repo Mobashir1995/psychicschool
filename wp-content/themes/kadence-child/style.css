@@ -1627,3 +1627,53 @@ div#mobile-drawer {
     height: 30px;
   }
 }
+
+#login-drawer #loginform .login-recaptcha-wrap .g-recaptcha{
+  margin-left: 0 !important;
+}
+#login-drawer .drawer-content_inner.widget_login_form_inner {
+  padding: 25px !important;
+}
+
+/* Booking Calendar Style  */
+.wc-bookings-date-picker .ui-datepicker .ui-datepicker-prev, .wc-bookings-date-picker .ui-datepicker .ui-datepicker-next {
+  height: 100%;
+}
+.wc-bookings-date-picker .ui-datepicker-header {
+    color: #fff
+}
+.wc-bookings-date-picker .ui-datepicker .ui-datepicker-title {
+    font-weight: normal;
+}
+.wc-bookings-date-picker .ui-datepicker td.bookable a {
+    background-color: #2ecc71 !important;
+}
+
+.wc-bookings-date-picker .ui-datepicker td.bookable a.ui-state-active,
+.wc-bookings-date-picker .ui-datepicker td.bookable-range a.ui-state-default{
+    text-decoration: none !important;
+    background: #239e57 !important;
+}
+.wc-bookings-booking-form .ui-widget {
+	font-family: 'Montserrat';
+}
+/* Fix Booking Calendar Auto Focus Issue */
+/* Removes programmatic focus styling, but preserves keyboard tab accessibility */
+/* Fix WooCommerce Bookings auto-focus styling on the first time block */
+.wc-bookings-booking-form .block-picker li a:focus:not(:hover):not(.selected) {
+    outline: none !important;
+	border: none !important;
+    color: #333 !important; /* Fallback for older browsers */
+    color: var(--global-palette-highlight) !important; /* Reverts text color to your theme's default link color */
+}
+
+/* Revert odd blocks back to their default white background */
+.wc-bookings-booking-form .block-picker li:nth-child(odd) a:focus:not(:hover):not(.selected) {
+    background-color: #ffffff !important;
+}
+
+/* Revert even blocks back to their default gray background */
+.wc-bookings-booking-form .block-picker li:nth-child(even) a:focus:not(:hover):not(.selected) {
+    background-color: #f5f5f5 !important;
+}
+
