@@ -17,6 +17,17 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
+	require_once __DIR__ . '/vendor/autoload.php';
+}
+
+if ( ! function_exists( 'fm_register_submenu_page' ) ) {
+	$fieldmanager_bootstrap = __DIR__ . '/vendor/alleyinteractive/wordpress-fieldmanager/fieldmanager.php';
+	if ( file_exists( $fieldmanager_bootstrap ) ) {
+		require_once $fieldmanager_bootstrap;
+	}
+}
+
 /**
  * Main plugin class
  */
@@ -60,6 +71,7 @@ class Psychicschool_Functionalities {
         require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/woocommerce/my-account.php';
 
         // Breeze + WooCommerce Memberships: exclude restricted content from page cache.
+        require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/field-manager/admin/breeze-cache-exclusion-settings.php';
         require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/woocommerce/breeze-membership-cache-exclusion.php';
 
         // AffiliateWP.
