@@ -16,6 +16,8 @@
 /readme.html
 /wp-*.php
 /xmlrpc.php
+mysql-mcp-server
+.cursor
 
 # Configuration
 wp-config.php

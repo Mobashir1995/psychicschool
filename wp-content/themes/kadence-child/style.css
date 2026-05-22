@@ -1628,7 +1628,16 @@ div#mobile-drawer {
   }
 }
 
-#login-drawer #loginform .login-recaptcha-wrap .g-recaptcha{
+#lostpasswordform div.g-recaptcha,
+#loginform div.g-recaptcha,
+#registerform div.g-recaptcha,
+.woocommerce-form-login div.g-recaptcha,
+.woocommerce-form-register div.g-recaptcha,
+.woocommerce-ResetPassword div.g-recaptcha {
+  margin: 12px 0 24px -15px;
+}
+
+#login-drawer #loginform .login-recaptcha-wrap .g-recaptcha {
   margin-left: 0 !important;
 }
 #login-drawer .drawer-content_inner.widget_login_form_inner {

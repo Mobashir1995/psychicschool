@@ -77,6 +77,12 @@ class Psychicschool_Functionalities {
         // AffiliateWP.
         require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/affiliatewp/general.php';
 
+        // Login reCAPTCHA (replaces abandoned login-recaptcha plugin).
+        require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/security/class-ps-login-recaptcha.php';
+        if ( is_admin() ) {
+            require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/field-manager/admin/login-recaptcha-settings.php';
+        }
+
         // Misc.
         require_once PSYCHICSCHOOL_FUNCTIONALITIES_DIR . 'includes/misc/maintenance.php';
 
