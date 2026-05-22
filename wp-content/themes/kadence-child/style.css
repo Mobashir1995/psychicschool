@@ -1634,7 +1634,7 @@ div#mobile-drawer {
 .woocommerce-form-login div.g-recaptcha,
 .woocommerce-form-register div.g-recaptcha,
 .woocommerce-ResetPassword div.g-recaptcha {
-  margin: 12px 0 24px -15px;
+  margin: 12px 0 24px 0;
 }
 
 #login-drawer #loginform .login-recaptcha-wrap .g-recaptcha {
