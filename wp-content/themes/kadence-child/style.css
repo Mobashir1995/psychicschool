@@ -1685,3 +1685,9 @@ div#mobile-drawer {
 .wc-bookings-booking-form .block-picker li:nth-child(even) a:focus:not(:hover):not(.selected) {
     background-color: #f5f5f5 !important;
 }
+.woocommerce-checkout .form-row .required {
+  color: red !important;
+}
+.wfacp_form_cart table.shop_table tr:not(:last-child) td .wfacp-pro-count {
+  color: #fff;
+}
