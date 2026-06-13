@@ -19,6 +19,29 @@
 mysql-mcp-server
 .cursor
 
+# E2E testing
+/playwright-report/
+/test-results/
+/node_modules/
+/vendor/
+/tests/.phpunit.cache
+/.env
+package-lock.json
+**/e2e/**
+.env.example
+package.json
+playwright.config.ts
+tmp-find-edd-sl.php
+tsconfig.json
+docs/**
+
+#PHPUnit Tests
+/tests/**
+.phpunit.result.cache
+phpunit.xml
+/composer.json
+/composer.lock
+
 # Configuration
 wp-config.php
 github-actions-*
@@ -56,6 +79,7 @@ github-actions-*
 !/wp-content/themes/kadence-child/
 
 # mu-plugins
+!/wp-content/mu-plugins/aaa-psychicschool-tests.php
 !/wp-content/mu-plugins/disable-depreacated.php
 !/wp-content/mu-plugins/fix-kadence-vc-conflict.php
 
