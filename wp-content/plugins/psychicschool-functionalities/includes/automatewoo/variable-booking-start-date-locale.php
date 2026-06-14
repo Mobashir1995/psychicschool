@@ -41,19 +41,15 @@ class Psychicschool_AutomateWoo_Booking_Start_Date_Locale extends AutomateWoo\Va
             return false;
         }
 
-        $start = $booking->get_start();
-        if ( $start === null || $start === '' ) {
-            return false;
-        }
-
-        $timezone_string = psychicschool_get_booking_customer_timezone_string( $booking );
-        $datetime        = psychicschool_booking_start_datetime_in_timezone( $start, $timezone_string );
+        $datetime = psychicschool_get_booking_start_datetime_customer( $booking );
 
         if ( ! $datetime ) {
             return false;
         }
 
-        return $this->format_datetime( $datetime, $parameters );
+        $formatted = psychicschool_format_booking_customer_datetime( $datetime, $parameters );
+
+        return $formatted !== '' ? $formatted : false;
     }
 }
 

@@ -42,6 +42,9 @@ phpunit.xml
 /composer.json
 /composer.lock
 
+#Scripts
+/scripts/**
+
 # Configuration
 wp-config.php
 github-actions-*
