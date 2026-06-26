@@ -54,7 +54,7 @@ if ( ! function_exists( 'psychicschool_variation_dropdown_label' ) ) {
 		return __( 'Registration & Payment Option', 'psychicschool-functionalities' );
 	}
 
-	add_filter( 'woocommerce_attribute_label', 'psychicschool_variation_dropdown_label', 10, 3 );
+	// add_filter( 'woocommerce_attribute_label', 'psychicschool_variation_dropdown_label', 10, 3 );
 }
 
 if ( ! function_exists( 'psychicschool_disable_product_gallery_zoom_and_lightbox' ) ) {
