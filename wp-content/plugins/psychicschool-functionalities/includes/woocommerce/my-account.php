@@ -217,3 +217,6 @@ if ( ! function_exists( 'psychicschool_remove_my_orders_pay_action' ) ) {
 	add_filter( 'woocommerce_my_account_my_orders_actions', 'psychicschool_remove_my_orders_pay_action', 10, 2 );
 }
 
+// Disable WooCommerce Memberships redirection to single plan view when the user only has 1 membership.
+// This prevents the "Classrooms" link from being dropped from the My Account menu and ensures the menu remains visible.
+add_filter( 'wc_memberships_my_account_redirect_to_single_membership', '__return_false' );

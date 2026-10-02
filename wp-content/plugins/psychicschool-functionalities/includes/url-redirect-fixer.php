@@ -166,3 +166,39 @@ add_action('parse_request', function () {
         }
     }
 });
+
+/**
+ * Fix for Autonami UTM parameters causing 403 Forbidden errors.
+ * 
+ * When a UTM campaign has parentheses (e.g. "AD - CM OPEN (SEP 2026)"),
+ * Nginx WAF blocks the request throwing a 403 Forbidden because it looks like XSS or SQLi.
+ * This hook sanitizes the UTM parameters before they are added to the email link.
+ * 
+ * Additionally, sanitize the link directly if it's generated dynamically
+ */
+add_filter( 'bwfan_modify_target_link', function( $link ) {
+	if ( ! empty( $link ) && is_string( $link ) ) {
+		// If the link somehow still contains unencoded forbidden characters in query parameters, remove them.
+		$parsed_url = wp_parse_url( $link );
+		if ( ! empty( $parsed_url['query'] ) ) {
+			// Removed [, ], |, and * as they are commonly used in WooCommerce product filters and search queries.
+			$forbidden_chars = array( '(', ')', '<', '>', "'", '"', '{', '}', ';', '`' );
+			$needs_replacement = false;
+			
+			foreach ( $forbidden_chars as $char ) {
+				if ( strpos( $parsed_url['query'], $char ) !== false ) {
+					$needs_replacement = true;
+					break;
+				}
+			}
+			
+			if ( $needs_replacement ) {
+				$new_query = str_replace( $forbidden_chars, '-', $parsed_url['query'] );
+				// Clean up double dashes in query
+				$new_query = preg_replace( '/-+/', '-', $new_query );
+				$link = str_replace( $parsed_url['query'], $new_query, $link );
+			}
+		}
+	}
+	return $link;
+}, 10, 1 );

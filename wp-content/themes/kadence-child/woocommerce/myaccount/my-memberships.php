@@ -34,6 +34,23 @@ defined( 'ABSPATH' ) or exit;
  */
 global $post;
 
+// Custom functionality: Exclude specific memberships from appearing in this table based on settings
+$exclusions_option = get_option( 'ps_classroom_exclusions', array() );
+$excluded_slugs    = ! empty( $exclusions_option['excluded_memberships'] ) ? (array) $exclusions_option['excluded_memberships'] : array();
+$excluded_slugs    = array_filter( $excluded_slugs ); // Remove empty entries
+$excluded_slugs    = array_map( function( $slug ) {
+	return strtolower( trim( $slug ) );
+}, $excluded_slugs );
+
+if ( ! empty( $customer_memberships ) && ! empty( $excluded_slugs ) ) {
+	foreach ( $customer_memberships as $index => $membership ) {
+		$plan = $membership->get_plan();
+		if ( $plan && in_array( $plan->get_slug(), $excluded_slugs, true ) ) {
+			unset( $customer_memberships[ $index ] );
+		}
+	}
+}
+
 if ( ! empty( $customer_memberships ) ) : ?>
 
 	<table class="shop_table shop_table_responsive my_account_orders my_account_memberships">
