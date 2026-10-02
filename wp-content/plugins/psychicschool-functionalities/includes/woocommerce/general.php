@@ -90,3 +90,64 @@ if ( ! function_exists( 'psychicschool_remove_product_gallery_image_links' ) ) {
 	add_filter( 'woocommerce_single_product_image_thumbnail_html', 'psychicschool_remove_product_gallery_image_links', 10, 1 );
 }
 
+if ( ! function_exists( 'psycics_gcal_sync_only_confirmed' ) ) {
+	/**
+	 * Remove 'paid' from the list of statuses that trigger Google Calendar sync.
+	 * This prevents double-entries when 'wc-booking-confirmed-after-paid' flips a booking from paid to confirmed.
+	 *
+	 * @param array $statuses Array of statuses.
+	 * @return array
+	 */
+	function psycics_gcal_sync_only_confirmed( $statuses ) {
+		return array_diff( $statuses, array( 'paid' ) );
+	}
+
+	add_filter( 'woocommerce_booking_is_paid_statuses', 'psycics_gcal_sync_only_confirmed', 99, 1 );
+}
+
+if ( ! function_exists( 'psycics_silently_remove_completed_bookings_from_cart' ) ) {
+	/**
+	 * Silently remove confirmed or complete bookings from the cart session
+	 * before WooCommerce Bookings checks them, preventing false "inactivity" notices.
+	 *
+	 * @param WC_Cart $cart
+	 */
+	function psycics_silently_remove_completed_bookings_from_cart( $cart ) {
+		// Only run if woocommerce-bookings is active and get_wc_booking exists.
+		if ( ! function_exists( 'get_wc_booking' ) ) {
+			return;
+		}
+		
+		foreach ( $cart->cart_contents as $cart_item_key => $cart_item ) {
+			if ( isset( $cart_item['booking'] ) && isset( $cart_item['booking']['_booking_id'] ) ) {
+				$booking_id = $cart_item['booking']['_booking_id'];
+				$booking    = get_wc_booking( $booking_id );
+
+				if ( $booking && $booking->has_status( array( 'confirmed', 'complete', 'paid' ) ) ) {
+					unset( $cart->cart_contents[ $cart_item_key ] );
+				}
+			}
+		}
+	}
+	
+	// Hook before WC_Booking_Cart_Manager (which uses priority 10).
+	add_action( 'woocommerce_cart_loaded_from_session', 'psycics_silently_remove_completed_bookings_from_cart', 5, 1 );
+}
+
+/**
+ * Add brand to WooCommerce Product Schema to resolve Merchant Listings warnings.
+ *
+ * @param array      $markup  Schema markup array.
+ * @param WC_Product $product Product object.
+ * @return array
+ */
+function psychicschool_add_brand_to_schema( $markup, $product ) {
+	if ( empty( $markup['brand'] ) ) {
+		$markup['brand'] = array(
+			'@type' => 'Organization',
+			'name'  => get_bloginfo( 'name' )
+		);
+	}
+	return $markup;
+}
+add_filter( 'woocommerce_structured_data_product', 'psychicschool_add_brand_to_schema', 10, 2 );

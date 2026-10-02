@@ -325,6 +325,7 @@ final class PS_Breeze_Membership_Cache_Exclusion
 		}
 
 		$purged = [];
+		$all_urls = [];
 
 		foreach ($rules as $rule) {
 
@@ -342,9 +343,65 @@ final class PS_Breeze_Membership_Cache_Exclusion
 					continue;
 				}
 
-				do_action('purge_post_cache', $object_id);
-
 				$purged[] = $object_id;
+
+				if (class_exists('Breeze_PurgeCache')) {
+					$urls = Breeze_PurgeCache::collect_urls_for_cache_purge($object_id);
+					if (! empty($urls)) {
+						$all_urls = array_merge($all_urls, $urls);
+					}
+				}
+			}
+		}
+
+		if (empty($all_urls)) {
+			return;
+		}
+
+		$all_urls = array_values(array_unique(array_filter(array_map('trim', $all_urls))));
+
+		// Remove homepage from the purge list (both with and without trailing slash) to match Breeze logic
+		$homepage_with_slash = trailingslashit(home_url());
+		$homepage_without_slash = untrailingslashit(home_url());
+		$all_urls = array_filter($all_urls, function($url) use ($homepage_with_slash, $homepage_without_slash) {
+			$trimmed_url = trim($url);
+			return $trimmed_url !== $homepage_with_slash && $trimmed_url !== $homepage_without_slash;
+		});
+
+		if (empty($all_urls)) {
+			return;
+		}
+
+		// 1. Purge local cache
+		if (function_exists('breeze_get_filesystem') && function_exists('breeze_get_cache_base_path')) {
+			$wp_filesystem = breeze_get_filesystem();
+			$cache_base_path = breeze_get_cache_base_path();
+			foreach ($all_urls as $local_url) {
+				$cache_dir = $cache_base_path . hash('sha256', $local_url);
+				if ($wp_filesystem->exists($cache_dir)) {
+					$wp_filesystem->rmdir($cache_dir, true);
+				}
+			}
+		}
+
+		// 2. Purge Cloudflare cache asynchronously (via cron) in a single batch
+		if (class_exists('Breeze_CloudFlare_Helper')) {
+			Breeze_CloudFlare_Helper::purge_cloudflare_cache_urls($all_urls, 'cron');
+		}
+
+		// 3. Purge Varnish cache
+		if (class_exists('Breeze_PurgeVarnish')) {
+			$varnish = new Breeze_PurgeVarnish();
+			foreach ($all_urls as $url_path) {
+				$item_url = untrailingslashit($url_path) . '/?breeze';
+				$varnish->purge_cache($item_url);
+			}
+		}
+
+		// 4. Clear Object Cache for all affected posts
+		foreach ($purged as $post_id) {
+			if (class_exists('Breeze_PurgeCache')) {
+				Breeze_PurgeCache::clear_op_cache_for_posts($post_id);
 			}
 		}
 	}

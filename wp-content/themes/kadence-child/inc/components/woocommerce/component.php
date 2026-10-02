@@ -356,6 +356,10 @@ function kadence_child_single_product_summary_hooks() {
 	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
 	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
 	remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
+
+	// Move schema generation to a hook that runs only once, preventing duplicate schemas.
+	remove_action( 'woocommerce_single_product_summary', array( WC()->structured_data, 'generate_product_data' ), 60 );
+	add_action( 'woocommerce_before_single_product_summary', array( WC()->structured_data, 'generate_product_data' ), 60 );
 }
 add_action( 'woocommerce_init', 'kadence_child_single_product_summary_hooks' );
 
